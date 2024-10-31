@@ -1,6 +1,7 @@
 import pygame
 from constants import WIDTH, HEIGHT, BLACK
 from player import spaceship
+from baddies.enemy import rumia
 pygame.init()
 
 #game window
@@ -13,6 +14,7 @@ background_image = pygame.transform.scale(background_image, (WIDTH, HEIGHT))
 
 #player variable
 player = spaceship(screen)
+boss = rumia(screen)
 
 #fps counter
 clock = pygame.time.Clock()
@@ -40,6 +42,11 @@ while running:
     player.move(keys)
     player.shoot()
     player.shoot_update(screen)
+
+    #enemy area
+    boss.draw(screen)
+    boss.fire()
+    boss.update_fire(screen)
 
     pygame.display.flip()
     clock.tick(60)
