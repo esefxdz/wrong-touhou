@@ -14,6 +14,11 @@ class rumia:
         self.rect.x = 100
         self.rect.y = 100
 
+        #move
+        self.speed = 5
+        self.direction = 1
+        self.screen_width = constants.WIDTH
+
         #shooty shoot
         self.last_fire_time = pygame.time.get_ticks()
         self.fire_cooldown = 1000
@@ -35,6 +40,11 @@ class rumia:
             if fire.top > 1000:
                 self.fires.remove(fire)
     # END OF WEIRD AREA!!!!!!!!!!!!!!!
+
+    def move(self, WIDTH):
+        self.rect.x += self.speed * self.direction
+        if self.rect.right >= WIDTH or self.rect.left <= 0:
+            self.direction *= -1
 
     def draw(self, screen):
         screen.blit(self.image, self.rect)
