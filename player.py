@@ -1,9 +1,6 @@
 import pygame
 from constants import WIDTH, HEIGHT
 
-screen = pygame.display.set_mode((WIDTH, HEIGHT))
-keys_pressed = pygame.key.get_pressed
-
 
 class spaceship:
     def __init__(self):
