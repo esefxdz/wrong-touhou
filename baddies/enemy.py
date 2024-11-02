@@ -1,8 +1,12 @@
 import sys
 import os
 import pygame
-sys.path.append(os.path.dirname(__file__)) #is this the way we import constants then its stupid lmao
+
+sys.path.append(
+    os.path.dirname(__file__)
+)  # is this the way we import constants then its stupid lmao
 import constants  # noqa: F401
+
 
 class rumia:
     def __init__(self, screen):
@@ -14,12 +18,12 @@ class rumia:
         self.rect.x = 100
         self.rect.y = 100
 
-        #move
+        # move
         self.speed = 5
         self.direction = 1
         self.screen_width = constants.WIDTH
 
-        #shooty shoot
+        # shooty shoot
         self.last_fire_time = pygame.time.get_ticks()
         self.fire_cooldown = 1000
         self.fires = []
@@ -39,6 +43,7 @@ class rumia:
             pygame.draw.rect(screen, constants.RED, fire)
             if fire.top > 1000:
                 self.fires.remove(fire)
+
     # END OF WEIRD AREA!!!!!!!!!!!!!!!
 
     def move(self, WIDTH):

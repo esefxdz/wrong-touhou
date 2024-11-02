@@ -1,7 +1,9 @@
 import pygame
 from constants import WIDTH, HEIGHT
+
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 keys_pressed = pygame.key.get_pressed
+
 
 class spaceship:
     def __init__(self, screen):
@@ -24,7 +26,7 @@ class spaceship:
             self.spaceship_rect.x -= self.player_speed
         if keys[pygame.K_RIGHT] and self.spaceship_rect.right < WIDTH:
             self.spaceship_rect.x += self.player_speed
-        if keys [pygame.K_UP] and self.spaceship_rect.top > 0:
+        if keys[pygame.K_UP] and self.spaceship_rect.top > 0:
             self.spaceship_rect.y -= self.player_speed
         if keys[pygame.K_DOWN] and self.spaceship_rect.bottom < HEIGHT:
             self.spaceship_rect.y += self.player_speed
@@ -32,11 +34,16 @@ class spaceship:
     def shoot(self):
         current_time = pygame.time.get_ticks()
         keys = pygame.key.get_pressed()
-        #cooldown confirmer
-        if keys[pygame.K_SPACE] and current_time - self.last_shot_time >= self.shoot_cooldown:
-            bullet_rect = pygame.Rect(self.spaceship_rect.centerx - 5, self.spaceship_rect.top, 10, 20)
+        # cooldown confirmer
+        if (
+            keys[pygame.K_SPACE]
+            and current_time - self.last_shot_time >= self.shoot_cooldown
+        ):
+            bullet_rect = pygame.Rect(
+                self.spaceship_rect.centerx - 5, self.spaceship_rect.top, 10, 20
+            )
             self.bullets.append(bullet_rect)
-            #cooldown resetter
+            # cooldown resetter
             self.last_shot_time = current_time
 
     def shoot_update(self, screen):
