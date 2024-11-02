@@ -14,7 +14,7 @@ background_image = pygame.image.load("background.jpg")
 background_image = pygame.transform.scale(background_image, (WIDTH, HEIGHT))
 
 # player variable
-player = spaceship(screen)
+player = spaceship()
 boss = rumia(screen)
 
 # fps counter

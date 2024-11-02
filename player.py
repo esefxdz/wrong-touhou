@@ -6,7 +6,7 @@ keys_pressed = pygame.key.get_pressed
 
 
 class spaceship:
-    def __init__(self, screen):
+    def __init__(self):
         super().__init__()
         self.spaceship_image = pygame.image.load("spaceship.png")
         self.spaceship_image = pygame.transform.scale(self.spaceship_image, (50, 50))
