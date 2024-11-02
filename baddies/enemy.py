@@ -9,14 +9,18 @@ import constants  # noqa: F401
 
 
 class rumia:
-    def __init__(self, screen):
+    def __init__(self):
         super().__init__()
-        self.rect = pygame.Rect(500, -200, 50, 50)
+        self.lolrect = pygame.Rect(100, 100, 50, 50)
         self.image_path = os.path.join(os.path.dirname(__file__), "rumia.png")
         self.image = pygame.image.load(self.image_path)
         self.image = pygame.transform.scale(self.image, (150, 150))
-        self.rect.x = 100
-        self.rect.y = 100
+        self.rumia_rect = self.image.get_rect()
+
+        #move
+        self.speed = 5
+        self.direction = 1
+        self.screen_width = constants.WIDTH
 
         # move
         self.speed = 5
@@ -33,7 +37,7 @@ class rumia:
     def fire(self):
         current_time = pygame.time.get_ticks()
         if current_time - self.last_fire_time >= self.fire_cooldown:
-            fire_rect = pygame.Rect(self.rect.centerx - 5, self.rect.bottom, 10, 20)
+            fire_rect = pygame.Rect(self.lolrect.centerx - 5, self.lolrect.bottom, 10, 20)
             self.fires.append(fire_rect)
             self.last_fire_time = current_time
 
@@ -47,9 +51,9 @@ class rumia:
     # END OF WEIRD AREA!!!!!!!!!!!!!!!
 
     def move(self, WIDTH):
-        self.rect.x += self.speed * self.direction
-        if self.rect.right >= WIDTH or self.rect.left <= 0:
+        self.lolrect.x += self.speed * self.direction
+        if self.lolrect.right >= WIDTH or self.lolrect.left <= 0:
             self.direction *= -1
 
     def draw(self, screen):
-        screen.blit(self.image, self.rect)
+        screen.blit(self.image, self.lolrect)

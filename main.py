@@ -14,9 +14,6 @@ pygame.display.set_caption("will it work tho")
 background_image = pygame.image.load("background.jpg")
 background_image = pygame.transform.scale(background_image, (WIDTH, HEIGHT))
 
-# player variable
-player = spaceship()
-boss = rumia(screen)
 #player variable
 x = 100
 y = 100
