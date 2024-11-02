@@ -50,6 +50,10 @@ while running:
     boss.update_fire(screen)
     boss.move(WIDTH)
 
+    for bullet in boss.fires:
+        if bullet.colliderect(player.spaceship_rect):
+            print("Player hit")
+
     pygame.display.flip()
     clock.tick(60)
 
