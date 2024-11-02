@@ -1,11 +1,14 @@
 import pygame
 from constants import WIDTH, HEIGHT
+from baddies.enemy import rumia
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 keys_pressed = pygame.key.get_pressed
+enemy = rumia
 
 class spaceship:
-    def __init__(self, screen):
+    def __init__(self, x, y):
         super().__init__()
+        self.rect = pygame.Rect(x, y, 50, 50)
         self.spaceship_image = pygame.image.load("spaceship.png")
         self.spaceship_image = pygame.transform.scale(self.spaceship_image, (50, 50))
         self.spaceship_rect = self.spaceship_image.get_rect()
