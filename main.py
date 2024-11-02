@@ -47,6 +47,7 @@ while running:
     boss.draw(screen)
     boss.fire()
     boss.update_fire(screen)
+    boss.move(WIDTH)
 
     pygame.display.flip()
     clock.tick(60)
