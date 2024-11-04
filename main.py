@@ -1,6 +1,7 @@
 import pygame
 from baddies.enemy import rumia
 from constants import WIDTH, HEIGHT, BLACK
+from hit_register import boss_hit, player_hit
 from player import spaceship
 from baddies.enemy import rumia
 
@@ -14,7 +15,7 @@ pygame.display.set_caption("will it work tho")
 background_image = pygame.image.load("background.jpg")
 background_image = pygame.transform.scale(background_image, (WIDTH, HEIGHT))
 
-#player variable
+#player variable and other variables from files
 x = 100
 y = 100
 player = spaceship(x, y)
@@ -46,20 +47,14 @@ while running:
     player.move(keys)
     player.shoot()
     player.shoot_update(screen)
-
-    for bullet in player.bullets:
-        if bullet.colliderect(boss.lolrect):
-            print("hit")
+    player_hit(player.bullets, boss.lolrect)
 
     #enemy area
     boss.draw(screen)
     boss.fire()
     boss.update_fire(screen)
     boss.move(WIDTH)
-
-    for fire in boss.fires:
-        if fire.colliderect(player.spaceship_rect):
-            print("Player hit")
+    boss_hit(boss.fires, player.spaceship_rect)
 
 
     pygame.display.flip()
