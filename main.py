@@ -47,7 +47,7 @@ while running:
     player.move(keys)
     player.shoot()
     player.shoot_update(screen)
-    player_hit(player.bullets, boss.lolrect)
+    player_hit(player.bullets, boss.lolrect, boss.take_hit)
 
     #enemy area
     boss.draw(screen)

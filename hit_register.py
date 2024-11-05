@@ -1,11 +1,13 @@
 import pygame
 from baddies.enemy import rumia
 from player import spaceship
+boss = rumia
 
-def player_hit(bullets, lolrect):
+def player_hit(bullets, lolrect, take_hit):
     for bullet in bullets:
         if bullet.colliderect(lolrect):
-            print("hit")
+            take_hit()
+            
 
 def boss_hit(fires, spaceship_rect):
     for fire in fires:
