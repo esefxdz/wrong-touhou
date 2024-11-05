@@ -12,7 +12,7 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("will it work tho")
 
 # background image
-background_image = pygame.image.load("background.jpg")
+background_image = pygame.image.load("textures/background.jpg")
 background_image = pygame.transform.scale(background_image, (WIDTH, HEIGHT))
 
 #player variable and other variables from files

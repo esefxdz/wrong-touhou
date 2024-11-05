@@ -9,7 +9,7 @@ class spaceship:
     def __init__(self, x, y):
         super().__init__()
         self.rect = pygame.Rect(x, y, 50, 50)
-        self.spaceship_image = pygame.image.load("spaceship.png")
+        self.spaceship_image = pygame.image.load("textures/spaceship.png")
         self.spaceship_image = pygame.transform.scale(self.spaceship_image, (50, 50))
         self.spaceship_rect = self.spaceship_image.get_rect()
         self.spaceship_rect.center = (WIDTH // 2, HEIGHT // 2)
@@ -17,7 +17,7 @@ class spaceship:
         self.bullets = []
         self.shoot_cooldown = 75
         self.last_shot_time = pygame.time.get_ticks()
-        self.bullet_image = pygame.image.load("bullet.png")
+        self.bullet_image = pygame.image.load("textures/bullet.png")
         self.bullet_image = pygame.transform.scale(self.bullet_image, (20, 40))
 
     def move(self, keys):
