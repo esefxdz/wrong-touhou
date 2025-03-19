@@ -1,16 +1,23 @@
 import sys
 import os
+import wave
 import pygame
+pygame.mixer.init()
 
+#doesnt work
 sys.path.append(
-    os.path.dirname(__file__)
-)  # is this the way we import constants then its stupid lmao
-import constants  # noqa: F401
-
+    os.path.dirname(os.path.dirname(__file__))
+) 
+import constants # is this the way we import constants then its stupid lmao
 
 class rumia:
     def __init__(self):
         super().__init__()
+
+        pygame.mixer.init()
+        kill_sound_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "killsound.wav")
+        self.kill_sound = kill_sound_path
+
         self.lolrect = pygame.Rect(100, 100, 50, 50)
         self.image_path = os.path.join(os.path.dirname(__file__), "rumia.png")
         self.image = pygame.image.load(self.image_path)
@@ -62,8 +69,12 @@ class rumia:
         if not self.defeated:
             self.hit_count += 1
             print(f"Rumia hit {self.hit_count}")
+            pygame.mixer.Sound(os.path.join("sounds", "hitsound.wav")).play()
             if self.hit_count >= self.max_hp:
                 self.defeated = True
+                pygame.mixer.Sound(os.path.join("sounds", "killsound.wav")).play()
+                ############
+
 
     def move(self, WIDTH):
         self.lolrect.x += self.speed * self.direction
