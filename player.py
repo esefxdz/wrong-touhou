@@ -59,11 +59,9 @@ class spaceship:
             bullet["pos"][0] += bullet["dir"][0] * self.bullet_speed
             bullet["pos"][1] += bullet["dir"][1] * self.bullet_speed
 
-            # Draw the bullet image at its current position
             bullet_rect = self.bullet_image.get_rect(center=(int(bullet["pos"][0]), int(bullet["pos"][1])))
             screen.blit(self.bullet_image, bullet_rect)
 
-            # Keep bullet if on screen
             if 0 <= bullet["pos"][0] <= WIDTH and 0 <= bullet["pos"][1] <= HEIGHT:
                 new_bullets.append(bullet)
         self.bullets = new_bullets

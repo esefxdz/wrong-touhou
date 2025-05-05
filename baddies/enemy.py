@@ -59,6 +59,8 @@ class rumia:
         self.lolrect = pygame.Rect(x, y, 50, 50)  # still used for fire origin
 
     def fire(self):
+        if self.defeated:
+            return
         current_time = pygame.time.get_ticks()
         if current_time - self.last_fire_time > self.fire_cooldown:
             self.last_fire_time = current_time
@@ -71,7 +73,7 @@ class rumia:
             dy = player_y - enemy_y
             distance = math.hypot(dx, dy)
             if distance == 0:
-                distance = 1  # prevent division by zero
+                distance = 1
 
             direction = (dx / distance, dy / distance)
 
@@ -81,11 +83,11 @@ class rumia:
             })
 
     def update_fire(self, screen):
+        if self.defeated:
+            return
         for fire in self.fires:
             fire["pos"][0] += fire["dir"][0] * 3  # move horizontally
             fire["pos"][1] += fire["dir"][1] * 3  # move vertically
-
-
 
     def take_hit(self):
         if not self.defeated:
@@ -94,20 +96,18 @@ class rumia:
             pygame.mixer.Sound(os.path.join("sounds", "hitsound.wav")).play()
             if self.hit_count >= self.max_hp:
                 self.defeated = True
+                self.fires.clear()
                 pygame.mixer.Sound(os.path.join("sounds", "killsound.wav")).play()
 
     def move_toward_player(self):
-        # Get the center of the enemy and player
         enemy_x = self.lolrect.centerx
         enemy_y = self.lolrect.centery
         player_x = self.player.spaceship_rect.centerx
         player_y = self.player.spaceship_rect.centery
 
-        # Find direction to player
         dx = player_x - enemy_x
         dy = player_y - enemy_y
 
-        # Normalize direction (make length = 1)
         distance = math.hypot(dx, dy)
         if distance == 0:
             return  # Already at the player
@@ -115,10 +115,15 @@ class rumia:
         dx = dx / distance
         dy = dy / distance
 
-        # Move a little bit toward the player
         speed = 1.5
         self.lolrect.x += dx * speed
         self.lolrect.y += dy * speed
+
+    def update(self, screen):
+        if self.defeated:
+            return  # Stop all behavior if defeated
+        self.move_toward_player()
+        self.update_fire(screen)
 
 
     def draw(self, screen):

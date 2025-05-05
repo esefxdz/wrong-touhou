@@ -40,7 +40,6 @@ while running:
     current_time = pygame.time.get_ticks()
 
     #enemy spawns
-    # Spawn multiple enemies over time
     if current_time - enemy_spawn_timer > enemy_spawn_interval:
         for _ in range(enemies_per_wave):
             enemies.append(rumia(player))
@@ -65,13 +64,9 @@ while running:
     for enemy in enemies:
         enemy.draw(screen)
         enemy.fire()
-        enemy.update_fire(screen)
-        enemy.move_toward_player()
+        enemy.update(screen)
         for enemy in enemies:    
             boss_hit(enemy.fires, player.spaceship_rect)
-
-
-
 
     pygame.display.flip()
     clock.tick(60)

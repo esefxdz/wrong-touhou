@@ -635,7 +635,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "running = True\nwhile running:\n    for event in pygame.event.get():\n        if event.type == pygame.QUIT:\n            running = False\n    # fill teh screen\n    screen.blit(background_image, (0, 0))\n    current_time = pygame.time.get_ticks()\n    #enemy spawns\n    # Spawn multiple enemies over time",
+        "peekOfCode": "running = True\nwhile running:\n    for event in pygame.event.get():\n        if event.type == pygame.QUIT:\n            running = False\n    # fill teh screen\n    screen.blit(background_image, (0, 0))\n    current_time = pygame.time.get_ticks()\n    #enemy spawns\n    if current_time - enemy_spawn_timer > enemy_spawn_interval:",
         "detail": "main",
         "documentation": {}
     },
