@@ -2,68 +2,90 @@ import sys
 import os
 import wave
 import pygame
+import random
+import math
 pygame.mixer.init()
 
-#doesnt work
-sys.path.append(
-    os.path.dirname(os.path.dirname(__file__))
-) 
-import constants # is this the way we import constants then its stupid lmao
+# Append the root directory
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+import constants
 
 class rumia:
-    def __init__(self):
+    def __init__(self, player_ref):
         super().__init__()
+        self.player = player_ref
 
-        pygame.mixer.init()
         kill_sound_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "killsound.wav")
         self.kill_sound = kill_sound_path
 
-        self.lolrect = pygame.Rect(100, 100, 50, 50)
         self.image_path = os.path.join(os.path.dirname(__file__), "rumia.png")
         self.image = pygame.image.load(self.image_path)
         self.image = pygame.transform.scale(self.image, (150, 150))
         self.rumia_rect = self.image.get_rect()
 
-        #health
-        self.max_hp = 10
+        self.spawn_outside_screen()
+
+        # health
+        self.max_hp = 2
         self.hit_count = 0
         self.defeated = False
 
-        #move
-        self.speed = 5
-        self.direction = 1
+        # move toward player
+        self.speed = 0.5 # lower than 5 for more natural chase
         self.screen_width = constants.WIDTH
 
-        # move
-        self.speed = 5
-        self.direction = 1
-        self.screen_width = constants.WIDTH
-
-        # shooty shoot
+        # shoot
         self.last_fire_time = pygame.time.get_ticks()
         self.fire_cooldown = 1000
         self.fires = []
         self.fire_speed = 10
 
-    # THIS AREA IS WEIRD!!!!!!!!!!!!!
+    def spawn_outside_screen(self):
+        screen_w, screen_h = constants.WIDTH, constants.HEIGHT
+        side = random.choice(['top', 'bottom', 'left', 'right'])
+        if side == 'top':
+            x = random.randint(0, screen_w)
+            y = -self.rumia_rect.height
+        elif side == 'bottom':
+            x = random.randint(0, screen_w)
+            y = screen_h
+        elif side == 'left':
+            x = -self.rumia_rect.width
+            y = random.randint(0, screen_h)
+        else:  # right
+            x = screen_w
+            y = random.randint(0, screen_h)
+        self.rumia_rect.topleft = (x, y)
+        self.lolrect = pygame.Rect(x, y, 50, 50)  # still used for fire origin
+
     def fire(self):
         current_time = pygame.time.get_ticks()
-        if self.defeated == False:
-            if current_time - self.last_fire_time >= self.fire_cooldown:
-                fire_rect = pygame.Rect(self.lolrect.centerx - 5, self.lolrect.bottom, 10, 20)
-                self.fires.append(fire_rect)
-                self.last_fire_time = current_time
-        if self.defeated == True:
-            return
+        if current_time - self.last_fire_time > self.fire_cooldown:
+            self.last_fire_time = current_time
+
+            # Fire toward player
+            enemy_x, enemy_y = self.lolrect.center
+            player_x, player_y = self.player.spaceship_rect.center
+
+            dx = player_x - enemy_x
+            dy = player_y - enemy_y
+            distance = math.hypot(dx, dy)
+            if distance == 0:
+                distance = 1  # prevent division by zero
+
+            direction = (dx / distance, dy / distance)
+
+            self.fires.append({
+                "pos": [enemy_x, enemy_y],
+                "dir": direction
+            })
 
     def update_fire(self, screen):
-        for fire in self.fires[:]:
-            fire.y += self.fire_speed
-            pygame.draw.rect(screen, constants.RED, fire)
-            if fire.top > 1000:
-                self.fires.remove(fire)
+        for fire in self.fires:
+            fire["pos"][0] += fire["dir"][0] * 3  # move horizontally
+            fire["pos"][1] += fire["dir"][1] * 3  # move vertically
 
-    # END OF WEIRD AREA!!!!!!!!!!!!!!!
+
 
     def take_hit(self):
         if not self.defeated:
@@ -73,14 +95,35 @@ class rumia:
             if self.hit_count >= self.max_hp:
                 self.defeated = True
                 pygame.mixer.Sound(os.path.join("sounds", "killsound.wav")).play()
-                ############
 
+    def move_toward_player(self):
+        # Get the center of the enemy and player
+        enemy_x = self.lolrect.centerx
+        enemy_y = self.lolrect.centery
+        player_x = self.player.spaceship_rect.centerx
+        player_y = self.player.spaceship_rect.centery
 
-    def move(self, WIDTH):
-        self.lolrect.x += self.speed * self.direction
-        if self.lolrect.right >= WIDTH or self.lolrect.left <= 0:
-            self.direction *= -1
+        # Find direction to player
+        dx = player_x - enemy_x
+        dy = player_y - enemy_y
+
+        # Normalize direction (make length = 1)
+        distance = math.hypot(dx, dy)
+        if distance == 0:
+            return  # Already at the player
+
+        dx = dx / distance
+        dy = dy / distance
+
+        # Move a little bit toward the player
+        speed = 1.5
+        self.lolrect.x += dx * speed
+        self.lolrect.y += dy * speed
+
 
     def draw(self, screen):
         if not self.defeated:
             screen.blit(self.image, self.lolrect)
+        for fire in self.fires:
+            pygame.draw.circle(screen, (255, 0, 0), (int(fire["pos"][0]), int(fire["pos"][1])), 5)
+

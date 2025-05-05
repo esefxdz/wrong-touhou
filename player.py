@@ -1,6 +1,7 @@
 import pygame
 from constants import WIDTH, HEIGHT
 from baddies.enemy import rumia
+import math
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 keys_pressed = pygame.key.get_pressed
 enemy = rumia
@@ -23,31 +24,50 @@ class spaceship:
     def move(self, keys):
         keys = pygame.key.get_pressed()
         self.player_speed = 10
-        if keys[pygame.K_LEFT] and self.spaceship_rect.left > 0:
+        if keys[pygame.K_a] and self.spaceship_rect.left > 0:
             self.spaceship_rect.x -= self.player_speed
-        if keys[pygame.K_RIGHT] and self.spaceship_rect.right < WIDTH:
+        if keys[pygame.K_d] and self.spaceship_rect.right < WIDTH:
             self.spaceship_rect.x += self.player_speed
-        if keys [pygame.K_UP] and self.spaceship_rect.top > 0:
+        if keys [pygame.K_w] and self.spaceship_rect.top > 0:
             self.spaceship_rect.y -= self.player_speed
-        if keys[pygame.K_DOWN] and self.spaceship_rect.bottom < HEIGHT:
+        if keys[pygame.K_s] and self.spaceship_rect.bottom < HEIGHT:
             self.spaceship_rect.y += self.player_speed
 
     def shoot(self):
         current_time = pygame.time.get_ticks()
-        keys = pygame.key.get_pressed()
-        #cooldown confirmer
-        if keys[pygame.K_SPACE] and current_time - self.last_shot_time >= self.shoot_cooldown:
-            bullet_rect = pygame.Rect(self.spaceship_rect.centerx - 5, self.spaceship_rect.top, 10, 20)
-            self.bullets.append(bullet_rect)
-            #cooldown resetter
+        if pygame.key.get_pressed()[pygame.K_SPACE] and current_time - self.last_shot_time >= self.shoot_cooldown:
             self.last_shot_time = current_time
 
+            # Get direction to mouse
+            mouse_x, mouse_y = pygame.mouse.get_pos()
+            px, py = self.spaceship_rect.center
+            dx = mouse_x - px
+            dy = mouse_y - py
+            dist = math.hypot(dx, dy)
+            if dist == 0:
+                dist = 1
+
+            direction = (dx / dist, dy / dist)
+            self.bullets.append({
+                "pos": [px, py],
+                "dir": direction
+            })
+
     def shoot_update(self, screen):
+        new_bullets = []
         for bullet in self.bullets:
-            bullet.y -= self.bullet_speed
-            screen.blit(self.bullet_image, bullet)
-            if bullet.bottom < 0:
-                self.bullets.remove(bullet)
+            bullet["pos"][0] += bullet["dir"][0] * self.bullet_speed
+            bullet["pos"][1] += bullet["dir"][1] * self.bullet_speed
+
+            # Draw the bullet image at its current position
+            bullet_rect = self.bullet_image.get_rect(center=(int(bullet["pos"][0]), int(bullet["pos"][1])))
+            screen.blit(self.bullet_image, bullet_rect)
+
+            # Keep bullet if on screen
+            if 0 <= bullet["pos"][0] <= WIDTH and 0 <= bullet["pos"][1] <= HEIGHT:
+                new_bullets.append(bullet)
+        self.bullets = new_bullets
+
 
     def draw(self, screen):
         screen.blit(self.spaceship_image, self.spaceship_rect)

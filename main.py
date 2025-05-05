@@ -19,7 +19,10 @@ background_image = pygame.transform.scale(background_image, (WIDTH, HEIGHT))
 x = 100
 y = 100
 player = spaceship(x, y)
-boss = rumia()
+enemies = []
+enemy_spawn_timer = 0
+enemy_spawn_interval = 2000  # spawn every 2 seconds
+enemies_per_wave = 3
 
 # fps counter
 clock = pygame.time.Clock()
@@ -36,6 +39,14 @@ while running:
     screen.blit(background_image, (0, 0))
     current_time = pygame.time.get_ticks()
 
+    #enemy spawns
+    # Spawn multiple enemies over time
+    if current_time - enemy_spawn_timer > enemy_spawn_interval:
+        for _ in range(enemies_per_wave):
+            enemies.append(rumia(player))
+        enemy_spawn_timer = current_time
+
+
     # fps counter ingame
     fps = clock.get_fps()
     fps_text = font.render(f"FPS: {int(fps)}", True, BLACK)
@@ -47,14 +58,19 @@ while running:
     player.move(keys)
     player.shoot()
     player.shoot_update(screen)
-    player_hit(player.bullets, boss.lolrect, boss.take_hit)
+    for enemy in enemies:
+        player_hit(player.bullets, enemy.lolrect, enemy.take_hit)
 
     #enemy area
-    boss.draw(screen)
-    boss.fire()
-    boss.update_fire(screen)
-    boss.move(WIDTH)
-    boss_hit(boss.fires, player.spaceship_rect)
+    for enemy in enemies:
+        enemy.draw(screen)
+        enemy.fire()
+        enemy.update_fire(screen)
+        enemy.move_toward_player()
+        for enemy in enemies:    
+            boss_hit(enemy.fires, player.spaceship_rect)
+
+
 
 
     pygame.display.flip()

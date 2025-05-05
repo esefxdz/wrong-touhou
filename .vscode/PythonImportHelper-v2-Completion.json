@@ -1,0 +1,678 @@
+[
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "wave",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "wave",
+        "description": "wave",
+        "detail": "wave",
+        "documentation": {}
+    },
+    {
+        "label": "pygame",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pygame",
+        "description": "pygame",
+        "detail": "pygame",
+        "documentation": {}
+    },
+    {
+        "label": "random",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "random",
+        "description": "random",
+        "detail": "random",
+        "documentation": {}
+    },
+    {
+        "label": "math",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "math",
+        "description": "math",
+        "detail": "math",
+        "documentation": {}
+    },
+    {
+        "label": "constants",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "constants",
+        "description": "constants",
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "WIDTH",
+        "importPath": "constants",
+        "description": "constants",
+        "isExtraImport": true,
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "HEIGHT",
+        "importPath": "constants",
+        "description": "constants",
+        "isExtraImport": true,
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "BLACK",
+        "importPath": "constants",
+        "description": "constants",
+        "isExtraImport": true,
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "WIDTH",
+        "importPath": "constants",
+        "description": "constants",
+        "isExtraImport": true,
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "HEIGHT",
+        "importPath": "constants",
+        "description": "constants",
+        "isExtraImport": true,
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "WIDTH",
+        "importPath": "constants",
+        "description": "constants",
+        "isExtraImport": true,
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "HEIGHT",
+        "importPath": "constants",
+        "description": "constants",
+        "isExtraImport": true,
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "BLACK",
+        "importPath": "constants",
+        "description": "constants",
+        "isExtraImport": true,
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "WIDTH",
+        "importPath": "constants",
+        "description": "constants",
+        "isExtraImport": true,
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "HEIGHT",
+        "importPath": "constants",
+        "description": "constants",
+        "isExtraImport": true,
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "rumia",
+        "importPath": "baddies.enemy",
+        "description": "baddies.enemy",
+        "isExtraImport": true,
+        "detail": "baddies.enemy",
+        "documentation": {}
+    },
+    {
+        "label": "rumia",
+        "importPath": "baddies.enemy",
+        "description": "baddies.enemy",
+        "isExtraImport": true,
+        "detail": "baddies.enemy",
+        "documentation": {}
+    },
+    {
+        "label": "rumia",
+        "importPath": "baddies.enemy",
+        "description": "baddies.enemy",
+        "isExtraImport": true,
+        "detail": "baddies.enemy",
+        "documentation": {}
+    },
+    {
+        "label": "rumia",
+        "importPath": "baddies.enemy",
+        "description": "baddies.enemy",
+        "isExtraImport": true,
+        "detail": "baddies.enemy",
+        "documentation": {}
+    },
+    {
+        "label": "rumia",
+        "importPath": "baddies.enemy",
+        "description": "baddies.enemy",
+        "isExtraImport": true,
+        "detail": "baddies.enemy",
+        "documentation": {}
+    },
+    {
+        "label": "rumia",
+        "importPath": "baddies.enemy",
+        "description": "baddies.enemy",
+        "isExtraImport": true,
+        "detail": "baddies.enemy",
+        "documentation": {}
+    },
+    {
+        "label": "rumia",
+        "importPath": "baddies.enemy",
+        "description": "baddies.enemy",
+        "isExtraImport": true,
+        "detail": "baddies.enemy",
+        "documentation": {}
+    },
+    {
+        "label": "rumia",
+        "importPath": "baddies.enemy",
+        "description": "baddies.enemy",
+        "isExtraImport": true,
+        "detail": "baddies.enemy",
+        "documentation": {}
+    },
+    {
+        "label": "spaceship",
+        "importPath": "player",
+        "description": "player",
+        "isExtraImport": true,
+        "detail": "player",
+        "documentation": {}
+    },
+    {
+        "label": "spaceship",
+        "importPath": "player",
+        "description": "player",
+        "isExtraImport": true,
+        "detail": "player",
+        "documentation": {}
+    },
+    {
+        "label": "spaceship",
+        "importPath": "player",
+        "description": "player",
+        "isExtraImport": true,
+        "detail": "player",
+        "documentation": {}
+    },
+    {
+        "label": "spaceship",
+        "importPath": "player",
+        "description": "player",
+        "isExtraImport": true,
+        "detail": "player",
+        "documentation": {}
+    },
+    {
+        "label": "boss_hit",
+        "importPath": "hit_register",
+        "description": "hit_register",
+        "isExtraImport": true,
+        "detail": "hit_register",
+        "documentation": {}
+    },
+    {
+        "label": "player_hit",
+        "importPath": "hit_register",
+        "description": "hit_register",
+        "isExtraImport": true,
+        "detail": "hit_register",
+        "documentation": {}
+    },
+    {
+        "label": "boss_hit",
+        "importPath": "hit_register",
+        "description": "hit_register",
+        "isExtraImport": true,
+        "detail": "hit_register",
+        "documentation": {}
+    },
+    {
+        "label": "player_hit",
+        "importPath": "hit_register",
+        "description": "hit_register",
+        "isExtraImport": true,
+        "detail": "hit_register",
+        "documentation": {}
+    },
+    {
+        "label": "rumia",
+        "kind": 6,
+        "importPath": "baddies.enemy",
+        "description": "baddies.enemy",
+        "peekOfCode": "class rumia:\n    def __init__(self, player_ref):\n        super().__init__()\n        self.player = player_ref\n        kill_sound_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), \"killsound.wav\")\n        self.kill_sound = kill_sound_path\n        self.image_path = os.path.join(os.path.dirname(__file__), \"rumia.png\")\n        self.image = pygame.image.load(self.image_path)\n        self.image = pygame.transform.scale(self.image, (150, 150))\n        self.rumia_rect = self.image.get_rect()",
+        "detail": "baddies.enemy",
+        "documentation": {}
+    },
+    {
+        "label": "rumia",
+        "kind": 6,
+        "importPath": "wrong-touhou.baddies.enemy",
+        "description": "wrong-touhou.baddies.enemy",
+        "peekOfCode": "class rumia:\n    def __init__(self):\n        super().__init__()\n        pygame.mixer.init()\n        kill_sound_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), \"killsound.wav\")\n        self.kill_sound = kill_sound_path\n        self.lolrect = pygame.Rect(100, 100, 50, 50)\n        self.image_path = os.path.join(os.path.dirname(__file__), \"rumia.png\")\n        self.image = pygame.image.load(self.image_path)\n        self.image = pygame.transform.scale(self.image, (150, 150))",
+        "detail": "wrong-touhou.baddies.enemy",
+        "documentation": {}
+    },
+    {
+        "label": "RED",
+        "kind": 5,
+        "importPath": "wrong-touhou.constants",
+        "description": "wrong-touhou.constants",
+        "peekOfCode": "RED = (255, 0, 0)\nWHITE = (255, 255, 255)\nBLACK = (0, 0, 0)",
+        "detail": "wrong-touhou.constants",
+        "documentation": {}
+    },
+    {
+        "label": "WHITE",
+        "kind": 5,
+        "importPath": "wrong-touhou.constants",
+        "description": "wrong-touhou.constants",
+        "peekOfCode": "WHITE = (255, 255, 255)\nBLACK = (0, 0, 0)",
+        "detail": "wrong-touhou.constants",
+        "documentation": {}
+    },
+    {
+        "label": "BLACK",
+        "kind": 5,
+        "importPath": "wrong-touhou.constants",
+        "description": "wrong-touhou.constants",
+        "peekOfCode": "BLACK = (0, 0, 0)",
+        "detail": "wrong-touhou.constants",
+        "documentation": {}
+    },
+    {
+        "label": "player_hit",
+        "kind": 2,
+        "importPath": "wrong-touhou.hit_register",
+        "description": "wrong-touhou.hit_register",
+        "peekOfCode": "def player_hit(bullets, lolrect, take_hit):\n    for bullet in bullets:\n        if bullet.colliderect(lolrect):\n            take_hit()\ndef boss_hit(fires, spaceship_rect):\n    for fire in fires:\n        if fire.colliderect(spaceship_rect):\n            print(\"Player hit\")",
+        "detail": "wrong-touhou.hit_register",
+        "documentation": {}
+    },
+    {
+        "label": "boss_hit",
+        "kind": 2,
+        "importPath": "wrong-touhou.hit_register",
+        "description": "wrong-touhou.hit_register",
+        "peekOfCode": "def boss_hit(fires, spaceship_rect):\n    for fire in fires:\n        if fire.colliderect(spaceship_rect):\n            print(\"Player hit\")",
+        "detail": "wrong-touhou.hit_register",
+        "documentation": {}
+    },
+    {
+        "label": "boss",
+        "kind": 5,
+        "importPath": "wrong-touhou.hit_register",
+        "description": "wrong-touhou.hit_register",
+        "peekOfCode": "boss = rumia\ndef player_hit(bullets, lolrect, take_hit):\n    for bullet in bullets:\n        if bullet.colliderect(lolrect):\n            take_hit()\ndef boss_hit(fires, spaceship_rect):\n    for fire in fires:\n        if fire.colliderect(spaceship_rect):\n            print(\"Player hit\")",
+        "detail": "wrong-touhou.hit_register",
+        "documentation": {}
+    },
+    {
+        "label": "screen",
+        "kind": 5,
+        "importPath": "wrong-touhou.main",
+        "description": "wrong-touhou.main",
+        "peekOfCode": "screen = pygame.display.set_mode((WIDTH, HEIGHT))\npygame.display.set_caption(\"will it work tho\")\n# background image\nbackground_image = pygame.image.load(\"textures/background.jpg\")\nbackground_image = pygame.transform.scale(background_image, (WIDTH, HEIGHT))\n#player variable and other variables from files\nx = 100\ny = 100\nplayer = spaceship(x, y)\nboss = rumia()",
+        "detail": "wrong-touhou.main",
+        "documentation": {}
+    },
+    {
+        "label": "background_image",
+        "kind": 5,
+        "importPath": "wrong-touhou.main",
+        "description": "wrong-touhou.main",
+        "peekOfCode": "background_image = pygame.image.load(\"textures/background.jpg\")\nbackground_image = pygame.transform.scale(background_image, (WIDTH, HEIGHT))\n#player variable and other variables from files\nx = 100\ny = 100\nplayer = spaceship(x, y)\nboss = rumia()\n# fps counter\nclock = pygame.time.Clock()\npygame.font.init()",
+        "detail": "wrong-touhou.main",
+        "documentation": {}
+    },
+    {
+        "label": "background_image",
+        "kind": 5,
+        "importPath": "wrong-touhou.main",
+        "description": "wrong-touhou.main",
+        "peekOfCode": "background_image = pygame.transform.scale(background_image, (WIDTH, HEIGHT))\n#player variable and other variables from files\nx = 100\ny = 100\nplayer = spaceship(x, y)\nboss = rumia()\n# fps counter\nclock = pygame.time.Clock()\npygame.font.init()\nfont = pygame.font.Font(None, 36)",
+        "detail": "wrong-touhou.main",
+        "documentation": {}
+    },
+    {
+        "label": "x",
+        "kind": 5,
+        "importPath": "wrong-touhou.main",
+        "description": "wrong-touhou.main",
+        "peekOfCode": "x = 100\ny = 100\nplayer = spaceship(x, y)\nboss = rumia()\n# fps counter\nclock = pygame.time.Clock()\npygame.font.init()\nfont = pygame.font.Font(None, 36)\nrunning = True\nwhile running:",
+        "detail": "wrong-touhou.main",
+        "documentation": {}
+    },
+    {
+        "label": "y",
+        "kind": 5,
+        "importPath": "wrong-touhou.main",
+        "description": "wrong-touhou.main",
+        "peekOfCode": "y = 100\nplayer = spaceship(x, y)\nboss = rumia()\n# fps counter\nclock = pygame.time.Clock()\npygame.font.init()\nfont = pygame.font.Font(None, 36)\nrunning = True\nwhile running:\n    for event in pygame.event.get():",
+        "detail": "wrong-touhou.main",
+        "documentation": {}
+    },
+    {
+        "label": "player",
+        "kind": 5,
+        "importPath": "wrong-touhou.main",
+        "description": "wrong-touhou.main",
+        "peekOfCode": "player = spaceship(x, y)\nboss = rumia()\n# fps counter\nclock = pygame.time.Clock()\npygame.font.init()\nfont = pygame.font.Font(None, 36)\nrunning = True\nwhile running:\n    for event in pygame.event.get():\n        if event.type == pygame.QUIT:",
+        "detail": "wrong-touhou.main",
+        "documentation": {}
+    },
+    {
+        "label": "boss",
+        "kind": 5,
+        "importPath": "wrong-touhou.main",
+        "description": "wrong-touhou.main",
+        "peekOfCode": "boss = rumia()\n# fps counter\nclock = pygame.time.Clock()\npygame.font.init()\nfont = pygame.font.Font(None, 36)\nrunning = True\nwhile running:\n    for event in pygame.event.get():\n        if event.type == pygame.QUIT:\n            running = False",
+        "detail": "wrong-touhou.main",
+        "documentation": {}
+    },
+    {
+        "label": "clock",
+        "kind": 5,
+        "importPath": "wrong-touhou.main",
+        "description": "wrong-touhou.main",
+        "peekOfCode": "clock = pygame.time.Clock()\npygame.font.init()\nfont = pygame.font.Font(None, 36)\nrunning = True\nwhile running:\n    for event in pygame.event.get():\n        if event.type == pygame.QUIT:\n            running = False\n    # fill teh screen\n    screen.blit(background_image, (0, 0))",
+        "detail": "wrong-touhou.main",
+        "documentation": {}
+    },
+    {
+        "label": "font",
+        "kind": 5,
+        "importPath": "wrong-touhou.main",
+        "description": "wrong-touhou.main",
+        "peekOfCode": "font = pygame.font.Font(None, 36)\nrunning = True\nwhile running:\n    for event in pygame.event.get():\n        if event.type == pygame.QUIT:\n            running = False\n    # fill teh screen\n    screen.blit(background_image, (0, 0))\n    current_time = pygame.time.get_ticks()\n    # fps counter ingame",
+        "detail": "wrong-touhou.main",
+        "documentation": {}
+    },
+    {
+        "label": "running",
+        "kind": 5,
+        "importPath": "wrong-touhou.main",
+        "description": "wrong-touhou.main",
+        "peekOfCode": "running = True\nwhile running:\n    for event in pygame.event.get():\n        if event.type == pygame.QUIT:\n            running = False\n    # fill teh screen\n    screen.blit(background_image, (0, 0))\n    current_time = pygame.time.get_ticks()\n    # fps counter ingame\n    fps = clock.get_fps()",
+        "detail": "wrong-touhou.main",
+        "documentation": {}
+    },
+    {
+        "label": "spaceship",
+        "kind": 6,
+        "importPath": "wrong-touhou.player",
+        "description": "wrong-touhou.player",
+        "peekOfCode": "class spaceship:\n    def __init__(self, x, y):\n        super().__init__()\n        self.rect = pygame.Rect(x, y, 50, 50)\n        self.spaceship_image = pygame.image.load(\"textures/spaceship.png\")\n        self.spaceship_image = pygame.transform.scale(self.spaceship_image, (50, 50))\n        self.spaceship_rect = self.spaceship_image.get_rect()\n        self.spaceship_rect.center = (WIDTH // 2, HEIGHT // 2)\n        self.bullet_speed = 25\n        self.bullets = []",
+        "detail": "wrong-touhou.player",
+        "documentation": {}
+    },
+    {
+        "label": "screen",
+        "kind": 5,
+        "importPath": "wrong-touhou.player",
+        "description": "wrong-touhou.player",
+        "peekOfCode": "screen = pygame.display.set_mode((WIDTH, HEIGHT))\nkeys_pressed = pygame.key.get_pressed\nenemy = rumia\nclass spaceship:\n    def __init__(self, x, y):\n        super().__init__()\n        self.rect = pygame.Rect(x, y, 50, 50)\n        self.spaceship_image = pygame.image.load(\"textures/spaceship.png\")\n        self.spaceship_image = pygame.transform.scale(self.spaceship_image, (50, 50))\n        self.spaceship_rect = self.spaceship_image.get_rect()",
+        "detail": "wrong-touhou.player",
+        "documentation": {}
+    },
+    {
+        "label": "keys_pressed",
+        "kind": 5,
+        "importPath": "wrong-touhou.player",
+        "description": "wrong-touhou.player",
+        "peekOfCode": "keys_pressed = pygame.key.get_pressed\nenemy = rumia\nclass spaceship:\n    def __init__(self, x, y):\n        super().__init__()\n        self.rect = pygame.Rect(x, y, 50, 50)\n        self.spaceship_image = pygame.image.load(\"textures/spaceship.png\")\n        self.spaceship_image = pygame.transform.scale(self.spaceship_image, (50, 50))\n        self.spaceship_rect = self.spaceship_image.get_rect()\n        self.spaceship_rect.center = (WIDTH // 2, HEIGHT // 2)",
+        "detail": "wrong-touhou.player",
+        "documentation": {}
+    },
+    {
+        "label": "enemy",
+        "kind": 5,
+        "importPath": "wrong-touhou.player",
+        "description": "wrong-touhou.player",
+        "peekOfCode": "enemy = rumia\nclass spaceship:\n    def __init__(self, x, y):\n        super().__init__()\n        self.rect = pygame.Rect(x, y, 50, 50)\n        self.spaceship_image = pygame.image.load(\"textures/spaceship.png\")\n        self.spaceship_image = pygame.transform.scale(self.spaceship_image, (50, 50))\n        self.spaceship_rect = self.spaceship_image.get_rect()\n        self.spaceship_rect.center = (WIDTH // 2, HEIGHT // 2)\n        self.bullet_speed = 25",
+        "detail": "wrong-touhou.player",
+        "documentation": {}
+    },
+    {
+        "label": "RED",
+        "kind": 5,
+        "importPath": "constants",
+        "description": "constants",
+        "peekOfCode": "RED = (255, 0, 0)\nWHITE = (255, 255, 255)\nBLACK = (0, 0, 0)",
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "WHITE",
+        "kind": 5,
+        "importPath": "constants",
+        "description": "constants",
+        "peekOfCode": "WHITE = (255, 255, 255)\nBLACK = (0, 0, 0)",
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "BLACK",
+        "kind": 5,
+        "importPath": "constants",
+        "description": "constants",
+        "peekOfCode": "BLACK = (0, 0, 0)",
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "player_hit",
+        "kind": 2,
+        "importPath": "hit_register",
+        "description": "hit_register",
+        "peekOfCode": "def player_hit(bullets, target_rect, take_hit):\n    for bullet in bullets:\n        bullet_rect = pygame.Rect(bullet[\"pos\"][0], bullet[\"pos\"][1], 5, 5)\n        if bullet_rect.colliderect(target_rect):\n            take_hit()\ndef boss_hit(fires, spaceship_rect):\n    for fire in fires:\n        fire_rect = pygame.Rect(fire[\"pos\"][0], fire[\"pos\"][1], 5, 5)\n        if fire_rect.colliderect(spaceship_rect):\n            print(\"Player hit\")",
+        "detail": "hit_register",
+        "documentation": {}
+    },
+    {
+        "label": "boss_hit",
+        "kind": 2,
+        "importPath": "hit_register",
+        "description": "hit_register",
+        "peekOfCode": "def boss_hit(fires, spaceship_rect):\n    for fire in fires:\n        fire_rect = pygame.Rect(fire[\"pos\"][0], fire[\"pos\"][1], 5, 5)\n        if fire_rect.colliderect(spaceship_rect):\n            print(\"Player hit\")",
+        "detail": "hit_register",
+        "documentation": {}
+    },
+    {
+        "label": "boss",
+        "kind": 5,
+        "importPath": "hit_register",
+        "description": "hit_register",
+        "peekOfCode": "boss = rumia\ndef player_hit(bullets, target_rect, take_hit):\n    for bullet in bullets:\n        bullet_rect = pygame.Rect(bullet[\"pos\"][0], bullet[\"pos\"][1], 5, 5)\n        if bullet_rect.colliderect(target_rect):\n            take_hit()\ndef boss_hit(fires, spaceship_rect):\n    for fire in fires:\n        fire_rect = pygame.Rect(fire[\"pos\"][0], fire[\"pos\"][1], 5, 5)\n        if fire_rect.colliderect(spaceship_rect):",
+        "detail": "hit_register",
+        "documentation": {}
+    },
+    {
+        "label": "screen",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "screen = pygame.display.set_mode((WIDTH, HEIGHT))\npygame.display.set_caption(\"will it work tho\")\n# background image\nbackground_image = pygame.image.load(\"textures/background.jpg\")\nbackground_image = pygame.transform.scale(background_image, (WIDTH, HEIGHT))\n#player variable and other variables from files\nx = 100\ny = 100\nplayer = spaceship(x, y)\nenemies = []",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "background_image",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "background_image = pygame.image.load(\"textures/background.jpg\")\nbackground_image = pygame.transform.scale(background_image, (WIDTH, HEIGHT))\n#player variable and other variables from files\nx = 100\ny = 100\nplayer = spaceship(x, y)\nenemies = []\nenemy_spawn_timer = 0\nenemy_spawn_interval = 2000  # spawn every 2 seconds\nenemies_per_wave = 3",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "background_image",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "background_image = pygame.transform.scale(background_image, (WIDTH, HEIGHT))\n#player variable and other variables from files\nx = 100\ny = 100\nplayer = spaceship(x, y)\nenemies = []\nenemy_spawn_timer = 0\nenemy_spawn_interval = 2000  # spawn every 2 seconds\nenemies_per_wave = 3\n# fps counter",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "x",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "x = 100\ny = 100\nplayer = spaceship(x, y)\nenemies = []\nenemy_spawn_timer = 0\nenemy_spawn_interval = 2000  # spawn every 2 seconds\nenemies_per_wave = 3\n# fps counter\nclock = pygame.time.Clock()\npygame.font.init()",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "y",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "y = 100\nplayer = spaceship(x, y)\nenemies = []\nenemy_spawn_timer = 0\nenemy_spawn_interval = 2000  # spawn every 2 seconds\nenemies_per_wave = 3\n# fps counter\nclock = pygame.time.Clock()\npygame.font.init()\nfont = pygame.font.Font(None, 36)",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "player",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "player = spaceship(x, y)\nenemies = []\nenemy_spawn_timer = 0\nenemy_spawn_interval = 2000  # spawn every 2 seconds\nenemies_per_wave = 3\n# fps counter\nclock = pygame.time.Clock()\npygame.font.init()\nfont = pygame.font.Font(None, 36)\nrunning = True",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "enemies",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "enemies = []\nenemy_spawn_timer = 0\nenemy_spawn_interval = 2000  # spawn every 2 seconds\nenemies_per_wave = 3\n# fps counter\nclock = pygame.time.Clock()\npygame.font.init()\nfont = pygame.font.Font(None, 36)\nrunning = True\nwhile running:",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "enemy_spawn_timer",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "enemy_spawn_timer = 0\nenemy_spawn_interval = 2000  # spawn every 2 seconds\nenemies_per_wave = 3\n# fps counter\nclock = pygame.time.Clock()\npygame.font.init()\nfont = pygame.font.Font(None, 36)\nrunning = True\nwhile running:\n    for event in pygame.event.get():",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "enemy_spawn_interval",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "enemy_spawn_interval = 2000  # spawn every 2 seconds\nenemies_per_wave = 3\n# fps counter\nclock = pygame.time.Clock()\npygame.font.init()\nfont = pygame.font.Font(None, 36)\nrunning = True\nwhile running:\n    for event in pygame.event.get():\n        if event.type == pygame.QUIT:",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "enemies_per_wave",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "enemies_per_wave = 3\n# fps counter\nclock = pygame.time.Clock()\npygame.font.init()\nfont = pygame.font.Font(None, 36)\nrunning = True\nwhile running:\n    for event in pygame.event.get():\n        if event.type == pygame.QUIT:\n            running = False",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "clock",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "clock = pygame.time.Clock()\npygame.font.init()\nfont = pygame.font.Font(None, 36)\nrunning = True\nwhile running:\n    for event in pygame.event.get():\n        if event.type == pygame.QUIT:\n            running = False\n    # fill teh screen\n    screen.blit(background_image, (0, 0))",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "font",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "font = pygame.font.Font(None, 36)\nrunning = True\nwhile running:\n    for event in pygame.event.get():\n        if event.type == pygame.QUIT:\n            running = False\n    # fill teh screen\n    screen.blit(background_image, (0, 0))\n    current_time = pygame.time.get_ticks()\n    #enemy spawns",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "running",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "running = True\nwhile running:\n    for event in pygame.event.get():\n        if event.type == pygame.QUIT:\n            running = False\n    # fill teh screen\n    screen.blit(background_image, (0, 0))\n    current_time = pygame.time.get_ticks()\n    #enemy spawns\n    # Spawn multiple enemies over time",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "spaceship",
+        "kind": 6,
+        "importPath": "player",
+        "description": "player",
+        "peekOfCode": "class spaceship:\n    def __init__(self, x, y):\n        super().__init__()\n        self.rect = pygame.Rect(x, y, 50, 50)\n        self.spaceship_image = pygame.image.load(\"textures/spaceship.png\")\n        self.spaceship_image = pygame.transform.scale(self.spaceship_image, (50, 50))\n        self.spaceship_rect = self.spaceship_image.get_rect()\n        self.spaceship_rect.center = (WIDTH // 2, HEIGHT // 2)\n        self.bullet_speed = 25\n        self.bullets = []",
+        "detail": "player",
+        "documentation": {}
+    },
+    {
+        "label": "screen",
+        "kind": 5,
+        "importPath": "player",
+        "description": "player",
+        "peekOfCode": "screen = pygame.display.set_mode((WIDTH, HEIGHT))\nkeys_pressed = pygame.key.get_pressed\nenemy = rumia\nclass spaceship:\n    def __init__(self, x, y):\n        super().__init__()\n        self.rect = pygame.Rect(x, y, 50, 50)\n        self.spaceship_image = pygame.image.load(\"textures/spaceship.png\")\n        self.spaceship_image = pygame.transform.scale(self.spaceship_image, (50, 50))\n        self.spaceship_rect = self.spaceship_image.get_rect()",
+        "detail": "player",
+        "documentation": {}
+    },
+    {
+        "label": "keys_pressed",
+        "kind": 5,
+        "importPath": "player",
+        "description": "player",
+        "peekOfCode": "keys_pressed = pygame.key.get_pressed\nenemy = rumia\nclass spaceship:\n    def __init__(self, x, y):\n        super().__init__()\n        self.rect = pygame.Rect(x, y, 50, 50)\n        self.spaceship_image = pygame.image.load(\"textures/spaceship.png\")\n        self.spaceship_image = pygame.transform.scale(self.spaceship_image, (50, 50))\n        self.spaceship_rect = self.spaceship_image.get_rect()\n        self.spaceship_rect.center = (WIDTH // 2, HEIGHT // 2)",
+        "detail": "player",
+        "documentation": {}
+    },
+    {
+        "label": "enemy",
+        "kind": 5,
+        "importPath": "player",
+        "description": "player",
+        "peekOfCode": "enemy = rumia\nclass spaceship:\n    def __init__(self, x, y):\n        super().__init__()\n        self.rect = pygame.Rect(x, y, 50, 50)\n        self.spaceship_image = pygame.image.load(\"textures/spaceship.png\")\n        self.spaceship_image = pygame.transform.scale(self.spaceship_image, (50, 50))\n        self.spaceship_rect = self.spaceship_image.get_rect()\n        self.spaceship_rect.center = (WIDTH // 2, HEIGHT // 2)\n        self.bullet_speed = 25",
+        "detail": "player",
+        "documentation": {}
+    }
+]
