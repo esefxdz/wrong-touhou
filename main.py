@@ -4,6 +4,7 @@ from constants import WIDTH, HEIGHT, BLACK
 from hit_register import boss_hit, player_hit
 from player import spaceship
 from baddies.enemy import rumia
+from ui.pause import ppause
 
 pygame.init()
 
@@ -29,11 +30,20 @@ clock = pygame.time.Clock()
 pygame.font.init()
 font = pygame.font.Font(None, 36)
 
+#pause menu, didnt know where to put it
+pause = ppause()
+
 running = True
 while running:
     for event in pygame.event.get():
+        pause.pause_toggle(event)
         if event.type == pygame.QUIT:
             running = False
+
+    if pause.paused:
+        pause.blit(screen)
+        pygame.display.flip()
+        continue
 
     # fill teh screen
     screen.blit(background_image, (0, 0))

@@ -14,5 +14,3 @@ def player_hit(bullets, target_rect, take_hit):
 def boss_hit(fires, spaceship_rect):
     for fire in fires:
         fire_rect = pygame.Rect(fire["pos"][0], fire["pos"][1], 5, 5)
-        if fire_rect.colliderect(spaceship_rect):
-            print("Player hit")

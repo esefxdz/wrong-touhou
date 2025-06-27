@@ -92,7 +92,6 @@ class rumia:
     def take_hit(self):
         if not self.defeated:
             self.hit_count += 1
-            print(f"Rumia hit {self.hit_count}")
             pygame.mixer.Sound(os.path.join("sounds", "hitsound.wav")).play()
             if self.hit_count >= self.max_hp:
                 self.defeated = True
