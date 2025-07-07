@@ -5,6 +5,7 @@ from hit_register import boss_hit, player_hit
 from player import spaceship
 from baddies.enemy import rumia
 from ui.pause import ppause
+from ui.menu import mmenu
 
 pygame.init()
 
@@ -31,7 +32,10 @@ pygame.font.init()
 font = pygame.font.Font(None, 36)
 
 #pause menu, didnt know where to put it
+mmmenu = mmenu()
 pause = ppause()
+
+mmmenu.run(screen, clock)
 
 running = True
 while running:
