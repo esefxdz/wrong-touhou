@@ -285,7 +285,7 @@
         "kind": 5,
         "importPath": "constants",
         "description": "constants",
-        "peekOfCode": "RED = (255, 0, 0)\nWHITE = (255, 255, 255)\nBLACK = (0, 0, 0)",
+        "peekOfCode": "RED = (255, 0, 0)\nWHITE = (255, 255, 255)\nBLACK = (0, 0, 0)\nGREEN = (0, 200, 0)\nLIGHT_GREEN = (100, 255, 100)\nLIGHT_RED = (255, 100, 100)",
         "detail": "constants",
         "documentation": {}
     },
@@ -294,7 +294,7 @@
         "kind": 5,
         "importPath": "constants",
         "description": "constants",
-        "peekOfCode": "WHITE = (255, 255, 255)\nBLACK = (0, 0, 0)",
+        "peekOfCode": "WHITE = (255, 255, 255)\nBLACK = (0, 0, 0)\nGREEN = (0, 200, 0)\nLIGHT_GREEN = (100, 255, 100)\nLIGHT_RED = (255, 100, 100)",
         "detail": "constants",
         "documentation": {}
     },
@@ -303,7 +303,34 @@
         "kind": 5,
         "importPath": "constants",
         "description": "constants",
-        "peekOfCode": "BLACK = (0, 0, 0)",
+        "peekOfCode": "BLACK = (0, 0, 0)\nGREEN = (0, 200, 0)\nLIGHT_GREEN = (100, 255, 100)\nLIGHT_RED = (255, 100, 100)",
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "GREEN",
+        "kind": 5,
+        "importPath": "constants",
+        "description": "constants",
+        "peekOfCode": "GREEN = (0, 200, 0)\nLIGHT_GREEN = (100, 255, 100)\nLIGHT_RED = (255, 100, 100)",
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "LIGHT_GREEN",
+        "kind": 5,
+        "importPath": "constants",
+        "description": "constants",
+        "peekOfCode": "LIGHT_GREEN = (100, 255, 100)\nLIGHT_RED = (255, 100, 100)",
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "LIGHT_RED",
+        "kind": 5,
+        "importPath": "constants",
+        "description": "constants",
+        "peekOfCode": "LIGHT_RED = (255, 100, 100)",
         "detail": "constants",
         "documentation": {}
     },
