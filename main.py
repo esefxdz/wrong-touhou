@@ -37,15 +37,30 @@ pause = ppause()
 
 mmmenu.run(screen, clock)
 
+in_menu = True
 running = True
 while running:
     for event in pygame.event.get():
-        pause.pause_toggle(event)
         if event.type == pygame.QUIT:
             running = False
+        
+        if not in_menu and not pause.paused:
+            pause.pause_toggle(event)
+
+    if in_menu:
+        mmmenu.run(screen, clock)
+        in_menu = False
+        continue
+    else:
+        pass
 
     if pause.paused:
         pause.blit(screen)
+        pause.pause_button(screen)
+        if pause.menu:
+            pause.menu = False
+            in_menu = True
+            
         pygame.display.flip()
         continue
 

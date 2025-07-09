@@ -111,6 +111,15 @@
         "documentation": {}
     },
     {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
         "label": "rumia",
         "importPath": "baddies.enemy",
         "description": "baddies.enemy",
@@ -231,7 +240,7 @@
         "kind": 6,
         "importPath": "ui.pause",
         "description": "ui.pause",
-        "peekOfCode": "class ppause:\n    def __init__(self):\n        self.paused = False\n        self.font = pygame.font.SysFont(None, 60)\n        self.pause_background_image = pygame.image.load(\"textures/pause_background.jpg\")\n        self.pause_background_image = pygame.transform.scale(\n            pause_background_image,\n            (constants.WIDTH, constants.HEIGHT)\n            )\n    def pause_toggle(self, event):",
+        "peekOfCode": "class ppause:\n    def __init__(self):\n        self.paused = False\n        self.menu = False\n        self.font = pygame.font.SysFont(None, 60)\n        self.pause_background_image = pygame.image.load(\"textures/pause_background.jpg\")\n        self.pause_background_image = pygame.transform.scale(\n            pause_background_image,\n            (constants.WIDTH, constants.HEIGHT)\n            )",
         "detail": "ui.pause",
         "documentation": {}
     },
@@ -258,7 +267,7 @@
         "kind": 5,
         "importPath": "ui.pause",
         "description": "ui.pause",
-        "peekOfCode": "#screen_size = screen.get_size() #big idea that i will apply to others\n#pause_background_image = pygame.image.load(\"textures/pause_background.jpg\")\n#pause_background_image = pygame.transform.scale(\n#    pause_background_image,\n#      screen_size)\nclass ppause:\n    def __init__(self):\n        self.paused = False\n        self.font = pygame.font.SysFont(None, 60)\n        self.pause_background_image = pygame.image.load(\"textures/pause_background.jpg\")",
+        "peekOfCode": "#screen_size = screen.get_size() #big idea that i will apply to others\n#pause_background_image = pygame.image.load(\"textures/pause_background.jpg\")\n#pause_background_image = pygame.transform.scale(\n#    pause_background_image,\n#      screen_size)\nclass ppause:\n    def __init__(self):\n        self.paused = False\n        self.menu = False\n        self.font = pygame.font.SysFont(None, 60)",
         "detail": "ui.pause",
         "documentation": {}
     },
@@ -267,7 +276,7 @@
         "kind": 5,
         "importPath": "ui.pause",
         "description": "ui.pause",
-        "peekOfCode": "#pause_background_image = pygame.image.load(\"textures/pause_background.jpg\")\n#pause_background_image = pygame.transform.scale(\n#    pause_background_image,\n#      screen_size)\nclass ppause:\n    def __init__(self):\n        self.paused = False\n        self.font = pygame.font.SysFont(None, 60)\n        self.pause_background_image = pygame.image.load(\"textures/pause_background.jpg\")\n        self.pause_background_image = pygame.transform.scale(",
+        "peekOfCode": "#pause_background_image = pygame.image.load(\"textures/pause_background.jpg\")\n#pause_background_image = pygame.transform.scale(\n#    pause_background_image,\n#      screen_size)\nclass ppause:\n    def __init__(self):\n        self.paused = False\n        self.menu = False\n        self.font = pygame.font.SysFont(None, 60)\n        self.pause_background_image = pygame.image.load(\"textures/pause_background.jpg\")",
         "detail": "ui.pause",
         "documentation": {}
     },
@@ -276,7 +285,7 @@
         "kind": 5,
         "importPath": "ui.pause",
         "description": "ui.pause",
-        "peekOfCode": "#pause_background_image = pygame.transform.scale(\n#    pause_background_image,\n#      screen_size)\nclass ppause:\n    def __init__(self):\n        self.paused = False\n        self.font = pygame.font.SysFont(None, 60)\n        self.pause_background_image = pygame.image.load(\"textures/pause_background.jpg\")\n        self.pause_background_image = pygame.transform.scale(\n            pause_background_image,",
+        "peekOfCode": "#pause_background_image = pygame.transform.scale(\n#    pause_background_image,\n#      screen_size)\nclass ppause:\n    def __init__(self):\n        self.paused = False\n        self.menu = False\n        self.font = pygame.font.SysFont(None, 60)\n        self.pause_background_image = pygame.image.load(\"textures/pause_background.jpg\")\n        self.pause_background_image = pygame.transform.scale(",
         "detail": "ui.pause",
         "documentation": {}
     },
@@ -447,7 +456,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "enemies_per_wave = 3\n# fps counter\nclock = pygame.time.Clock()\npygame.font.init()\nfont = pygame.font.Font(None, 36)\n#pause menu, didnt know where to put it\nmmmenu = mmenu()\npause = ppause()\nmmmenu.run(screen, clock)\nrunning = True",
+        "peekOfCode": "enemies_per_wave = 3\n# fps counter\nclock = pygame.time.Clock()\npygame.font.init()\nfont = pygame.font.Font(None, 36)\n#pause menu, didnt know where to put it\nmmmenu = mmenu()\npause = ppause()\nmmmenu.run(screen, clock)\nin_menu = True",
         "detail": "main",
         "documentation": {}
     },
@@ -456,7 +465,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "clock = pygame.time.Clock()\npygame.font.init()\nfont = pygame.font.Font(None, 36)\n#pause menu, didnt know where to put it\nmmmenu = mmenu()\npause = ppause()\nmmmenu.run(screen, clock)\nrunning = True\nwhile running:\n    for event in pygame.event.get():",
+        "peekOfCode": "clock = pygame.time.Clock()\npygame.font.init()\nfont = pygame.font.Font(None, 36)\n#pause menu, didnt know where to put it\nmmmenu = mmenu()\npause = ppause()\nmmmenu.run(screen, clock)\nin_menu = True\nrunning = True\nwhile running:",
         "detail": "main",
         "documentation": {}
     },
@@ -465,7 +474,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "font = pygame.font.Font(None, 36)\n#pause menu, didnt know where to put it\nmmmenu = mmenu()\npause = ppause()\nmmmenu.run(screen, clock)\nrunning = True\nwhile running:\n    for event in pygame.event.get():\n        pause.pause_toggle(event)\n        if event.type == pygame.QUIT:",
+        "peekOfCode": "font = pygame.font.Font(None, 36)\n#pause menu, didnt know where to put it\nmmmenu = mmenu()\npause = ppause()\nmmmenu.run(screen, clock)\nin_menu = True\nrunning = True\nwhile running:\n    for event in pygame.event.get():\n        if event.type == pygame.QUIT:",
         "detail": "main",
         "documentation": {}
     },
@@ -474,7 +483,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "mmmenu = mmenu()\npause = ppause()\nmmmenu.run(screen, clock)\nrunning = True\nwhile running:\n    for event in pygame.event.get():\n        pause.pause_toggle(event)\n        if event.type == pygame.QUIT:\n            running = False\n    if pause.paused:",
+        "peekOfCode": "mmmenu = mmenu()\npause = ppause()\nmmmenu.run(screen, clock)\nin_menu = True\nrunning = True\nwhile running:\n    for event in pygame.event.get():\n        if event.type == pygame.QUIT:\n            running = False\n        if not in_menu and not pause.paused:",
         "detail": "main",
         "documentation": {}
     },
@@ -483,7 +492,16 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "pause = ppause()\nmmmenu.run(screen, clock)\nrunning = True\nwhile running:\n    for event in pygame.event.get():\n        pause.pause_toggle(event)\n        if event.type == pygame.QUIT:\n            running = False\n    if pause.paused:\n        pause.blit(screen)",
+        "peekOfCode": "pause = ppause()\nmmmenu.run(screen, clock)\nin_menu = True\nrunning = True\nwhile running:\n    for event in pygame.event.get():\n        if event.type == pygame.QUIT:\n            running = False\n        if not in_menu and not pause.paused:\n            pause.pause_toggle(event)",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "in_menu",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "in_menu = True\nrunning = True\nwhile running:\n    for event in pygame.event.get():\n        if event.type == pygame.QUIT:\n            running = False\n        if not in_menu and not pause.paused:\n            pause.pause_toggle(event)\n    if in_menu:\n        mmmenu.run(screen, clock)",
         "detail": "main",
         "documentation": {}
     },
@@ -492,7 +510,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "running = True\nwhile running:\n    for event in pygame.event.get():\n        pause.pause_toggle(event)\n        if event.type == pygame.QUIT:\n            running = False\n    if pause.paused:\n        pause.blit(screen)\n        pygame.display.flip()\n        continue",
+        "peekOfCode": "running = True\nwhile running:\n    for event in pygame.event.get():\n        if event.type == pygame.QUIT:\n            running = False\n        if not in_menu and not pause.paused:\n            pause.pause_toggle(event)\n    if in_menu:\n        mmmenu.run(screen, clock)\n        in_menu = False",
         "detail": "main",
         "documentation": {}
     },

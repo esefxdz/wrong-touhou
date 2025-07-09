@@ -22,7 +22,7 @@ class mmenu:
             )
         
     def run(self, screen, clock):
-        print("clock achieved")
+        self.menu = True
         while self.menu:
             screen.blit(menu_background_image, (0, 0))
             text = self.font.render("WELCOME TO MY GAME", True, (constants.WHITE))
