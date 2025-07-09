@@ -51,7 +51,7 @@ class ppause:
         mouse_pos = pygame.mouse.get_pos()
         mouse_click = pygame.mouse.get_pressed()
         resume_button = pygame.Rect(constants.WIDTH // 2 - 100, constants.HEIGHT // 2 - 90, 200, 50)
-        main_menu_button = pygame.Rect(constants.WIDTH // 2 - 100, constants.HEIGHT // 2 - 20, 200, 50)
+        main_menu_button = pygame.Rect(constants.WIDTH // 2 - 112, constants.HEIGHT // 2 - 30, 225, 50)
         quit_button = pygame.Rect(constants.WIDTH // 2 - 100, constants.HEIGHT // 2 + 25, 200, 50)
         #its better than getting normal coordinates because this one doesnt shit itself with different resolutions 
         resume_text = self.font.render("Resume", True, constants.WHITE)
