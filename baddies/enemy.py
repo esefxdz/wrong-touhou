@@ -83,11 +83,15 @@ class rumia:
             })
 
     def update_fire(self, screen):
-        if self.defeated:
-            return
+        new_fires = []
         for fire in self.fires:
             fire["pos"][0] += fire["dir"][0] * 3  # move horizontally
             fire["pos"][1] += fire["dir"][1] * 3  # move vertically
+            
+            # keep fires that are still on screen
+            if 0 <= fire["pos"][0] <= constants.WIDTH and 0 <= fire["pos"][1] <= constants.HEIGHT:
+                new_fires.append(fire)
+        self.fires = new_fires
 
     def take_hit(self):
         if not self.defeated:
@@ -95,7 +99,7 @@ class rumia:
             pygame.mixer.Sound(os.path.join("sounds", "hitsound.wav")).play()
             if self.hit_count >= self.max_hp:
                 self.defeated = True
-                self.fires.clear()
+                self.player.enemies_killed += 1
                 pygame.mixer.Sound(os.path.join("sounds", "killsound.wav")).play()
 
     def move_toward_player(self):
@@ -119,15 +123,15 @@ class rumia:
         self.lolrect.y += dy * speed
 
     def update(self, screen):
-        if self.defeated:
-            return  # Stop all behavior if defeated
-        self.move_toward_player()
+        if not self.defeated:
+            self.move_toward_player()
         self.update_fire(screen)
 
 
     def draw(self, screen):
         if not self.defeated:
-            screen.blit(self.image, self.lolrect)
+            image_rect = self.image.get_rect(center=self.lolrect.center)
+            screen.blit(self.image, image_rect)
         for fire in self.fires:
             pygame.draw.circle(screen, (255, 0, 0), (int(fire["pos"][0]), int(fire["pos"][1])), 5)
 

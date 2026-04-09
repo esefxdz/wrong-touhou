@@ -103,14 +103,6 @@
         "documentation": {}
     },
     {
-        "label": "Whitespace",
-        "importPath": "tokenize",
-        "description": "tokenize",
-        "isExtraImport": true,
-        "detail": "tokenize",
-        "documentation": {}
-    },
-    {
         "label": "time",
         "kind": 6,
         "isExtraImport": true,

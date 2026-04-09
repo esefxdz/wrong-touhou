@@ -2,10 +2,11 @@ import pygame
 from baddies.enemy import rumia
 from constants import WIDTH, HEIGHT, BLACK
 from hit_register import boss_hit, player_hit
-from player import spaceship
+from player_files.player import spaceship
 from baddies.enemy import rumia
 from ui.pause import ppause
 from ui.menu import mmenu
+from ui.over import gover
 
 pygame.init()
 
@@ -34,6 +35,7 @@ font = pygame.font.Font(None, 36)
 #pause menu, didnt know where to put it
 mmmenu = mmenu()
 pause = ppause()
+gover_menu = gover()
 
 mmmenu.run(screen, clock)
 
@@ -64,6 +66,25 @@ while running:
         pygame.display.flip()
         continue
 
+    if gover_menu.game_over:
+        gover_menu.blit(screen)
+        gover_menu.buttons(screen)
+        
+        if gover_menu.replay:
+            # Reset game state
+            player = spaceship(100, 100)
+            enemies = []
+            gover_menu.replay = False
+            
+        pygame.display.flip()
+        continue
+
+    # death check
+    if player.hit_count >= player.max_hp:
+        gover_menu.set_stats(player.enemies_killed, player.damage_dealt)
+        gover_menu.game_over = True
+        continue
+
     # fill teh screen
     screen.blit(background_image, (0, 0))
     current_time = pygame.time.get_ticks()
@@ -83,19 +104,25 @@ while running:
     # player area
     keys = pygame.key.get_pressed()
     player.draw(screen)
+    player.draw_health(screen)
+    player.level_system.draw_xp_bar(screen)
     player.move(keys)
     player.shoot()
     player.shoot_update(screen)
     for enemy in enemies:
-        player_hit(player.bullets, enemy.lolrect, enemy.take_hit)
+        if not enemy.defeated:
+            player_hit(player, enemy.lolrect, enemy.take_hit)
 
     #enemy area
+    alive_enemies = []
     for enemy in enemies:
         enemy.draw(screen)
         enemy.fire()
         enemy.update(screen)
-        for enemy in enemies:    
-            boss_hit(enemy.fires, player.spaceship_rect)
+        boss_hit(enemy.fires, player.spaceship_rect, player.take_hit)
+        if not enemy.defeated or len(enemy.fires) > 0:
+            alive_enemies.append(enemy)
+    enemies = alive_enemies
 
     pygame.display.flip()
     clock.tick(60)

@@ -1,4 +1,3 @@
-from tokenize import Whitespace
 import pygame
 import sys
 import os
