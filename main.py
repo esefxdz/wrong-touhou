@@ -48,6 +48,7 @@ while running:
         
         if not in_menu and not pause.paused:
             pause.pause_toggle(event)
+            player.level_system.check_reopen(event)
 
     if in_menu:
         mmmenu.run(screen, clock)
@@ -63,6 +64,11 @@ while running:
             pause.menu = False
             in_menu = True
             
+        pygame.display.flip()
+        continue
+
+    if player.level_system.paused:
+        player.level_system.draw_level_up_screen(screen)
         pygame.display.flip()
         continue
 
