@@ -1,20 +1,19 @@
 import pygame
 import os
 from constants import WIDTH, HEIGHT
-from baddies.enemy import rumia
 import math
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
-keys_pressed = pygame.key.get_pressed
-enemy = rumia
 
 class spaceship:
-    def __init__(self, x, y):
+    def __init__(self, x, y, map_w=3000, map_h=3000):
         super().__init__()
+        self.map_w = map_w
+        self.map_h = map_h
         self.rect = pygame.Rect(x, y, 50, 50)
         self.spaceship_image = pygame.image.load("textures/spaceship.png")
         self.spaceship_image = pygame.transform.scale(self.spaceship_image, (50, 50))
         self.spaceship_rect = self.spaceship_image.get_rect()
-        self.spaceship_rect.center = (WIDTH // 2, HEIGHT // 2)
+        self.spaceship_rect.center = (map_w // 2, map_h // 2)
         self.bullet_speed = 25
         self.bullets = []
         self.shoot_cooldown = 75
@@ -35,23 +34,33 @@ class spaceship:
         self.player_speed = 10
         if keys[pygame.K_a] and self.spaceship_rect.left > 0:
             self.spaceship_rect.x -= self.player_speed
-        if keys[pygame.K_d] and self.spaceship_rect.right < WIDTH:
+        if keys[pygame.K_d] and self.spaceship_rect.right < self.map_w:
             self.spaceship_rect.x += self.player_speed
         if keys [pygame.K_w] and self.spaceship_rect.top > 0:
             self.spaceship_rect.y -= self.player_speed
-        if keys[pygame.K_s] and self.spaceship_rect.bottom < HEIGHT:
+        if keys[pygame.K_s] and self.spaceship_rect.bottom < self.map_h:
             self.spaceship_rect.y += self.player_speed
 
-    def shoot(self):
+    def get_camera_offset(self):
+        """Camera centers on player, clamped to map edges"""
+        cam_x = self.spaceship_rect.centerx - WIDTH // 2
+        cam_y = self.spaceship_rect.centery - HEIGHT // 2
+        cam_x = max(0, min(cam_x, self.map_w - WIDTH))
+        cam_y = max(0, min(cam_y, self.map_h - HEIGHT))
+        return cam_x, cam_y
+
+    def shoot(self, cam_offset):
         current_time = pygame.time.get_ticks()
         if pygame.key.get_pressed()[pygame.K_SPACE] and current_time - self.last_shot_time >= self.shoot_cooldown:
             self.last_shot_time = current_time
 
-            # Get direction to mouse
+            # Get direction to mouse (mouse is in screen coords, convert to world)
             mouse_x, mouse_y = pygame.mouse.get_pos()
+            mouse_world_x = mouse_x + cam_offset[0]
+            mouse_world_y = mouse_y + cam_offset[1]
             px, py = self.spaceship_rect.center
-            dx = mouse_x - px
-            dy = mouse_y - py
+            dx = mouse_world_x - px
+            dy = mouse_world_y - py
             dist = math.hypot(dx, dy)
             if dist == 0:
                 dist = 1
@@ -62,22 +71,26 @@ class spaceship:
                 "dir": direction
             })
 
-    def shoot_update(self, screen):
+    def shoot_update(self, screen, cam_offset):
         new_bullets = []
         for bullet in self.bullets:
             bullet["pos"][0] += bullet["dir"][0] * self.bullet_speed
             bullet["pos"][1] += bullet["dir"][1] * self.bullet_speed
 
-            bullet_rect = self.bullet_image.get_rect(center=(int(bullet["pos"][0]), int(bullet["pos"][1])))
+            screen_x = int(bullet["pos"][0]) - cam_offset[0]
+            screen_y = int(bullet["pos"][1]) - cam_offset[1]
+            bullet_rect = self.bullet_image.get_rect(center=(screen_x, screen_y))
             screen.blit(self.bullet_image, bullet_rect)
 
-            if 0 <= bullet["pos"][0] <= WIDTH and 0 <= bullet["pos"][1] <= HEIGHT:
+            if 0 <= bullet["pos"][0] <= self.map_w and 0 <= bullet["pos"][1] <= self.map_h:
                 new_bullets.append(bullet)
         self.bullets = new_bullets
 
 
-    def draw(self, screen):
-        screen.blit(self.spaceship_image, self.spaceship_rect)
+    def draw(self, screen, cam_offset):
+        screen_x = self.spaceship_rect.x - cam_offset[0]
+        screen_y = self.spaceship_rect.y - cam_offset[1]
+        screen.blit(self.spaceship_image, (screen_x, screen_y))
 
     def take_hit(self):
         if self.hit_count < self.max_hp:

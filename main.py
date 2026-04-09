@@ -1,12 +1,14 @@
 import pygame
-from baddies.enemy import rumia
+import random
+from baddies import spawn_enemy
 from constants import WIDTH, HEIGHT, BLACK
 from hit_register import boss_hit, player_hit
 from player_files.player import spaceship
-from baddies.enemy import rumia
 from ui.pause import ppause
 from ui.menu import mmenu
 from ui.over import gover
+import maps.map_01 as map_01
+import maps.map_02 as map_02
 
 pygame.init()
 
@@ -14,18 +16,17 @@ pygame.init()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("will it work tho")
 
-# background image
-background_image = pygame.image.load("textures/background.jpg")
-background_image = pygame.transform.scale(background_image, (WIDTH, HEIGHT))
+# pick a random map
+available_maps = [map_01, map_02]
+current_map = random.choice(available_maps)
+
+# background image - sized to full map
+background_image = pygame.image.load(current_map.MAP_IMAGE)
+background_image = pygame.transform.scale(background_image, (current_map.MAP_WIDTH, current_map.MAP_HEIGHT))
 
 #player variable and other variables from files
-x = 100
-y = 100
-player = spaceship(x, y)
+player = spaceship(100, 100, current_map.MAP_WIDTH, current_map.MAP_HEIGHT)
 enemies = []
-enemy_spawn_timer = 0
-enemy_spawn_interval = 2000  # spawn every 2 seconds
-enemies_per_wave = 3
 
 # fps counter
 clock = pygame.time.Clock()
@@ -78,7 +79,7 @@ while running:
         
         if gover_menu.replay:
             # Reset game state
-            player = spaceship(100, 100)
+            player = spaceship(100, 100, current_map.MAP_WIDTH, current_map.MAP_HEIGHT)
             enemies = []
             gover_menu.replay = False
             
@@ -91,30 +92,36 @@ while running:
         gover_menu.game_over = True
         continue
 
-    # fill teh screen
-    screen.blit(background_image, (0, 0))
+    # camera
+    cam_offset = player.get_camera_offset()
+
+    # fill teh screen - draw background with camera offset
+    screen.blit(background_image, (0, 0), (cam_offset[0], cam_offset[1], WIDTH, HEIGHT))
     current_time = pygame.time.get_ticks()
 
-    #enemy spawns
-    if current_time - enemy_spawn_timer > enemy_spawn_interval:
-        for _ in range(enemies_per_wave):
-            enemies.append(rumia(player))
-        enemy_spawn_timer = current_time
+    #enemy spawns - each wave type from the map has its own timer
+    for wave in current_map.ENEMY_WAVES:
+        if "timer" not in wave:
+            wave["timer"] = 0
+        if current_time - wave["timer"] > wave["interval"]:
+            for _ in range(wave["count"]):
+                enemies.append(spawn_enemy(wave["enemy"], player))
+            wave["timer"] = current_time
 
 
-    # fps counter ingame
+    # fps counter ingame (UI - no offset)
     fps = clock.get_fps()
     fps_text = font.render(f"FPS: {int(fps)}", True, BLACK)
     screen.blit(fps_text, (10, 10))
 
     # player area
     keys = pygame.key.get_pressed()
-    player.draw(screen)
+    player.draw(screen, cam_offset)
     player.draw_health(screen)
     player.level_system.draw_xp_bar(screen)
     player.move(keys)
-    player.shoot()
-    player.shoot_update(screen)
+    player.shoot(cam_offset)
+    player.shoot_update(screen, cam_offset)
     for enemy in enemies:
         if not enemy.defeated:
             player_hit(player, enemy.lolrect, enemy.take_hit)
@@ -122,7 +129,7 @@ while running:
     #enemy area
     alive_enemies = []
     for enemy in enemies:
-        enemy.draw(screen)
+        enemy.draw(screen, cam_offset)
         enemy.fire()
         enemy.update(screen)
         boss_hit(enemy.fires, player.spaceship_rect, player.take_hit)

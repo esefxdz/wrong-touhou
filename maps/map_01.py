@@ -1,0 +1,15 @@
+# Map 01 - Default Map
+import os
+
+MAP_NAME = "The Field"
+MAP_IMAGE = os.path.join("maps", "map_01.jpg")
+MAP_WIDTH = 3000
+MAP_HEIGHT = 3000
+
+# enemy spawning
+ENEMY_WAVES = [
+    {"enemy": "rumia", "interval": 2000, "count": 3}
+]
+
+# enemy types available on this map
+ENEMY_TYPES = ["rumia"]

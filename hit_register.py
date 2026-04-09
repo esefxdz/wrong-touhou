@@ -1,7 +1,5 @@
 import pygame
-from baddies.enemy import rumia
 from player_files.player import spaceship
-boss = rumia
 
 def player_hit(player, target_rect, take_hit):
     for bullet in reversed(player.bullets):
