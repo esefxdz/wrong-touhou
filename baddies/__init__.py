@@ -1,12 +1,11 @@
-# Enemy registry - maps reference enemies by name string
 from baddies.rumia import Rumia
 from baddies.cirno import Cirno
+from baddies.patchouli import Patchouli
 
 ENEMY_REGISTRY = {
     "rumia": Rumia,
     "cirno": Cirno,
-    # add new enemies here:
-    # "sakuya": Sakuya,
+    "patchouli": Patchouli,
 }
 
 def spawn_enemy(name, player_ref):

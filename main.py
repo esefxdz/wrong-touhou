@@ -25,17 +25,25 @@ renderer = MasterRenderer(WIDTH, HEIGHT)
 
 # pick a random map
 available_maps = [map_01, map_02]
-current_map = random.choice(available_maps)
 
-# background image - sized to full map
-background_image = pygame.image.load(current_map.MAP_IMAGE)
-background_image = pygame.transform.scale(background_image, (current_map.MAP_WIDTH, current_map.MAP_HEIGHT))
+def reset_game():
+    # Get fresh map and assets
+    m = random.choice(available_maps)
+    bg = pygame.image.load(m.MAP_IMAGE)
+    bg = pygame.transform.scale(bg, (m.MAP_WIDTH, m.MAP_HEIGHT))
+    
+    # Reset objects
+    p = spaceship(100, 100, m.MAP_WIDTH, m.MAP_HEIGHT)
+    pm = ProjectileManager()
+    
+    # Reset all map wave timers
+    for wave in m.ENEMY_WAVES:
+        wave.pop("timer", None)
+        
+    return m, bg, p, [], pm
 
-#player variable and other variables from files
-player = spaceship(100, 100, current_map.MAP_WIDTH, current_map.MAP_HEIGHT)
-enemies = []
+current_map, background_image, player, enemies, projectile_manager = reset_game()
 spatial_grid = SpatialHash(cell_size=100)
-projectile_manager = ProjectileManager()
 
 # fps counter
 clock = pygame.time.Clock()
@@ -78,7 +86,7 @@ while running:
         pygame.display.flip()
         continue
 
-    #level up menu display area
+    #level up menu display
     if player.level_system.paused:
         player.level_system.draw_level_up_screen(display_surface)
         renderer.render(display_surface, np.array([], dtype=np.float32), (0,0))
@@ -91,10 +99,11 @@ while running:
         gover_menu.buttons(display_surface)
         
         if gover_menu.replay:
-            # Reset game state
-            player = spaceship(100, 100, current_map.MAP_WIDTH, current_map.MAP_HEIGHT)
-            enemies = []
+            # Clean Reset
+            current_map, background_image, player, enemies, projectile_manager = reset_game()
             gover_menu.replay = False
+            gover_menu.game_over = False
+            continue
             
         renderer.render(display_surface, np.array([], dtype=np.float32), (0,0))
         pygame.display.flip()

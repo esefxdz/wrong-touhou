@@ -9,8 +9,9 @@ MAP_HEIGHT = 3000
 # enemy spawning
 ENEMY_WAVES = [
     {"enemy": "rumia", "interval": 2000, "count": 3},
-    {"enemy": "cirno", "interval": 1500, "count": 5}
+    {"enemy": "cirno", "interval": 1500, "count": 5},
+    {"enemy": "patchouli", "interval": 1500, "count": 5}
 ]
 
 # enemy types available on this map
-ENEMY_TYPES = ["rumia", "cirno"]
+ENEMY_TYPES = ["rumia", "cirno", "patchouli"]

@@ -23,6 +23,13 @@ class BaseEnemy:
     #cirno shotgun area
     FIRE_COUNT = 1          # number of bullets per shot
     FIRE_SPREAD_ANGLE = 0   # cone width in degrees
+
+    # patchouli sniper area
+    IS_SNIPER = False                           # enables lock-on laser + lock behaviour
+    FIRE_ON_SCREEN_ONLY = False                 # only fire when visible on screen
+    SNIPER_WARN_TIME = 500                      # ms of red lock-on warning before firing
+    SNIPER_LASER_TRACK_COLOR = (200, 100, 255)  # thin tracking laser color
+    SNIPER_LASER_WARN_COLOR = (255, 50, 50)     # thick warn laser color
     
     def __init__(self, player_ref):
         self.player = player_ref
@@ -48,6 +55,15 @@ class BaseEnemy:
         self.last_fire_time = pygame.time.get_ticks()
         self.fire_cooldown = self.FIRE_COOLDOWN
         self.fire_speed = self.FIRE_SPEED
+
+        # sniper state
+        self._locked_angle = None
+        self._draw_laser = False
+        self._laser_color = self.SNIPER_LASER_TRACK_COLOR
+        self._laser_thickness = 1
+        self._post_fire_angle = None
+        self._post_fire_time = 0
+        self._post_fire_duration = 300  # the beam disappear timing
         
         # spawn
         self.spawn_outside_screen()
@@ -73,38 +89,68 @@ class BaseEnemy:
         y = max(0, min(y, self.player.map_h))
         self.lolrect.topleft = (x, y)
     
-    def fire(self, proj_manager):
+    def _is_on_screen(self, cam_offset):
+        sx = self.lolrect.centerx - cam_offset[0]
+        sy = self.lolrect.centery - cam_offset[1]
+        return -50 <= sx <= constants.WIDTH + 50 and -50 <= sy <= constants.HEIGHT + 50
+
+    def fire(self, proj_manager, cam_offset=(0, 0)):
         if self.defeated:
             return
         current_time = pygame.time.get_ticks()
-        if current_time - self.last_fire_time > self.fire_cooldown:
+        time_since = current_time - self.last_fire_time
+
+        # --- On-screen gate: stall cooldown while off screen ---
+        if self.FIRE_ON_SCREEN_ONLY and not self._is_on_screen(cam_offset):
+            if time_since > self.FIRE_COOLDOWN - 1000:
+                self.last_fire_time = current_time - (self.FIRE_COOLDOWN - 1000)
+            self._draw_laser = False
+            return
+
+        # --- Sniper lock-on logic ---
+        if self.IS_SNIPER:
+            px, py = self.player.spaceship_rect.center
+            dx = px - self.lolrect.centerx
+            dy = py - self.lolrect.centery
+            # Always track player - no warning phase
+            self._locked_angle = math.atan2(dy, dx)
+            self._draw_laser = True
+
+            if time_since > self.FIRE_COOLDOWN:
+                # Store the shot angle for the fading beam visual
+                self._post_fire_angle = self._locked_angle
+                self._post_fire_time = current_time
+                fire_dx = math.cos(self._locked_angle)
+                fire_dy = math.sin(self._locked_angle)
+                proj_manager.spawn(
+                    self.lolrect.centerx, self.lolrect.centery,
+                    fire_dx, fire_dy, self.fire_speed,
+                    radius=8, color=self.FIRE_COLOR, type_id=0, owner=1, angle=self._locked_angle
+                )
+                self.last_fire_time = current_time
+            return
+
+
+        # --- Normal fire ---
+        if time_since > self.fire_cooldown:
             self.last_fire_time = current_time
-            
             enemy_x, enemy_y = self.lolrect.center
             player_x, player_y = self.player.spaceship_rect.center
-            
             dx = player_x - enemy_x
             dy = player_y - enemy_y
-            distance = math.hypot(dx, dy)
-            if distance == 0:
-                distance = 1
-            
-            direction = (dx / distance, dy / distance)
-            base_angle = math.atan2(direction[1], direction[0])
-            
+            distance = math.hypot(dx, dy) or 1
+            base_angle = math.atan2(dy, dx)
+
             for i in range(self.FIRE_COUNT):
                 if self.FIRE_COUNT <= 1:
                     angle_offset = 0
                 else:
                     fraction = i / (self.FIRE_COUNT - 1)
                     angle_offset = math.radians(self.FIRE_SPREAD_ANGLE * (fraction - 0.5))
-
                 fire_angle = base_angle + angle_offset
-                fire_dx = math.cos(fire_angle)
-                fire_dy = math.sin(fire_angle)
-
                 proj_manager.spawn(
-                    enemy_x, enemy_y, fire_dx, fire_dy, self.fire_speed,
+                    enemy_x, enemy_y,
+                    math.cos(fire_angle), math.sin(fire_angle), self.fire_speed,
                     radius=5, color=self.FIRE_COLOR, type_id=0, owner=1, angle=fire_angle
                 )
 
@@ -137,12 +183,37 @@ class BaseEnemy:
     def update(self, screen, player, proj_manager):
         if not self.defeated:
             self.move_toward_player()
-            self.fire(proj_manager)
+            cam_offset = player.get_camera_offset()
+            self.fire(proj_manager, cam_offset)
+
     def draw(self, screen, cam_offset):
-        if not self.defeated:
-            image_rect = self.image.get_rect(center=self.lolrect.center)
-            screen_x = image_rect.x - cam_offset[0]
-            screen_y = image_rect.y - cam_offset[1]
-            screen.blit(self.image, (screen_x, screen_y))
-            screen_y = image_rect.y - cam_offset[1]
-            screen.blit(self.image, (screen_x, screen_y))
+        if self.defeated:
+            return
+
+        if self.IS_SNIPER:
+            current_time = pygame.time.get_ticks()
+            sx = self.lolrect.centerx - cam_offset[0]
+            sy = self.lolrect.centery - cam_offset[1]
+
+            # Draw the post-fire thick fading beam
+            if self._post_fire_angle is not None:
+                age = current_time - self._post_fire_time
+                if age < self._post_fire_duration:
+                    t = 1.0 - (age / self._post_fire_duration)  # 1.0 -> 0.0
+                    thickness = max(1, int(24 * t))
+                    r, g, b = self.FIRE_COLOR
+                    ex = sx + math.cos(self._post_fire_angle) * 2000
+                    ey = sy + math.sin(self._post_fire_angle) * 2000
+                    pygame.draw.line(screen, (r, g, b), (int(sx), int(sy)), (int(ex), int(ey)), thickness)
+                else:
+                    self._post_fire_angle = None
+
+            # Draw thin tracking laser
+            if self._draw_laser and self._locked_angle is not None:
+                ex = sx + math.cos(self._locked_angle) * 2000
+                ey = sy + math.sin(self._locked_angle) * 2000
+                pygame.draw.line(screen, self.SNIPER_LASER_TRACK_COLOR, (int(sx), int(sy)), (int(ex), int(ey)), 1)
+
+        # Draw sprite
+        image_rect = self.image.get_rect(center=self.lolrect.center)
+        screen.blit(self.image, (image_rect.x - cam_offset[0], image_rect.y - cam_offset[1]))

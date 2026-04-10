@@ -64,27 +64,45 @@ def check_player_bullets_vs_enemies(proj_manager, enemies, spatial_hash, player)
                 break
 
 def check_enemy_bullets_vs_player(proj_manager, player):
-    """Vectorized check for all enemy bullets against the single player."""
+    """Vectorized check for all enemy bullets against the single player.
+    Uses segment-vs-circle sweep to handle fast-moving bullets (no tunneling)."""
     en_mask = proj_manager.active & (proj_manager.owner == 1)
     if not np.any(en_mask): return
-    
+
     px, py = player.spaceship_rect.center
-    
-    dx = proj_manager.pos_x[en_mask] - px
-    dy = proj_manager.pos_y[en_mask] - py
-    dist_sq = dx**2 + dy**2
-    
-    # 25 is roughly half of player's 50x50 rect
-    radii = proj_manager.radius[en_mask] + 25.0
+    player_radius = 25.0  # half of 50x50 rect
+
+    # Current positions
+    cx = proj_manager.pos_x[en_mask]
+    cy = proj_manager.pos_y[en_mask]
+    # Previous positions (current - velocity, since update already moved them)
+    vx = proj_manager.vel_x[en_mask]
+    vy = proj_manager.vel_y[en_mask]
+    sx = cx - vx  # start of segment this frame
+    sy = cy - vy  # end is cx, cy
+
+    radii = proj_manager.radius[en_mask] + player_radius
+
+    # Segment-vs-circle: find closest point on segment [S->C] to P
+    dx_seg = cx - sx
+    dy_seg = cy - sy
+    seg_len_sq = dx_seg**2 + dy_seg**2
+
+    # t = dot(P-S, seg) / |seg|^2  clamped 0..1
+    t = ((px - sx) * dx_seg + (py - sy) * dy_seg) / np.where(seg_len_sq > 0, seg_len_sq, 1.0)
+    t = np.clip(t, 0.0, 1.0)
+
+    closest_x = sx + t * dx_seg
+    closest_y = sy + t * dy_seg
+
+    dist_sq = (closest_x - px)**2 + (closest_y - py)**2
     hit_mask = dist_sq < (radii ** 2)
-    
+
     if np.any(hit_mask):
-        hits_count = np.sum(hit_mask)
-        for _ in range(hits_count):
-            player.take_hit()
-            
-        # disable the bullets that hit
         active_indices = np.where(en_mask)[0]
         hit_indices = active_indices[hit_mask]
+        hits_count = len(hit_indices)
+        for _ in range(hits_count):
+            player.take_hit()
         proj_manager.active[hit_indices] = False
-        proj_manager.active_count -= len(hit_indices)
+        proj_manager.active_count -= hits_count

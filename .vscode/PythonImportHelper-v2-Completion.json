@@ -150,6 +150,14 @@
         "documentation": {}
     },
     {
+        "label": "BaseEnemy",
+        "importPath": "baddies.base_enemy",
+        "description": "baddies.base_enemy",
+        "isExtraImport": true,
+        "detail": "baddies.base_enemy",
+        "documentation": {}
+    },
+    {
         "label": "moderngl",
         "kind": 6,
         "isExtraImport": true,
@@ -293,6 +301,15 @@
         "documentation": {}
     },
     {
+        "label": "Patchouli",
+        "kind": 6,
+        "importPath": "baddies.patchouli",
+        "description": "baddies.patchouli",
+        "peekOfCode": "class Patchouli(BaseEnemy):\n    \"\"\"Patchouli - Sniper that locks on with a laser before firing a fast purple beam.\"\"\"\n    SPRITE_PATH = \"patchouli.png\"\n    SPRITE_SIZE = (150, 150)\n    HITBOX_SIZE = (50, 50)\n    MAX_HP = 3\n    SPEED = 1\n    FIRE_COOLDOWN = 3000\n    FIRE_SPEED = 400\n    FIRE_COLOR = (128, 0, 128)          # purple beam",
+        "detail": "baddies.patchouli",
+        "documentation": {}
+    },
+    {
         "label": "Rumia",
         "kind": 6,
         "importPath": "baddies.rumia",
@@ -351,7 +368,7 @@
         "kind": 2,
         "importPath": "collision_optimizer.hit_register",
         "description": "collision_optimizer.hit_register",
-        "peekOfCode": "def check_enemy_bullets_vs_player(proj_manager, player):\n    \"\"\"Vectorized check for all enemy bullets against the single player.\"\"\"\n    en_mask = proj_manager.active & (proj_manager.owner == 1)\n    if not np.any(en_mask): return\n    px, py = player.spaceship_rect.center\n    dx = proj_manager.pos_x[en_mask] - px\n    dy = proj_manager.pos_y[en_mask] - py\n    dist_sq = dx**2 + dy**2\n    # 25 is roughly half of player's 50x50 rect\n    radii = proj_manager.radius[en_mask] + 25.0",
+        "peekOfCode": "def check_enemy_bullets_vs_player(proj_manager, player):\n    \"\"\"Vectorized check for all enemy bullets against the single player.\n    Uses segment-vs-circle sweep to handle fast-moving bullets (no tunneling).\"\"\"\n    en_mask = proj_manager.active & (proj_manager.owner == 1)\n    if not np.any(en_mask): return\n    px, py = player.spaceship_rect.center\n    player_radius = 25.0  # half of 50x50 rect\n    # Current positions\n    cx = proj_manager.pos_x[en_mask]\n    cy = proj_manager.pos_y[en_mask]",
         "detail": "collision_optimizer.hit_register",
         "documentation": {}
     },
@@ -387,7 +404,7 @@
         "kind": 5,
         "importPath": "maps.map_01",
         "description": "maps.map_01",
-        "peekOfCode": "MAP_NAME = \"The Field\"\nMAP_IMAGE = os.path.join(\"maps\", \"map_01.jpg\")\nMAP_WIDTH = 3000\nMAP_HEIGHT = 3000\n# enemy spawning\nENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 2000, \"count\": 3},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5}\n]\n# enemy types available on this map",
+        "peekOfCode": "MAP_NAME = \"The Field\"\nMAP_IMAGE = os.path.join(\"maps\", \"map_01.jpg\")\nMAP_WIDTH = 3000\nMAP_HEIGHT = 3000\n# enemy spawning\nENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 2000, \"count\": 3},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"patchouli\", \"interval\": 1500, \"count\": 5}\n]",
         "detail": "maps.map_01",
         "documentation": {}
     },
@@ -396,7 +413,7 @@
         "kind": 5,
         "importPath": "maps.map_01",
         "description": "maps.map_01",
-        "peekOfCode": "MAP_IMAGE = os.path.join(\"maps\", \"map_01.jpg\")\nMAP_WIDTH = 3000\nMAP_HEIGHT = 3000\n# enemy spawning\nENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 2000, \"count\": 3},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5}\n]\n# enemy types available on this map\nENEMY_TYPES = [\"rumia\", \"cirno\"]",
+        "peekOfCode": "MAP_IMAGE = os.path.join(\"maps\", \"map_01.jpg\")\nMAP_WIDTH = 3000\nMAP_HEIGHT = 3000\n# enemy spawning\nENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 2000, \"count\": 3},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"patchouli\", \"interval\": 1500, \"count\": 5}\n]\n# enemy types available on this map",
         "detail": "maps.map_01",
         "documentation": {}
     },
@@ -405,7 +422,7 @@
         "kind": 5,
         "importPath": "maps.map_01",
         "description": "maps.map_01",
-        "peekOfCode": "MAP_WIDTH = 3000\nMAP_HEIGHT = 3000\n# enemy spawning\nENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 2000, \"count\": 3},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5}\n]\n# enemy types available on this map\nENEMY_TYPES = [\"rumia\", \"cirno\"]",
+        "peekOfCode": "MAP_WIDTH = 3000\nMAP_HEIGHT = 3000\n# enemy spawning\nENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 2000, \"count\": 3},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"patchouli\", \"interval\": 1500, \"count\": 5}\n]\n# enemy types available on this map\nENEMY_TYPES = [\"rumia\", \"cirno\", \"patchouli\"]",
         "detail": "maps.map_01",
         "documentation": {}
     },
@@ -414,7 +431,7 @@
         "kind": 5,
         "importPath": "maps.map_01",
         "description": "maps.map_01",
-        "peekOfCode": "MAP_HEIGHT = 3000\n# enemy spawning\nENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 2000, \"count\": 3},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5}\n]\n# enemy types available on this map\nENEMY_TYPES = [\"rumia\", \"cirno\"]",
+        "peekOfCode": "MAP_HEIGHT = 3000\n# enemy spawning\nENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 2000, \"count\": 3},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"patchouli\", \"interval\": 1500, \"count\": 5}\n]\n# enemy types available on this map\nENEMY_TYPES = [\"rumia\", \"cirno\", \"patchouli\"]",
         "detail": "maps.map_01",
         "documentation": {}
     },
@@ -423,7 +440,7 @@
         "kind": 5,
         "importPath": "maps.map_01",
         "description": "maps.map_01",
-        "peekOfCode": "ENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 2000, \"count\": 3},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5}\n]\n# enemy types available on this map\nENEMY_TYPES = [\"rumia\", \"cirno\"]",
+        "peekOfCode": "ENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 2000, \"count\": 3},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"patchouli\", \"interval\": 1500, \"count\": 5}\n]\n# enemy types available on this map\nENEMY_TYPES = [\"rumia\", \"cirno\", \"patchouli\"]",
         "detail": "maps.map_01",
         "documentation": {}
     },
@@ -432,7 +449,7 @@
         "kind": 5,
         "importPath": "maps.map_01",
         "description": "maps.map_01",
-        "peekOfCode": "ENEMY_TYPES = [\"rumia\", \"cirno\"]",
+        "peekOfCode": "ENEMY_TYPES = [\"rumia\", \"cirno\", \"patchouli\"]",
         "detail": "maps.map_01",
         "documentation": {}
     },
@@ -441,7 +458,7 @@
         "kind": 5,
         "importPath": "maps.map_02",
         "description": "maps.map_02",
-        "peekOfCode": "MAP_NAME = \"The Void\"\nMAP_IMAGE = os.path.join(\"maps\", \"map_02.jpg\")\nMAP_WIDTH = 4000\nMAP_HEIGHT = 4000\n# enemy spawning\nENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5}\n]\n# enemy types available on this map",
+        "peekOfCode": "MAP_NAME = \"The Void\"\nMAP_IMAGE = os.path.join(\"maps\", \"map_02.jpg\")\nMAP_WIDTH = 4000\nMAP_HEIGHT = 4000\n# enemy spawning\nENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"patchouli\", \"interval\": 1500, \"count\": 5}\n]",
         "detail": "maps.map_02",
         "documentation": {}
     },
@@ -450,7 +467,7 @@
         "kind": 5,
         "importPath": "maps.map_02",
         "description": "maps.map_02",
-        "peekOfCode": "MAP_IMAGE = os.path.join(\"maps\", \"map_02.jpg\")\nMAP_WIDTH = 4000\nMAP_HEIGHT = 4000\n# enemy spawning\nENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5}\n]\n# enemy types available on this map\nENEMY_TYPES = [\"rumia\", \"cirno\"]",
+        "peekOfCode": "MAP_IMAGE = os.path.join(\"maps\", \"map_02.jpg\")\nMAP_WIDTH = 4000\nMAP_HEIGHT = 4000\n# enemy spawning\nENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"patchouli\", \"interval\": 1500, \"count\": 5}\n]\n# enemy types available on this map",
         "detail": "maps.map_02",
         "documentation": {}
     },
@@ -459,7 +476,7 @@
         "kind": 5,
         "importPath": "maps.map_02",
         "description": "maps.map_02",
-        "peekOfCode": "MAP_WIDTH = 4000\nMAP_HEIGHT = 4000\n# enemy spawning\nENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5}\n]\n# enemy types available on this map\nENEMY_TYPES = [\"rumia\", \"cirno\"]",
+        "peekOfCode": "MAP_WIDTH = 4000\nMAP_HEIGHT = 4000\n# enemy spawning\nENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"patchouli\", \"interval\": 1500, \"count\": 5}\n]\n# enemy types available on this map\nENEMY_TYPES = [\"rumia\", \"cirno\"]",
         "detail": "maps.map_02",
         "documentation": {}
     },
@@ -468,7 +485,7 @@
         "kind": 5,
         "importPath": "maps.map_02",
         "description": "maps.map_02",
-        "peekOfCode": "MAP_HEIGHT = 4000\n# enemy spawning\nENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5}\n]\n# enemy types available on this map\nENEMY_TYPES = [\"rumia\", \"cirno\"]",
+        "peekOfCode": "MAP_HEIGHT = 4000\n# enemy spawning\nENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"patchouli\", \"interval\": 1500, \"count\": 5}\n]\n# enemy types available on this map\nENEMY_TYPES = [\"rumia\", \"cirno\"]",
         "detail": "maps.map_02",
         "documentation": {}
     },
@@ -477,7 +494,7 @@
         "kind": 5,
         "importPath": "maps.map_02",
         "description": "maps.map_02",
-        "peekOfCode": "ENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5}\n]\n# enemy types available on this map\nENEMY_TYPES = [\"rumia\", \"cirno\"]",
+        "peekOfCode": "ENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"patchouli\", \"interval\": 1500, \"count\": 5}\n]\n# enemy types available on this map\nENEMY_TYPES = [\"rumia\", \"cirno\"]",
         "detail": "maps.map_02",
         "documentation": {}
     },
@@ -617,11 +634,20 @@
         "documentation": {}
     },
     {
+        "label": "reset_game",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def reset_game():\n    # Get fresh map and assets\n    m = random.choice(available_maps)\n    bg = pygame.image.load(m.MAP_IMAGE)\n    bg = pygame.transform.scale(bg, (m.MAP_WIDTH, m.MAP_HEIGHT))\n    # Reset objects\n    p = spaceship(100, 100, m.MAP_WIDTH, m.MAP_HEIGHT)\n    pm = ProjectileManager()\n    # Reset all map wave timers\n    for wave in m.ENEMY_WAVES:",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
         "label": "screen",
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "screen = pygame.display.set_mode((WIDTH, HEIGHT), pygame.OPENGL | pygame.DOUBLEBUF)\npygame.display.set_caption(\"will it work tho\")\n# Virtual surface for standard Pygame drawing\ndisplay_surface = pygame.Surface((WIDTH, HEIGHT), pygame.SRCALPHA)\nrenderer = MasterRenderer(WIDTH, HEIGHT)\n# pick a random map\navailable_maps = [map_01, map_02]\ncurrent_map = random.choice(available_maps)\n# background image - sized to full map\nbackground_image = pygame.image.load(current_map.MAP_IMAGE)",
+        "peekOfCode": "screen = pygame.display.set_mode((WIDTH, HEIGHT), pygame.OPENGL | pygame.DOUBLEBUF)\npygame.display.set_caption(\"will it work tho\")\n# Virtual surface for standard Pygame drawing\ndisplay_surface = pygame.Surface((WIDTH, HEIGHT), pygame.SRCALPHA)\nrenderer = MasterRenderer(WIDTH, HEIGHT)\n# pick a random map\navailable_maps = [map_01, map_02]\ndef reset_game():\n    # Get fresh map and assets\n    m = random.choice(available_maps)",
         "detail": "main",
         "documentation": {}
     },
@@ -630,7 +656,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "display_surface = pygame.Surface((WIDTH, HEIGHT), pygame.SRCALPHA)\nrenderer = MasterRenderer(WIDTH, HEIGHT)\n# pick a random map\navailable_maps = [map_01, map_02]\ncurrent_map = random.choice(available_maps)\n# background image - sized to full map\nbackground_image = pygame.image.load(current_map.MAP_IMAGE)\nbackground_image = pygame.transform.scale(background_image, (current_map.MAP_WIDTH, current_map.MAP_HEIGHT))\n#player variable and other variables from files\nplayer = spaceship(100, 100, current_map.MAP_WIDTH, current_map.MAP_HEIGHT)",
+        "peekOfCode": "display_surface = pygame.Surface((WIDTH, HEIGHT), pygame.SRCALPHA)\nrenderer = MasterRenderer(WIDTH, HEIGHT)\n# pick a random map\navailable_maps = [map_01, map_02]\ndef reset_game():\n    # Get fresh map and assets\n    m = random.choice(available_maps)\n    bg = pygame.image.load(m.MAP_IMAGE)\n    bg = pygame.transform.scale(bg, (m.MAP_WIDTH, m.MAP_HEIGHT))\n    # Reset objects",
         "detail": "main",
         "documentation": {}
     },
@@ -639,7 +665,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "renderer = MasterRenderer(WIDTH, HEIGHT)\n# pick a random map\navailable_maps = [map_01, map_02]\ncurrent_map = random.choice(available_maps)\n# background image - sized to full map\nbackground_image = pygame.image.load(current_map.MAP_IMAGE)\nbackground_image = pygame.transform.scale(background_image, (current_map.MAP_WIDTH, current_map.MAP_HEIGHT))\n#player variable and other variables from files\nplayer = spaceship(100, 100, current_map.MAP_WIDTH, current_map.MAP_HEIGHT)\nenemies = []",
+        "peekOfCode": "renderer = MasterRenderer(WIDTH, HEIGHT)\n# pick a random map\navailable_maps = [map_01, map_02]\ndef reset_game():\n    # Get fresh map and assets\n    m = random.choice(available_maps)\n    bg = pygame.image.load(m.MAP_IMAGE)\n    bg = pygame.transform.scale(bg, (m.MAP_WIDTH, m.MAP_HEIGHT))\n    # Reset objects\n    p = spaceship(100, 100, m.MAP_WIDTH, m.MAP_HEIGHT)",
         "detail": "main",
         "documentation": {}
     },
@@ -648,52 +674,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "available_maps = [map_01, map_02]\ncurrent_map = random.choice(available_maps)\n# background image - sized to full map\nbackground_image = pygame.image.load(current_map.MAP_IMAGE)\nbackground_image = pygame.transform.scale(background_image, (current_map.MAP_WIDTH, current_map.MAP_HEIGHT))\n#player variable and other variables from files\nplayer = spaceship(100, 100, current_map.MAP_WIDTH, current_map.MAP_HEIGHT)\nenemies = []\nspatial_grid = SpatialHash(cell_size=100)\nprojectile_manager = ProjectileManager()",
-        "detail": "main",
-        "documentation": {}
-    },
-    {
-        "label": "current_map",
-        "kind": 5,
-        "importPath": "main",
-        "description": "main",
-        "peekOfCode": "current_map = random.choice(available_maps)\n# background image - sized to full map\nbackground_image = pygame.image.load(current_map.MAP_IMAGE)\nbackground_image = pygame.transform.scale(background_image, (current_map.MAP_WIDTH, current_map.MAP_HEIGHT))\n#player variable and other variables from files\nplayer = spaceship(100, 100, current_map.MAP_WIDTH, current_map.MAP_HEIGHT)\nenemies = []\nspatial_grid = SpatialHash(cell_size=100)\nprojectile_manager = ProjectileManager()\n# fps counter",
-        "detail": "main",
-        "documentation": {}
-    },
-    {
-        "label": "background_image",
-        "kind": 5,
-        "importPath": "main",
-        "description": "main",
-        "peekOfCode": "background_image = pygame.image.load(current_map.MAP_IMAGE)\nbackground_image = pygame.transform.scale(background_image, (current_map.MAP_WIDTH, current_map.MAP_HEIGHT))\n#player variable and other variables from files\nplayer = spaceship(100, 100, current_map.MAP_WIDTH, current_map.MAP_HEIGHT)\nenemies = []\nspatial_grid = SpatialHash(cell_size=100)\nprojectile_manager = ProjectileManager()\n# fps counter\nclock = pygame.time.Clock()\npygame.font.init()",
-        "detail": "main",
-        "documentation": {}
-    },
-    {
-        "label": "background_image",
-        "kind": 5,
-        "importPath": "main",
-        "description": "main",
-        "peekOfCode": "background_image = pygame.transform.scale(background_image, (current_map.MAP_WIDTH, current_map.MAP_HEIGHT))\n#player variable and other variables from files\nplayer = spaceship(100, 100, current_map.MAP_WIDTH, current_map.MAP_HEIGHT)\nenemies = []\nspatial_grid = SpatialHash(cell_size=100)\nprojectile_manager = ProjectileManager()\n# fps counter\nclock = pygame.time.Clock()\npygame.font.init()\nfont = pygame.font.Font(None, 36)",
-        "detail": "main",
-        "documentation": {}
-    },
-    {
-        "label": "player",
-        "kind": 5,
-        "importPath": "main",
-        "description": "main",
-        "peekOfCode": "player = spaceship(100, 100, current_map.MAP_WIDTH, current_map.MAP_HEIGHT)\nenemies = []\nspatial_grid = SpatialHash(cell_size=100)\nprojectile_manager = ProjectileManager()\n# fps counter\nclock = pygame.time.Clock()\npygame.font.init()\nfont = pygame.font.Font(None, 36)\n#pause menu, didnt know where to put it\nmmmenu = mmenu()",
-        "detail": "main",
-        "documentation": {}
-    },
-    {
-        "label": "enemies",
-        "kind": 5,
-        "importPath": "main",
-        "description": "main",
-        "peekOfCode": "enemies = []\nspatial_grid = SpatialHash(cell_size=100)\nprojectile_manager = ProjectileManager()\n# fps counter\nclock = pygame.time.Clock()\npygame.font.init()\nfont = pygame.font.Font(None, 36)\n#pause menu, didnt know where to put it\nmmmenu = mmenu()\npause = ppause()",
+        "peekOfCode": "available_maps = [map_01, map_02]\ndef reset_game():\n    # Get fresh map and assets\n    m = random.choice(available_maps)\n    bg = pygame.image.load(m.MAP_IMAGE)\n    bg = pygame.transform.scale(bg, (m.MAP_WIDTH, m.MAP_HEIGHT))\n    # Reset objects\n    p = spaceship(100, 100, m.MAP_WIDTH, m.MAP_HEIGHT)\n    pm = ProjectileManager()\n    # Reset all map wave timers",
         "detail": "main",
         "documentation": {}
     },
@@ -702,16 +683,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "spatial_grid = SpatialHash(cell_size=100)\nprojectile_manager = ProjectileManager()\n# fps counter\nclock = pygame.time.Clock()\npygame.font.init()\nfont = pygame.font.Font(None, 36)\n#pause menu, didnt know where to put it\nmmmenu = mmenu()\npause = ppause()\ngover_menu = gover()",
-        "detail": "main",
-        "documentation": {}
-    },
-    {
-        "label": "projectile_manager",
-        "kind": 5,
-        "importPath": "main",
-        "description": "main",
-        "peekOfCode": "projectile_manager = ProjectileManager()\n# fps counter\nclock = pygame.time.Clock()\npygame.font.init()\nfont = pygame.font.Font(None, 36)\n#pause menu, didnt know where to put it\nmmmenu = mmenu()\npause = ppause()\ngover_menu = gover()\nmmmenu.run(display_surface, clock, renderer)",
+        "peekOfCode": "spatial_grid = SpatialHash(cell_size=100)\n# fps counter\nclock = pygame.time.Clock()\npygame.font.init()\nfont = pygame.font.Font(None, 36)\n#pause menu, didnt know where to put it\nmmmenu = mmenu()\npause = ppause()\ngover_menu = gover()\nmmmenu.run(display_surface, clock, renderer)",
         "detail": "main",
         "documentation": {}
     },
