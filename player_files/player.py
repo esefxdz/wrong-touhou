@@ -2,8 +2,6 @@ import pygame
 import os
 from constants import WIDTH, HEIGHT
 import math
-screen = pygame.display.set_mode((WIDTH, HEIGHT))
-
 class spaceship:
     def __init__(self, x, y, map_w=3000, map_h=3000):
         super().__init__()
@@ -15,23 +13,62 @@ class spaceship:
         self.spaceship_rect = self.spaceship_image.get_rect()
         self.spaceship_rect.center = (map_w // 2, map_h // 2)
         self.bullet_speed = 25
-        self.bullets = []
         self.shoot_cooldown = 75
         self.last_shot_time = pygame.time.get_ticks()
-        self.bullet_image = pygame.image.load("textures/bullet.png")
-        self.bullet_image = pygame.transform.scale(self.bullet_image, (20, 40))
-        
         self.max_hp = 5
         self.hit_count = 0
         self.enemies_killed = 0
         self.damage_dealt = 0
         
+        # Dash and iframe variables
+        self.is_dashing = False
+        self.dash_cooldown = 1000
+        self.last_dash_time = 0
+        self.dash_duration = 200
+        self.dash_speed_multiplier = 3.5
+        self.dash_dir = (0, 0)
+        self.invincible_until = 0
+        self.afterimages = []
+        
         from player_files.level import LevelSystem
         self.level_system = LevelSystem()
 
     def move(self, keys):
+        current_time = pygame.time.get_ticks()
         keys = pygame.key.get_pressed()
         self.player_speed = 10
+
+        if self.is_dashing:
+            if current_time - self.last_dash_time > self.dash_duration:
+                self.is_dashing = False
+            else:
+                self.spaceship_rect.x += self.dash_dir[0] * self.player_speed * self.dash_speed_multiplier
+                self.spaceship_rect.y += self.dash_dir[1] * self.player_speed * self.dash_speed_multiplier
+                
+                # Clamp to map boundaries
+                self.spaceship_rect.x = max(0, min(self.spaceship_rect.x, self.map_w - self.spaceship_rect.width))
+                self.spaceship_rect.y = max(0, min(self.spaceship_rect.y, self.map_h - self.spaceship_rect.height))
+                
+                if len(self.afterimages) == 0 or current_time - self.afterimages[-1][3] > 40:
+                    self.afterimages.append((self.spaceship_image.copy(), self.spaceship_rect.x, self.spaceship_rect.y, current_time))
+                return
+
+        if keys[pygame.K_LSHIFT] and current_time - self.last_dash_time > self.dash_cooldown:
+            dx, dy = 0, 0
+            if keys[pygame.K_a]: dx -= 1
+            if keys[pygame.K_d]: dx += 1
+            if keys[pygame.K_w]: dy -= 1
+            if keys[pygame.K_s]: dy += 1
+            
+            if dx != 0 or dy != 0:
+                dist = math.hypot(dx, dy)
+                self.dash_dir = (dx/dist, dy/dist)
+                self.is_dashing = True
+                self.last_dash_time = current_time
+                self.invincible_until = current_time + self.dash_duration
+                self.afterimages.append((self.spaceship_image.copy(), self.spaceship_rect.x, self.spaceship_rect.y, current_time))
+                return
+
         if keys[pygame.K_a] and self.spaceship_rect.left > 0:
             self.spaceship_rect.x -= self.player_speed
         if keys[pygame.K_d] and self.spaceship_rect.right < self.map_w:
@@ -49,7 +86,7 @@ class spaceship:
         cam_y = max(0, min(cam_y, self.map_h - HEIGHT))
         return cam_x, cam_y
 
-    def shoot(self, cam_offset):
+    def shoot(self, cam_offset, proj_manager):
         current_time = pygame.time.get_ticks()
         if pygame.key.get_pressed()[pygame.K_SPACE] and current_time - self.last_shot_time >= self.shoot_cooldown:
             self.last_shot_time = current_time
@@ -66,38 +103,40 @@ class spaceship:
                 dist = 1
 
             direction = (dx / dist, dy / dist)
-            self.bullets.append({
-                "pos": [px, py],
-                "dir": direction
-            })
-
-    def shoot_update(self, screen, cam_offset):
-        new_bullets = []
-        for bullet in self.bullets:
-            bullet["pos"][0] += bullet["dir"][0] * self.bullet_speed
-            bullet["pos"][1] += bullet["dir"][1] * self.bullet_speed
-
-            screen_x = int(bullet["pos"][0]) - cam_offset[0]
-            screen_y = int(bullet["pos"][1]) - cam_offset[1]
-            bullet_rect = self.bullet_image.get_rect(center=(screen_x, screen_y))
-            screen.blit(self.bullet_image, bullet_rect)
-
-            if 0 <= bullet["pos"][0] <= self.map_w and 0 <= bullet["pos"][1] <= self.map_h:
-                new_bullets.append(bullet)
-        self.bullets = new_bullets
-
+            # owner=0 means player bullet
+            angle = math.atan2(direction[1], direction[0])
+            proj_manager.spawn(
+                px, py, direction[0], direction[1], self.bullet_speed,
+                radius=10, color=(255, 255, 255), type_id=1, owner=0, angle=angle
+            )
 
     def draw(self, screen, cam_offset):
+        current_time = pygame.time.get_ticks()
+        
+        # Draw and update afterimages
+        new_afterimages = []
+        for img, img_x, img_y, spawn_time in self.afterimages:
+            age = current_time - spawn_time
+            if age < 300: # Afterimage lasts 300ms
+                alpha = max(0, 255 - int((age / 300.0) * 255))
+                img.set_alpha(alpha)
+                screen.blit(img, (img_x - cam_offset[0], img_y - cam_offset[1]))
+                new_afterimages.append((img, img_x, img_y, spawn_time))
+        self.afterimages = new_afterimages
+
+        # Draw player
         screen_x = self.spaceship_rect.x - cam_offset[0]
         screen_y = self.spaceship_rect.y - cam_offset[1]
         screen.blit(self.spaceship_image, (screen_x, screen_y))
 
     def take_hit(self):
+        current_time = pygame.time.get_ticks()
+        if current_time < self.invincible_until:
+            return  # i-frames active
+            
         if self.hit_count < self.max_hp:
             self.hit_count += 1
             pygame.mixer.Sound(os.path.join("sounds", "hitsound.wav")).play()
-            if self.hit_count >= self.max_hp:
-                pass # death logic later
                 
     def draw_health(self, screen):
         current_hp = self.max_hp - self.hit_count

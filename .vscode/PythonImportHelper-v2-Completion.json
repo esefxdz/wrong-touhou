@@ -18,15 +18,6 @@
         "documentation": {}
     },
     {
-        "label": "wave",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "wave",
-        "description": "wave",
-        "detail": "wave",
-        "documentation": {}
-    },
-    {
         "label": "pygame",
         "kind": 6,
         "isExtraImport": true,
@@ -79,7 +70,23 @@
         "documentation": {}
     },
     {
-        "label": "BLACK",
+        "label": "WHITE",
+        "importPath": "constants",
+        "description": "constants",
+        "isExtraImport": true,
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "RED",
+        "importPath": "constants",
+        "description": "constants",
+        "isExtraImport": true,
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "LIGHT_RED",
         "importPath": "constants",
         "description": "constants",
         "isExtraImport": true,
@@ -103,6 +110,64 @@
         "documentation": {}
     },
     {
+        "label": "WIDTH",
+        "importPath": "constants",
+        "description": "constants",
+        "isExtraImport": true,
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "HEIGHT",
+        "importPath": "constants",
+        "description": "constants",
+        "isExtraImport": true,
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "BLACK",
+        "importPath": "constants",
+        "description": "constants",
+        "isExtraImport": true,
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "BaseEnemy",
+        "importPath": "baddies.base_enemy",
+        "description": "baddies.base_enemy",
+        "isExtraImport": true,
+        "detail": "baddies.base_enemy",
+        "documentation": {}
+    },
+    {
+        "label": "BaseEnemy",
+        "importPath": "baddies.base_enemy",
+        "description": "baddies.base_enemy",
+        "isExtraImport": true,
+        "detail": "baddies.base_enemy",
+        "documentation": {}
+    },
+    {
+        "label": "moderngl",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "moderngl",
+        "description": "moderngl",
+        "detail": "moderngl",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
         "label": "time",
         "kind": 6,
         "isExtraImport": true,
@@ -112,67 +177,59 @@
         "documentation": {}
     },
     {
-        "label": "rumia",
-        "importPath": "baddies.enemy",
-        "description": "baddies.enemy",
+        "label": "spawn_enemy",
+        "importPath": "baddies",
+        "description": "baddies",
         "isExtraImport": true,
-        "detail": "baddies.enemy",
+        "detail": "baddies",
         "documentation": {}
     },
     {
-        "label": "rumia",
-        "importPath": "baddies.enemy",
-        "description": "baddies.enemy",
+        "label": "check_player_bullets_vs_enemies",
+        "importPath": "collision_optimizer.hit_register",
+        "description": "collision_optimizer.hit_register",
         "isExtraImport": true,
-        "detail": "baddies.enemy",
+        "detail": "collision_optimizer.hit_register",
         "documentation": {}
     },
     {
-        "label": "rumia",
-        "importPath": "baddies.enemy",
-        "description": "baddies.enemy",
+        "label": "check_enemy_bullets_vs_player",
+        "importPath": "collision_optimizer.hit_register",
+        "description": "collision_optimizer.hit_register",
         "isExtraImport": true,
-        "detail": "baddies.enemy",
+        "detail": "collision_optimizer.hit_register",
         "documentation": {}
     },
     {
-        "label": "rumia",
-        "importPath": "baddies.enemy",
-        "description": "baddies.enemy",
+        "label": "SpatialHash",
+        "importPath": "collision_optimizer.hit_register",
+        "description": "collision_optimizer.hit_register",
         "isExtraImport": true,
-        "detail": "baddies.enemy",
+        "detail": "collision_optimizer.hit_register",
+        "documentation": {}
+    },
+    {
+        "label": "MasterRenderer",
+        "importPath": "collision_optimizer.gpu_renderer",
+        "description": "collision_optimizer.gpu_renderer",
+        "isExtraImport": true,
+        "detail": "collision_optimizer.gpu_renderer",
+        "documentation": {}
+    },
+    {
+        "label": "ProjectileManager",
+        "importPath": "collision_optimizer.projectile_manager",
+        "description": "collision_optimizer.projectile_manager",
+        "isExtraImport": true,
+        "detail": "collision_optimizer.projectile_manager",
         "documentation": {}
     },
     {
         "label": "spaceship",
-        "importPath": "player",
-        "description": "player",
+        "importPath": "player_files.player",
+        "description": "player_files.player",
         "isExtraImport": true,
-        "detail": "player",
-        "documentation": {}
-    },
-    {
-        "label": "spaceship",
-        "importPath": "player",
-        "description": "player",
-        "isExtraImport": true,
-        "detail": "player",
-        "documentation": {}
-    },
-    {
-        "label": "boss_hit",
-        "importPath": "hit_register",
-        "description": "hit_register",
-        "isExtraImport": true,
-        "detail": "hit_register",
-        "documentation": {}
-    },
-    {
-        "label": "player_hit",
-        "importPath": "hit_register",
-        "description": "hit_register",
-        "isExtraImport": true,
-        "detail": "hit_register",
+        "detail": "player_files.player",
         "documentation": {}
     },
     {
@@ -192,12 +249,263 @@
         "documentation": {}
     },
     {
-        "label": "rumia",
+        "label": "gover",
+        "importPath": "ui.over",
+        "description": "ui.over",
+        "isExtraImport": true,
+        "detail": "ui.over",
+        "documentation": {}
+    },
+    {
+        "label": "maps.map_01",
         "kind": 6,
-        "importPath": "baddies.enemy",
-        "description": "baddies.enemy",
-        "peekOfCode": "class rumia:\n    def __init__(self, player_ref):\n        super().__init__()\n        self.player = player_ref\n        kill_sound_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), \"killsound.wav\")\n        self.kill_sound = kill_sound_path\n        self.image_path = os.path.join(os.path.dirname(__file__), \"rumia.png\")\n        self.image = pygame.image.load(self.image_path)\n        self.image = pygame.transform.scale(self.image, (150, 150))\n        self.rumia_rect = self.image.get_rect()",
-        "detail": "baddies.enemy",
+        "isExtraImport": true,
+        "importPath": "maps.map_01",
+        "description": "maps.map_01",
+        "detail": "maps.map_01",
+        "documentation": {}
+    },
+    {
+        "label": "maps.map_02",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "maps.map_02",
+        "description": "maps.map_02",
+        "detail": "maps.map_02",
+        "documentation": {}
+    },
+    {
+        "label": "BaseEnemy",
+        "kind": 6,
+        "importPath": "baddies.base_enemy",
+        "description": "baddies.base_enemy",
+        "peekOfCode": "class BaseEnemy:\n    \"\"\"Base class for all enemies. Subclass this and override the config to create new enemies.\"\"\"\n    # === OVERRIDE THESE IN SUBCLASSES ===\n    SPRITE_PATH = None      # path to sprite image relative to baddies folder\n    SPRITE_SIZE = (150, 150)\n    HITBOX_SIZE = (50, 50)\n    MAX_HP = 2\n    SPEED = 1.5\n    FIRE_COOLDOWN = 1000    # ms between shots\n    FIRE_SPEED = 3          # bullet travel speed",
+        "detail": "baddies.base_enemy",
+        "documentation": {}
+    },
+    {
+        "label": "Cirno",
+        "kind": 6,
+        "importPath": "baddies.cirno",
+        "description": "baddies.cirno",
+        "peekOfCode": "class Cirno(BaseEnemy):\n    \"\"\"Cirno - Shotgunner enemy that fires blue projectiles.\"\"\"\n    SPRITE_PATH = \"cirno.png\"\n    SPRITE_SIZE = (150, 150)\n    HITBOX_SIZE = (50, 50)\n    MAX_HP = 4              # Tougher than Rumia\n    SPEED = 1.0             # Slightly slower\n    FIRE_COOLDOWN = 1500    # Shoots slower\n    FIRE_SPEED = 2          # Slower bullets\n    FIRE_COLOR = (0, 200, 255) # Cyan/Blue colored bullets",
+        "detail": "baddies.cirno",
+        "documentation": {}
+    },
+    {
+        "label": "Rumia",
+        "kind": 6,
+        "importPath": "baddies.rumia",
+        "description": "baddies.rumia",
+        "peekOfCode": "class Rumia(BaseEnemy):\n    \"\"\"Rumia - basic chaser enemy that fires at player.\"\"\"\n    SPRITE_PATH = \"rumia.png\"\n    SPRITE_SIZE = (150, 150)\n    HITBOX_SIZE = (50, 50)\n    MAX_HP = 2\n    SPEED = 1.5\n    FIRE_COOLDOWN = 1000\n    FIRE_SPEED = 3\n    FIRE_COLOR = (255, 0, 0)",
+        "detail": "baddies.rumia",
+        "documentation": {}
+    },
+    {
+        "label": "BulletRenderer",
+        "kind": 6,
+        "importPath": "collision_optimizer.gpu_renderer",
+        "description": "collision_optimizer.gpu_renderer",
+        "peekOfCode": "class BulletRenderer:\n    def __init__(self, ctx, w, h):\n        self.ctx = ctx\n        self.w = w\n        self.h = h\n        # Load Bullet Texture\n        try:\n            bullet_surf = pygame.image.load(\"textures/bullet.png\").convert_alpha()\n            # Rotate it 90 degrees if it's horizontal by default, or handle in shader\n            tex_data = pygame.image.tostring(bullet_surf, 'RGBA', 1)",
+        "detail": "collision_optimizer.gpu_renderer",
+        "documentation": {}
+    },
+    {
+        "label": "UIRenderer",
+        "kind": 6,
+        "importPath": "collision_optimizer.gpu_renderer",
+        "description": "collision_optimizer.gpu_renderer",
+        "peekOfCode": "class UIRenderer:\n    \"\"\"Renderer for the standard Pygame Surface (UI, Player, Map).\"\"\"\n    def __init__(self, ctx, w, h):\n        self.ctx = ctx\n        self.prog = self.ctx.program(\n            vertex_shader='''\n                #version 330\n                in vec2 in_vert;\n                in vec2 in_texcoord;\n                out vec2 v_texcoord;",
+        "detail": "collision_optimizer.gpu_renderer",
+        "documentation": {}
+    },
+    {
+        "label": "MasterRenderer",
+        "kind": 6,
+        "importPath": "collision_optimizer.gpu_renderer",
+        "description": "collision_optimizer.gpu_renderer",
+        "peekOfCode": "class MasterRenderer:\n    \"\"\"Coordinates the Hybrid drawing process.\"\"\"\n    def __init__(self, w, h):\n        self.ctx = moderngl.create_context()\n        # Enable alpha blending for transparency\n        self.ctx.enable(moderngl.BLEND)\n        self.ctx.blend_func = moderngl.SRC_ALPHA, moderngl.ONE_MINUS_SRC_ALPHA\n        self.bullet_renderer = BulletRenderer(self.ctx, w, h)\n        self.ui_renderer = UIRenderer(self.ctx, w, h)\n    def render(self, display_surface, bullet_data_np, cam_offset):",
+        "detail": "collision_optimizer.gpu_renderer",
+        "documentation": {}
+    },
+    {
+        "label": "SpatialHash",
+        "kind": 6,
+        "importPath": "collision_optimizer.hit_register",
+        "description": "collision_optimizer.hit_register",
+        "peekOfCode": "class SpatialHash:\n    def __init__(self, cell_size=100):\n        self.cell_size = cell_size\n        self.grid = {}\n    def _get_cell_coords(self, x, y):\n        return (int(x // self.cell_size), int(y // self.cell_size))\n    def clear(self):\n        self.grid = {}\n    def insert(self, rect, item):\n        start_x, start_y = self._get_cell_coords(rect.left, rect.top)",
+        "detail": "collision_optimizer.hit_register",
+        "documentation": {}
+    },
+    {
+        "label": "check_player_bullets_vs_enemies",
+        "kind": 2,
+        "importPath": "collision_optimizer.hit_register",
+        "description": "collision_optimizer.hit_register",
+        "peekOfCode": "def check_player_bullets_vs_enemies(proj_manager, enemies, spatial_hash, player):\n    \"\"\"Checks player bullets against enemies stored in the spatial hash.\"\"\"\n    pl_mask = proj_manager.active & (proj_manager.owner == 0)\n    if not np.any(pl_mask): return\n    pl_idx = np.where(pl_mask)[0]\n    for idx in pl_idx:\n        bx = proj_manager.pos_x[idx]\n        by = proj_manager.pos_y[idx]\n        # use bullet radius from array, though in original it was hardcoded 20x40. We can just use the provided radius.\n        br = proj_manager.radius[idx]",
+        "detail": "collision_optimizer.hit_register",
+        "documentation": {}
+    },
+    {
+        "label": "check_enemy_bullets_vs_player",
+        "kind": 2,
+        "importPath": "collision_optimizer.hit_register",
+        "description": "collision_optimizer.hit_register",
+        "peekOfCode": "def check_enemy_bullets_vs_player(proj_manager, player):\n    \"\"\"Vectorized check for all enemy bullets against the single player.\"\"\"\n    en_mask = proj_manager.active & (proj_manager.owner == 1)\n    if not np.any(en_mask): return\n    px, py = player.spaceship_rect.center\n    dx = proj_manager.pos_x[en_mask] - px\n    dy = proj_manager.pos_y[en_mask] - py\n    dist_sq = dx**2 + dy**2\n    # 25 is roughly half of player's 50x50 rect\n    radii = proj_manager.radius[en_mask] + 25.0",
+        "detail": "collision_optimizer.hit_register",
+        "documentation": {}
+    },
+    {
+        "label": "Bullet",
+        "kind": 6,
+        "importPath": "collision_optimizer.obj_pool",
+        "description": "collision_optimizer.obj_pool",
+        "peekOfCode": "class Bullet:\n    \"\"\"A lightweight bullet object using __slots__ for memory efficiency.\"\"\"\n    __slots__ = ['pos_x', 'pos_y', 'dir_x', 'dir_y', 'active', 'color', 'radius', 'type_id', 'angle']\n    def __init__(self):\n        self.active = False\n        self.pos_x = 0\n        self.pos_y = 0\n        self.dir_x = 0\n        self.dir_y = 0\n        self.color = (255, 255, 255)",
+        "detail": "collision_optimizer.obj_pool",
+        "documentation": {}
+    },
+    {
+        "label": "DynamicPool",
+        "kind": 6,
+        "importPath": "collision_optimizer.obj_pool",
+        "description": "collision_optimizer.obj_pool",
+        "peekOfCode": "class DynamicPool:\n    \"\"\"A dynamic object pool that grows as needed.\"\"\"\n    def __init__(self, initial_size=100):\n        self.inactive = [Bullet() for _ in range(initial_size)]\n        self.active_count = 0\n    def get(self, x, y, dx, dy, color=(255, 255, 255), radius=5, type_id=0):\n        \"\"\"Grabs a bullet from the pool or grows it if empty.\"\"\"\n        if not self.inactive:\n            # Grow by 50% or at least 50 units\n            growth_size = max(50, len(self.inactive) // 2)",
+        "detail": "collision_optimizer.obj_pool",
+        "documentation": {}
+    },
+    {
+        "label": "ProjectileManager",
+        "kind": 6,
+        "importPath": "collision_optimizer.projectile_manager",
+        "description": "collision_optimizer.projectile_manager",
+        "peekOfCode": "class ProjectileManager:\n    \"\"\"\n    Data-Oriented Projectile Manager.\n    Instead of thousands of Python objects, we use parallel 1D numpy arrays.\n    \"\"\"\n    def __init__(self, max_bullets=20000):\n        self.max_bullets = max_bullets\n        self.active_count = 0\n        # We need these attributes for the shader:\n        # pos(2f), color(3f), radius(1f), angle(1f), type(1i) => 8 floats",
+        "detail": "collision_optimizer.projectile_manager",
+        "documentation": {}
+    },
+    {
+        "label": "MAP_NAME",
+        "kind": 5,
+        "importPath": "maps.map_01",
+        "description": "maps.map_01",
+        "peekOfCode": "MAP_NAME = \"The Field\"\nMAP_IMAGE = os.path.join(\"maps\", \"map_01.jpg\")\nMAP_WIDTH = 3000\nMAP_HEIGHT = 3000\n# enemy spawning\nENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 2000, \"count\": 3},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5}\n]\n# enemy types available on this map",
+        "detail": "maps.map_01",
+        "documentation": {}
+    },
+    {
+        "label": "MAP_IMAGE",
+        "kind": 5,
+        "importPath": "maps.map_01",
+        "description": "maps.map_01",
+        "peekOfCode": "MAP_IMAGE = os.path.join(\"maps\", \"map_01.jpg\")\nMAP_WIDTH = 3000\nMAP_HEIGHT = 3000\n# enemy spawning\nENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 2000, \"count\": 3},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5}\n]\n# enemy types available on this map\nENEMY_TYPES = [\"rumia\", \"cirno\"]",
+        "detail": "maps.map_01",
+        "documentation": {}
+    },
+    {
+        "label": "MAP_WIDTH",
+        "kind": 5,
+        "importPath": "maps.map_01",
+        "description": "maps.map_01",
+        "peekOfCode": "MAP_WIDTH = 3000\nMAP_HEIGHT = 3000\n# enemy spawning\nENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 2000, \"count\": 3},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5}\n]\n# enemy types available on this map\nENEMY_TYPES = [\"rumia\", \"cirno\"]",
+        "detail": "maps.map_01",
+        "documentation": {}
+    },
+    {
+        "label": "MAP_HEIGHT",
+        "kind": 5,
+        "importPath": "maps.map_01",
+        "description": "maps.map_01",
+        "peekOfCode": "MAP_HEIGHT = 3000\n# enemy spawning\nENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 2000, \"count\": 3},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5}\n]\n# enemy types available on this map\nENEMY_TYPES = [\"rumia\", \"cirno\"]",
+        "detail": "maps.map_01",
+        "documentation": {}
+    },
+    {
+        "label": "ENEMY_WAVES",
+        "kind": 5,
+        "importPath": "maps.map_01",
+        "description": "maps.map_01",
+        "peekOfCode": "ENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 2000, \"count\": 3},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5}\n]\n# enemy types available on this map\nENEMY_TYPES = [\"rumia\", \"cirno\"]",
+        "detail": "maps.map_01",
+        "documentation": {}
+    },
+    {
+        "label": "ENEMY_TYPES",
+        "kind": 5,
+        "importPath": "maps.map_01",
+        "description": "maps.map_01",
+        "peekOfCode": "ENEMY_TYPES = [\"rumia\", \"cirno\"]",
+        "detail": "maps.map_01",
+        "documentation": {}
+    },
+    {
+        "label": "MAP_NAME",
+        "kind": 5,
+        "importPath": "maps.map_02",
+        "description": "maps.map_02",
+        "peekOfCode": "MAP_NAME = \"The Void\"\nMAP_IMAGE = os.path.join(\"maps\", \"map_02.jpg\")\nMAP_WIDTH = 4000\nMAP_HEIGHT = 4000\n# enemy spawning\nENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5}\n]\n# enemy types available on this map",
+        "detail": "maps.map_02",
+        "documentation": {}
+    },
+    {
+        "label": "MAP_IMAGE",
+        "kind": 5,
+        "importPath": "maps.map_02",
+        "description": "maps.map_02",
+        "peekOfCode": "MAP_IMAGE = os.path.join(\"maps\", \"map_02.jpg\")\nMAP_WIDTH = 4000\nMAP_HEIGHT = 4000\n# enemy spawning\nENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5}\n]\n# enemy types available on this map\nENEMY_TYPES = [\"rumia\", \"cirno\"]",
+        "detail": "maps.map_02",
+        "documentation": {}
+    },
+    {
+        "label": "MAP_WIDTH",
+        "kind": 5,
+        "importPath": "maps.map_02",
+        "description": "maps.map_02",
+        "peekOfCode": "MAP_WIDTH = 4000\nMAP_HEIGHT = 4000\n# enemy spawning\nENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5}\n]\n# enemy types available on this map\nENEMY_TYPES = [\"rumia\", \"cirno\"]",
+        "detail": "maps.map_02",
+        "documentation": {}
+    },
+    {
+        "label": "MAP_HEIGHT",
+        "kind": 5,
+        "importPath": "maps.map_02",
+        "description": "maps.map_02",
+        "peekOfCode": "MAP_HEIGHT = 4000\n# enemy spawning\nENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5}\n]\n# enemy types available on this map\nENEMY_TYPES = [\"rumia\", \"cirno\"]",
+        "detail": "maps.map_02",
+        "documentation": {}
+    },
+    {
+        "label": "ENEMY_WAVES",
+        "kind": 5,
+        "importPath": "maps.map_02",
+        "description": "maps.map_02",
+        "peekOfCode": "ENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5}\n]\n# enemy types available on this map\nENEMY_TYPES = [\"rumia\", \"cirno\"]",
+        "detail": "maps.map_02",
+        "documentation": {}
+    },
+    {
+        "label": "ENEMY_TYPES",
+        "kind": 5,
+        "importPath": "maps.map_02",
+        "description": "maps.map_02",
+        "peekOfCode": "ENEMY_TYPES = [\"rumia\", \"cirno\"]",
+        "detail": "maps.map_02",
+        "documentation": {}
+    },
+    {
+        "label": "LevelSystem",
+        "kind": 6,
+        "importPath": "player_files.level",
+        "description": "player_files.level",
+        "peekOfCode": "class LevelSystem:\n    def __init__(self):\n        self.level = 1\n        self.current_xp = 0\n        self.xp_to_next_level = 10\n        self.level_up_text_timer = 0\n        self.pending_levels = 0  # unchosen perk level ups\n        # pause-like system for level up screen\n        self.paused = False\n        self.last_click_time = 0",
+        "detail": "player_files.level",
+        "documentation": {}
+    },
+    {
+        "label": "spaceship",
+        "kind": 6,
+        "importPath": "player_files.player",
+        "description": "player_files.player",
+        "peekOfCode": "class spaceship:\n    def __init__(self, x, y, map_w=3000, map_h=3000):\n        super().__init__()\n        self.map_w = map_w\n        self.map_h = map_h\n        self.rect = pygame.Rect(x, y, 50, 50)\n        self.spaceship_image = pygame.image.load(\"textures/spaceship.png\")\n        self.spaceship_image = pygame.transform.scale(self.spaceship_image, (50, 50))\n        self.spaceship_rect = self.spaceship_image.get_rect()\n        self.spaceship_rect.center = (map_w // 2, map_h // 2)",
+        "detail": "player_files.player",
         "documentation": {}
     },
     {
@@ -205,26 +513,17 @@
         "kind": 6,
         "importPath": "ui.menu",
         "description": "ui.menu",
-        "peekOfCode": "class mmenu:\n    def __init__(self):\n        self.menu = True\n        self.font = pygame.font.SysFont(None, 60)\n        self.pause_background_image = pygame.image.load(\"textures/menu_background.jpg\")\n        self.pause_background_image = pygame.transform.scale(\n            menu_background_image,\n            (constants.WIDTH, constants.HEIGHT)\n            )\n    def run(self, screen, clock):",
+        "peekOfCode": "class mmenu:\n    def __init__(self):\n        self.menu = True\n        self.font = pygame.font.SysFont(None, 60)\n        self.menu_background_image = pygame.image.load(\"textures/menu_background.jpg\")\n        self.menu_background_image = pygame.transform.scale(\n            self.menu_background_image,\n            (constants.WIDTH, constants.HEIGHT)\n        )\n    def run(self, surface, clock, renderer):",
         "detail": "ui.menu",
         "documentation": {}
     },
     {
-        "label": "menu_background_image",
-        "kind": 5,
-        "importPath": "ui.menu",
-        "description": "ui.menu",
-        "peekOfCode": "menu_background_image = pygame.image.load(\"textures/menu_background.jpg\")\nmenu_background_image = pygame.transform.scale(\n    menu_background_image,\n      (constants.WIDTH, constants.HEIGHT)\n      )\nclass mmenu:\n    def __init__(self):\n        self.menu = True\n        self.font = pygame.font.SysFont(None, 60)\n        self.pause_background_image = pygame.image.load(\"textures/menu_background.jpg\")",
-        "detail": "ui.menu",
-        "documentation": {}
-    },
-    {
-        "label": "menu_background_image",
-        "kind": 5,
-        "importPath": "ui.menu",
-        "description": "ui.menu",
-        "peekOfCode": "menu_background_image = pygame.transform.scale(\n    menu_background_image,\n      (constants.WIDTH, constants.HEIGHT)\n      )\nclass mmenu:\n    def __init__(self):\n        self.menu = True\n        self.font = pygame.font.SysFont(None, 60)\n        self.pause_background_image = pygame.image.load(\"textures/menu_background.jpg\")\n        self.pause_background_image = pygame.transform.scale(",
-        "detail": "ui.menu",
+        "label": "gover",
+        "kind": 6,
+        "importPath": "ui.over",
+        "description": "ui.over",
+        "peekOfCode": "class gover:\n    def __init__(self):\n        self.game_over = False\n        self.font = pygame.font.SysFont(None, 60)\n        self.background_image = pygame.image.load(\"textures/over_background.png\")\n        self.background_image = pygame.transform.scale(\n            self.background_image,\n            (constants.WIDTH, constants.HEIGHT)\n        )\n        self.last_click_time = 0",
+        "detail": "ui.over",
         "documentation": {}
     },
     {
@@ -232,25 +531,7 @@
         "kind": 6,
         "importPath": "ui.pause",
         "description": "ui.pause",
-        "peekOfCode": "class ppause:\n    def __init__(self):\n        self.paused = False\n        self.menu = False\n        self.font = pygame.font.SysFont(None, 60)\n        self.pause_background_image = pygame.image.load(\"textures/pause_background.jpg\")\n        self.pause_background_image = pygame.transform.scale(\n            pause_background_image,\n            (constants.WIDTH, constants.HEIGHT)\n            )",
-        "detail": "ui.pause",
-        "documentation": {}
-    },
-    {
-        "label": "pause_background_image",
-        "kind": 5,
-        "importPath": "ui.pause",
-        "description": "ui.pause",
-        "peekOfCode": "pause_background_image = pygame.image.load(\"textures/pause_background.jpg\")\npause_background_image = pygame.transform.scale(\n    pause_background_image,\n      (constants.WIDTH, constants.HEIGHT)\n      )\n#AN IDEA I WILL IMPLEMENT LATER\n#screen_size = screen.get_size() #big idea that i will apply to others\n#pause_background_image = pygame.image.load(\"textures/pause_background.jpg\")\n#pause_background_image = pygame.transform.scale(\n#    pause_background_image,",
-        "detail": "ui.pause",
-        "documentation": {}
-    },
-    {
-        "label": "pause_background_image",
-        "kind": 5,
-        "importPath": "ui.pause",
-        "description": "ui.pause",
-        "peekOfCode": "pause_background_image = pygame.transform.scale(\n    pause_background_image,\n      (constants.WIDTH, constants.HEIGHT)\n      )\n#AN IDEA I WILL IMPLEMENT LATER\n#screen_size = screen.get_size() #big idea that i will apply to others\n#pause_background_image = pygame.image.load(\"textures/pause_background.jpg\")\n#pause_background_image = pygame.transform.scale(\n#    pause_background_image,\n#      screen_size)",
+        "peekOfCode": "class ppause:\n    def __init__(self):\n        self.paused = False\n        self.menu = False\n        self.font = pygame.font.SysFont(None, 60)\n        self.pause_background_image = pygame.image.load(\"textures/pause_background.jpg\")\n        self.pause_background_image = pygame.transform.scale(\n            self.pause_background_image,\n            (constants.WIDTH, constants.HEIGHT)\n        )",
         "detail": "ui.pause",
         "documentation": {}
     },
@@ -336,38 +617,47 @@
         "documentation": {}
     },
     {
-        "label": "player_hit",
-        "kind": 2,
-        "importPath": "hit_register",
-        "description": "hit_register",
-        "peekOfCode": "def player_hit(bullets, target_rect, take_hit):\n    for bullet in bullets:\n        bullet_rect = pygame.Rect(bullet[\"pos\"][0], bullet[\"pos\"][1], 5, 5)\n        if bullet_rect.colliderect(target_rect):\n            take_hit()\ndef boss_hit(fires, spaceship_rect):\n    for fire in fires:\n        fire_rect = pygame.Rect(fire[\"pos\"][0], fire[\"pos\"][1], 5, 5)",
-        "detail": "hit_register",
-        "documentation": {}
-    },
-    {
-        "label": "boss_hit",
-        "kind": 2,
-        "importPath": "hit_register",
-        "description": "hit_register",
-        "peekOfCode": "def boss_hit(fires, spaceship_rect):\n    for fire in fires:\n        fire_rect = pygame.Rect(fire[\"pos\"][0], fire[\"pos\"][1], 5, 5)",
-        "detail": "hit_register",
-        "documentation": {}
-    },
-    {
-        "label": "boss",
-        "kind": 5,
-        "importPath": "hit_register",
-        "description": "hit_register",
-        "peekOfCode": "boss = rumia\ndef player_hit(bullets, target_rect, take_hit):\n    for bullet in bullets:\n        bullet_rect = pygame.Rect(bullet[\"pos\"][0], bullet[\"pos\"][1], 5, 5)\n        if bullet_rect.colliderect(target_rect):\n            take_hit()\ndef boss_hit(fires, spaceship_rect):\n    for fire in fires:\n        fire_rect = pygame.Rect(fire[\"pos\"][0], fire[\"pos\"][1], 5, 5)",
-        "detail": "hit_register",
-        "documentation": {}
-    },
-    {
         "label": "screen",
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "screen = pygame.display.set_mode((WIDTH, HEIGHT))\npygame.display.set_caption(\"will it work tho\")\n# background image\nbackground_image = pygame.image.load(\"textures/background.jpg\")\nbackground_image = pygame.transform.scale(background_image, (WIDTH, HEIGHT))\n#player variable and other variables from files\nx = 100\ny = 100\nplayer = spaceship(x, y)\nenemies = []",
+        "peekOfCode": "screen = pygame.display.set_mode((WIDTH, HEIGHT), pygame.OPENGL | pygame.DOUBLEBUF)\npygame.display.set_caption(\"will it work tho\")\n# Virtual surface for standard Pygame drawing\ndisplay_surface = pygame.Surface((WIDTH, HEIGHT), pygame.SRCALPHA)\nrenderer = MasterRenderer(WIDTH, HEIGHT)\n# pick a random map\navailable_maps = [map_01, map_02]\ncurrent_map = random.choice(available_maps)\n# background image - sized to full map\nbackground_image = pygame.image.load(current_map.MAP_IMAGE)",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "display_surface",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "display_surface = pygame.Surface((WIDTH, HEIGHT), pygame.SRCALPHA)\nrenderer = MasterRenderer(WIDTH, HEIGHT)\n# pick a random map\navailable_maps = [map_01, map_02]\ncurrent_map = random.choice(available_maps)\n# background image - sized to full map\nbackground_image = pygame.image.load(current_map.MAP_IMAGE)\nbackground_image = pygame.transform.scale(background_image, (current_map.MAP_WIDTH, current_map.MAP_HEIGHT))\n#player variable and other variables from files\nplayer = spaceship(100, 100, current_map.MAP_WIDTH, current_map.MAP_HEIGHT)",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "renderer",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "renderer = MasterRenderer(WIDTH, HEIGHT)\n# pick a random map\navailable_maps = [map_01, map_02]\ncurrent_map = random.choice(available_maps)\n# background image - sized to full map\nbackground_image = pygame.image.load(current_map.MAP_IMAGE)\nbackground_image = pygame.transform.scale(background_image, (current_map.MAP_WIDTH, current_map.MAP_HEIGHT))\n#player variable and other variables from files\nplayer = spaceship(100, 100, current_map.MAP_WIDTH, current_map.MAP_HEIGHT)\nenemies = []",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "available_maps",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "available_maps = [map_01, map_02]\ncurrent_map = random.choice(available_maps)\n# background image - sized to full map\nbackground_image = pygame.image.load(current_map.MAP_IMAGE)\nbackground_image = pygame.transform.scale(background_image, (current_map.MAP_WIDTH, current_map.MAP_HEIGHT))\n#player variable and other variables from files\nplayer = spaceship(100, 100, current_map.MAP_WIDTH, current_map.MAP_HEIGHT)\nenemies = []\nspatial_grid = SpatialHash(cell_size=100)\nprojectile_manager = ProjectileManager()",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "current_map",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "current_map = random.choice(available_maps)\n# background image - sized to full map\nbackground_image = pygame.image.load(current_map.MAP_IMAGE)\nbackground_image = pygame.transform.scale(background_image, (current_map.MAP_WIDTH, current_map.MAP_HEIGHT))\n#player variable and other variables from files\nplayer = spaceship(100, 100, current_map.MAP_WIDTH, current_map.MAP_HEIGHT)\nenemies = []\nspatial_grid = SpatialHash(cell_size=100)\nprojectile_manager = ProjectileManager()\n# fps counter",
         "detail": "main",
         "documentation": {}
     },
@@ -376,7 +666,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "background_image = pygame.image.load(\"textures/background.jpg\")\nbackground_image = pygame.transform.scale(background_image, (WIDTH, HEIGHT))\n#player variable and other variables from files\nx = 100\ny = 100\nplayer = spaceship(x, y)\nenemies = []\nenemy_spawn_timer = 0\nenemy_spawn_interval = 2000  # spawn every 2 seconds\nenemies_per_wave = 3",
+        "peekOfCode": "background_image = pygame.image.load(current_map.MAP_IMAGE)\nbackground_image = pygame.transform.scale(background_image, (current_map.MAP_WIDTH, current_map.MAP_HEIGHT))\n#player variable and other variables from files\nplayer = spaceship(100, 100, current_map.MAP_WIDTH, current_map.MAP_HEIGHT)\nenemies = []\nspatial_grid = SpatialHash(cell_size=100)\nprojectile_manager = ProjectileManager()\n# fps counter\nclock = pygame.time.Clock()\npygame.font.init()",
         "detail": "main",
         "documentation": {}
     },
@@ -385,25 +675,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "background_image = pygame.transform.scale(background_image, (WIDTH, HEIGHT))\n#player variable and other variables from files\nx = 100\ny = 100\nplayer = spaceship(x, y)\nenemies = []\nenemy_spawn_timer = 0\nenemy_spawn_interval = 2000  # spawn every 2 seconds\nenemies_per_wave = 3\n# fps counter",
-        "detail": "main",
-        "documentation": {}
-    },
-    {
-        "label": "x",
-        "kind": 5,
-        "importPath": "main",
-        "description": "main",
-        "peekOfCode": "x = 100\ny = 100\nplayer = spaceship(x, y)\nenemies = []\nenemy_spawn_timer = 0\nenemy_spawn_interval = 2000  # spawn every 2 seconds\nenemies_per_wave = 3\n# fps counter\nclock = pygame.time.Clock()\npygame.font.init()",
-        "detail": "main",
-        "documentation": {}
-    },
-    {
-        "label": "y",
-        "kind": 5,
-        "importPath": "main",
-        "description": "main",
-        "peekOfCode": "y = 100\nplayer = spaceship(x, y)\nenemies = []\nenemy_spawn_timer = 0\nenemy_spawn_interval = 2000  # spawn every 2 seconds\nenemies_per_wave = 3\n# fps counter\nclock = pygame.time.Clock()\npygame.font.init()\nfont = pygame.font.Font(None, 36)",
+        "peekOfCode": "background_image = pygame.transform.scale(background_image, (current_map.MAP_WIDTH, current_map.MAP_HEIGHT))\n#player variable and other variables from files\nplayer = spaceship(100, 100, current_map.MAP_WIDTH, current_map.MAP_HEIGHT)\nenemies = []\nspatial_grid = SpatialHash(cell_size=100)\nprojectile_manager = ProjectileManager()\n# fps counter\nclock = pygame.time.Clock()\npygame.font.init()\nfont = pygame.font.Font(None, 36)",
         "detail": "main",
         "documentation": {}
     },
@@ -412,7 +684,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "player = spaceship(x, y)\nenemies = []\nenemy_spawn_timer = 0\nenemy_spawn_interval = 2000  # spawn every 2 seconds\nenemies_per_wave = 3\n# fps counter\nclock = pygame.time.Clock()\npygame.font.init()\nfont = pygame.font.Font(None, 36)\n#pause menu, didnt know where to put it",
+        "peekOfCode": "player = spaceship(100, 100, current_map.MAP_WIDTH, current_map.MAP_HEIGHT)\nenemies = []\nspatial_grid = SpatialHash(cell_size=100)\nprojectile_manager = ProjectileManager()\n# fps counter\nclock = pygame.time.Clock()\npygame.font.init()\nfont = pygame.font.Font(None, 36)\n#pause menu, didnt know where to put it\nmmmenu = mmenu()",
         "detail": "main",
         "documentation": {}
     },
@@ -421,34 +693,25 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "enemies = []\nenemy_spawn_timer = 0\nenemy_spawn_interval = 2000  # spawn every 2 seconds\nenemies_per_wave = 3\n# fps counter\nclock = pygame.time.Clock()\npygame.font.init()\nfont = pygame.font.Font(None, 36)\n#pause menu, didnt know where to put it\nmmmenu = mmenu()",
+        "peekOfCode": "enemies = []\nspatial_grid = SpatialHash(cell_size=100)\nprojectile_manager = ProjectileManager()\n# fps counter\nclock = pygame.time.Clock()\npygame.font.init()\nfont = pygame.font.Font(None, 36)\n#pause menu, didnt know where to put it\nmmmenu = mmenu()\npause = ppause()",
         "detail": "main",
         "documentation": {}
     },
     {
-        "label": "enemy_spawn_timer",
+        "label": "spatial_grid",
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "enemy_spawn_timer = 0\nenemy_spawn_interval = 2000  # spawn every 2 seconds\nenemies_per_wave = 3\n# fps counter\nclock = pygame.time.Clock()\npygame.font.init()\nfont = pygame.font.Font(None, 36)\n#pause menu, didnt know where to put it\nmmmenu = mmenu()\npause = ppause()",
+        "peekOfCode": "spatial_grid = SpatialHash(cell_size=100)\nprojectile_manager = ProjectileManager()\n# fps counter\nclock = pygame.time.Clock()\npygame.font.init()\nfont = pygame.font.Font(None, 36)\n#pause menu, didnt know where to put it\nmmmenu = mmenu()\npause = ppause()\ngover_menu = gover()",
         "detail": "main",
         "documentation": {}
     },
     {
-        "label": "enemy_spawn_interval",
+        "label": "projectile_manager",
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "enemy_spawn_interval = 2000  # spawn every 2 seconds\nenemies_per_wave = 3\n# fps counter\nclock = pygame.time.Clock()\npygame.font.init()\nfont = pygame.font.Font(None, 36)\n#pause menu, didnt know where to put it\nmmmenu = mmenu()\npause = ppause()\nmmmenu.run(screen, clock)",
-        "detail": "main",
-        "documentation": {}
-    },
-    {
-        "label": "enemies_per_wave",
-        "kind": 5,
-        "importPath": "main",
-        "description": "main",
-        "peekOfCode": "enemies_per_wave = 3\n# fps counter\nclock = pygame.time.Clock()\npygame.font.init()\nfont = pygame.font.Font(None, 36)\n#pause menu, didnt know where to put it\nmmmenu = mmenu()\npause = ppause()\nmmmenu.run(screen, clock)\nin_menu = True",
+        "peekOfCode": "projectile_manager = ProjectileManager()\n# fps counter\nclock = pygame.time.Clock()\npygame.font.init()\nfont = pygame.font.Font(None, 36)\n#pause menu, didnt know where to put it\nmmmenu = mmenu()\npause = ppause()\ngover_menu = gover()\nmmmenu.run(display_surface, clock, renderer)",
         "detail": "main",
         "documentation": {}
     },
@@ -457,7 +720,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "clock = pygame.time.Clock()\npygame.font.init()\nfont = pygame.font.Font(None, 36)\n#pause menu, didnt know where to put it\nmmmenu = mmenu()\npause = ppause()\nmmmenu.run(screen, clock)\nin_menu = True\nrunning = True\nwhile running:",
+        "peekOfCode": "clock = pygame.time.Clock()\npygame.font.init()\nfont = pygame.font.Font(None, 36)\n#pause menu, didnt know where to put it\nmmmenu = mmenu()\npause = ppause()\ngover_menu = gover()\nmmmenu.run(display_surface, clock, renderer)\nin_menu = True\nrunning = True",
         "detail": "main",
         "documentation": {}
     },
@@ -466,7 +729,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "font = pygame.font.Font(None, 36)\n#pause menu, didnt know where to put it\nmmmenu = mmenu()\npause = ppause()\nmmmenu.run(screen, clock)\nin_menu = True\nrunning = True\nwhile running:\n    for event in pygame.event.get():\n        if event.type == pygame.QUIT:",
+        "peekOfCode": "font = pygame.font.Font(None, 36)\n#pause menu, didnt know where to put it\nmmmenu = mmenu()\npause = ppause()\ngover_menu = gover()\nmmmenu.run(display_surface, clock, renderer)\nin_menu = True\nrunning = True\nwhile running:\n    for event in pygame.event.get():",
         "detail": "main",
         "documentation": {}
     },
@@ -475,7 +738,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "mmmenu = mmenu()\npause = ppause()\nmmmenu.run(screen, clock)\nin_menu = True\nrunning = True\nwhile running:\n    for event in pygame.event.get():\n        if event.type == pygame.QUIT:\n            running = False\n        if not in_menu and not pause.paused:",
+        "peekOfCode": "mmmenu = mmenu()\npause = ppause()\ngover_menu = gover()\nmmmenu.run(display_surface, clock, renderer)\nin_menu = True\nrunning = True\nwhile running:\n    for event in pygame.event.get():\n        if event.type == pygame.QUIT:\n            running = False",
         "detail": "main",
         "documentation": {}
     },
@@ -484,7 +747,16 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "pause = ppause()\nmmmenu.run(screen, clock)\nin_menu = True\nrunning = True\nwhile running:\n    for event in pygame.event.get():\n        if event.type == pygame.QUIT:\n            running = False\n        if not in_menu and not pause.paused:\n            pause.pause_toggle(event)",
+        "peekOfCode": "pause = ppause()\ngover_menu = gover()\nmmmenu.run(display_surface, clock, renderer)\nin_menu = True\nrunning = True\nwhile running:\n    for event in pygame.event.get():\n        if event.type == pygame.QUIT:\n            running = False\n        if not in_menu and not pause.paused:",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "gover_menu",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "gover_menu = gover()\nmmmenu.run(display_surface, clock, renderer)\nin_menu = True\nrunning = True\nwhile running:\n    for event in pygame.event.get():\n        if event.type == pygame.QUIT:\n            running = False\n        if not in_menu and not pause.paused:\n            pause.pause_toggle(event)",
         "detail": "main",
         "documentation": {}
     },
@@ -493,7 +765,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "in_menu = True\nrunning = True\nwhile running:\n    for event in pygame.event.get():\n        if event.type == pygame.QUIT:\n            running = False\n        if not in_menu and not pause.paused:\n            pause.pause_toggle(event)\n    if in_menu:\n        mmmenu.run(screen, clock)",
+        "peekOfCode": "in_menu = True\nrunning = True\nwhile running:\n    for event in pygame.event.get():\n        if event.type == pygame.QUIT:\n            running = False\n        if not in_menu and not pause.paused:\n            pause.pause_toggle(event)\n            player.level_system.check_reopen(event)\n    if in_menu:",
         "detail": "main",
         "documentation": {}
     },
@@ -502,44 +774,8 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "running = True\nwhile running:\n    for event in pygame.event.get():\n        if event.type == pygame.QUIT:\n            running = False\n        if not in_menu and not pause.paused:\n            pause.pause_toggle(event)\n    if in_menu:\n        mmmenu.run(screen, clock)\n        in_menu = False",
+        "peekOfCode": "running = True\nwhile running:\n    for event in pygame.event.get():\n        if event.type == pygame.QUIT:\n            running = False\n        if not in_menu and not pause.paused:\n            pause.pause_toggle(event)\n            player.level_system.check_reopen(event)\n    if in_menu:\n        mmmenu.run(display_surface, clock, renderer)",
         "detail": "main",
-        "documentation": {}
-    },
-    {
-        "label": "spaceship",
-        "kind": 6,
-        "importPath": "player",
-        "description": "player",
-        "peekOfCode": "class spaceship:\n    def __init__(self, x, y):\n        super().__init__()\n        self.rect = pygame.Rect(x, y, 50, 50)\n        self.spaceship_image = pygame.image.load(\"textures/spaceship.png\")\n        self.spaceship_image = pygame.transform.scale(self.spaceship_image, (50, 50))\n        self.spaceship_rect = self.spaceship_image.get_rect()\n        self.spaceship_rect.center = (WIDTH // 2, HEIGHT // 2)\n        self.bullet_speed = 25\n        self.bullets = []",
-        "detail": "player",
-        "documentation": {}
-    },
-    {
-        "label": "screen",
-        "kind": 5,
-        "importPath": "player",
-        "description": "player",
-        "peekOfCode": "screen = pygame.display.set_mode((WIDTH, HEIGHT))\nkeys_pressed = pygame.key.get_pressed\nenemy = rumia\nclass spaceship:\n    def __init__(self, x, y):\n        super().__init__()\n        self.rect = pygame.Rect(x, y, 50, 50)\n        self.spaceship_image = pygame.image.load(\"textures/spaceship.png\")\n        self.spaceship_image = pygame.transform.scale(self.spaceship_image, (50, 50))\n        self.spaceship_rect = self.spaceship_image.get_rect()",
-        "detail": "player",
-        "documentation": {}
-    },
-    {
-        "label": "keys_pressed",
-        "kind": 5,
-        "importPath": "player",
-        "description": "player",
-        "peekOfCode": "keys_pressed = pygame.key.get_pressed\nenemy = rumia\nclass spaceship:\n    def __init__(self, x, y):\n        super().__init__()\n        self.rect = pygame.Rect(x, y, 50, 50)\n        self.spaceship_image = pygame.image.load(\"textures/spaceship.png\")\n        self.spaceship_image = pygame.transform.scale(self.spaceship_image, (50, 50))\n        self.spaceship_rect = self.spaceship_image.get_rect()\n        self.spaceship_rect.center = (WIDTH // 2, HEIGHT // 2)",
-        "detail": "player",
-        "documentation": {}
-    },
-    {
-        "label": "enemy",
-        "kind": 5,
-        "importPath": "player",
-        "description": "player",
-        "peekOfCode": "enemy = rumia\nclass spaceship:\n    def __init__(self, x, y):\n        super().__init__()\n        self.rect = pygame.Rect(x, y, 50, 50)\n        self.spaceship_image = pygame.image.load(\"textures/spaceship.png\")\n        self.spaceship_image = pygame.transform.scale(self.spaceship_image, (50, 50))\n        self.spaceship_rect = self.spaceship_image.get_rect()\n        self.spaceship_rect.center = (WIDTH // 2, HEIGHT // 2)\n        self.bullet_speed = 25",
-        "detail": "player",
         "documentation": {}
     }
 ]

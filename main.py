@@ -2,7 +2,10 @@ import pygame
 import random
 from baddies import spawn_enemy
 from constants import WIDTH, HEIGHT, BLACK
-from hit_register import boss_hit, player_hit
+from collision_optimizer.hit_register import check_player_bullets_vs_enemies, check_enemy_bullets_vs_player, SpatialHash
+from collision_optimizer.gpu_renderer import MasterRenderer
+from collision_optimizer.projectile_manager import ProjectileManager
+import numpy as np
 from player_files.player import spaceship
 from ui.pause import ppause
 from ui.menu import mmenu
@@ -12,9 +15,13 @@ import maps.map_02 as map_02
 
 pygame.init()
 
-# game window
-screen = pygame.display.set_mode((WIDTH, HEIGHT))
+# game window - Initialize with OpenGL flags
+screen = pygame.display.set_mode((WIDTH, HEIGHT), pygame.OPENGL | pygame.DOUBLEBUF)
 pygame.display.set_caption("will it work tho")
+
+# Virtual surface for standard Pygame drawing
+display_surface = pygame.Surface((WIDTH, HEIGHT), pygame.SRCALPHA)
+renderer = MasterRenderer(WIDTH, HEIGHT)
 
 # pick a random map
 available_maps = [map_01, map_02]
@@ -27,6 +34,8 @@ background_image = pygame.transform.scale(background_image, (current_map.MAP_WID
 #player variable and other variables from files
 player = spaceship(100, 100, current_map.MAP_WIDTH, current_map.MAP_HEIGHT)
 enemies = []
+spatial_grid = SpatialHash(cell_size=100)
+projectile_manager = ProjectileManager()
 
 # fps counter
 clock = pygame.time.Clock()
@@ -38,7 +47,7 @@ mmmenu = mmenu()
 pause = ppause()
 gover_menu = gover()
 
-mmmenu.run(screen, clock)
+mmmenu.run(display_surface, clock, renderer)
 
 in_menu = True
 running = True
@@ -52,30 +61,34 @@ while running:
             player.level_system.check_reopen(event)
 
     if in_menu:
-        mmmenu.run(screen, clock)
+        mmmenu.run(display_surface, clock, renderer)
         in_menu = False
         continue
     else:
         pass
 
     if pause.paused:
-        pause.blit(screen)
-        pause.pause_button(screen)
+        pause.blit(display_surface)
+        pause.pause_button(display_surface)
         if pause.menu:
             pause.menu = False
             in_menu = True
             
+        renderer.render(display_surface, np.array([], dtype=np.float32), (0,0))
         pygame.display.flip()
         continue
 
+    #level up menu display area
     if player.level_system.paused:
-        player.level_system.draw_level_up_screen(screen)
+        player.level_system.draw_level_up_screen(display_surface)
+        renderer.render(display_surface, np.array([], dtype=np.float32), (0,0))
         pygame.display.flip()
         continue
 
+    #game over menu area
     if gover_menu.game_over:
-        gover_menu.blit(screen)
-        gover_menu.buttons(screen)
+        gover_menu.blit(display_surface)
+        gover_menu.buttons(display_surface)
         
         if gover_menu.replay:
             # Reset game state
@@ -83,6 +96,7 @@ while running:
             enemies = []
             gover_menu.replay = False
             
+        renderer.render(display_surface, np.array([], dtype=np.float32), (0,0))
         pygame.display.flip()
         continue
 
@@ -95,11 +109,14 @@ while running:
     # camera
     cam_offset = player.get_camera_offset()
 
+    # Clear virtual surface
+    display_surface.fill((0, 0, 0, 0))
+
     # fill teh screen - draw background with camera offset
-    screen.blit(background_image, (0, 0), (cam_offset[0], cam_offset[1], WIDTH, HEIGHT))
+    display_surface.blit(background_image, (0, 0), (cam_offset[0], cam_offset[1], WIDTH, HEIGHT))
     current_time = pygame.time.get_ticks()
 
-    #enemy spawns - each wave type from the map has its own timer
+    # enemy spawns logic ... (unchanged)
     for wave in current_map.ENEMY_WAVES:
         if "timer" not in wave:
             wave["timer"] = 0
@@ -108,34 +125,38 @@ while running:
                 enemies.append(spawn_enemy(wave["enemy"], player))
             wave["timer"] = current_time
 
-
-    # fps counter ingame (UI - no offset)
+    # fps counter ingame
     fps = clock.get_fps()
     fps_text = font.render(f"FPS: {int(fps)}", True, BLACK)
-    screen.blit(fps_text, (10, 10))
+    display_surface.blit(fps_text, (10, 10))
 
     # player area
     keys = pygame.key.get_pressed()
-    player.draw(screen, cam_offset)
-    player.draw_health(screen)
-    player.level_system.draw_xp_bar(screen)
+    player.draw(display_surface, cam_offset)
+    player.draw_health(display_surface)
+    player.level_system.draw_xp_bar(display_surface)
     player.move(keys)
-    player.shoot(cam_offset)
-    player.shoot_update(screen, cam_offset)
+    player.shoot(cam_offset, projectile_manager)
+    
+    # Optimized collision detection logic ... (unchanged)
+    spatial_grid.clear()
     for enemy in enemies:
         if not enemy.defeated:
-            player_hit(player, enemy.lolrect, enemy.take_hit)
+            spatial_grid.insert(enemy.lolrect, enemy)
+    check_player_bullets_vs_enemies(projectile_manager, enemies, spatial_grid, player)
+    check_enemy_bullets_vs_player(projectile_manager, player)
 
-    #enemy area
-    alive_enemies = []
+    # enemy area
     for enemy in enemies:
-        enemy.draw(screen, cam_offset)
-        enemy.fire()
-        enemy.update(screen)
-        boss_hit(enemy.fires, player.spaceship_rect, player.take_hit)
-        if not enemy.defeated or len(enemy.fires) > 0:
-            alive_enemies.append(enemy)
-    enemies = alive_enemies
+        enemy.update(display_surface, player, projectile_manager)
+        enemy.draw(display_surface, cam_offset)
+
+    # Calculate vectorized physics updates for all active bullets
+    projectile_manager.update(current_map.MAP_WIDTH, current_map.MAP_HEIGHT)
+
+    # FINAL GPU RENDER
+    vbo_data = projectile_manager.get_vbo_data()
+    renderer.render(display_surface, vbo_data, cam_offset)
 
     pygame.display.flip()
     clock.tick(60)

@@ -7,7 +7,6 @@ pygame.mixer.init()
 
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 import constants
-
 class BaseEnemy:
     """Base class for all enemies. Subclass this and override the config to create new enemies."""
     
@@ -20,6 +19,10 @@ class BaseEnemy:
     FIRE_COOLDOWN = 1000    # ms between shots
     FIRE_SPEED = 3          # bullet travel speed
     FIRE_COLOR = (255, 0, 0)
+
+    #cirno shotgun area
+    FIRE_COUNT = 1          # number of bullets per shot
+    FIRE_SPREAD_ANGLE = 0   # cone width in degrees
     
     def __init__(self, player_ref):
         self.player = player_ref
@@ -44,7 +47,6 @@ class BaseEnemy:
         # shooting
         self.last_fire_time = pygame.time.get_ticks()
         self.fire_cooldown = self.FIRE_COOLDOWN
-        self.fires = []
         self.fire_speed = self.FIRE_SPEED
         
         # spawn
@@ -71,7 +73,7 @@ class BaseEnemy:
         y = max(0, min(y, self.player.map_h))
         self.lolrect.topleft = (x, y)
     
-    def fire(self):
+    def fire(self, proj_manager):
         if self.defeated:
             return
         current_time = pygame.time.get_ticks()
@@ -88,20 +90,24 @@ class BaseEnemy:
                 distance = 1
             
             direction = (dx / distance, dy / distance)
-            self.fires.append({
-                "pos": [enemy_x, enemy_y],
-                "dir": direction
-            })
-    
-    def update_fire(self, screen):
-        new_fires = []
-        for f in self.fires:
-            f["pos"][0] += f["dir"][0] * self.fire_speed
-            f["pos"][1] += f["dir"][1] * self.fire_speed
-            if 0 <= f["pos"][0] <= self.player.map_w and 0 <= f["pos"][1] <= self.player.map_h:
-                new_fires.append(f)
-        self.fires = new_fires
-    
+            base_angle = math.atan2(direction[1], direction[0])
+            
+            for i in range(self.FIRE_COUNT):
+                if self.FIRE_COUNT <= 1:
+                    angle_offset = 0
+                else:
+                    fraction = i / (self.FIRE_COUNT - 1)
+                    angle_offset = math.radians(self.FIRE_SPREAD_ANGLE * (fraction - 0.5))
+
+                fire_angle = base_angle + angle_offset
+                fire_dx = math.cos(fire_angle)
+                fire_dy = math.sin(fire_angle)
+
+                proj_manager.spawn(
+                    enemy_x, enemy_y, fire_dx, fire_dy, self.fire_speed,
+                    radius=5, color=self.FIRE_COLOR, type_id=0, owner=1, angle=fire_angle
+                )
+
     def take_hit(self):
         if not self.defeated:
             self.hit_count += 1
@@ -128,18 +134,15 @@ class BaseEnemy:
         self.lolrect.x += dx * self.SPEED
         self.lolrect.y += dy * self.SPEED
     
-    def update(self, screen):
+    def update(self, screen, player, proj_manager):
         if not self.defeated:
             self.move_toward_player()
-        self.update_fire(screen)
-    
+            self.fire(proj_manager)
     def draw(self, screen, cam_offset):
         if not self.defeated:
             image_rect = self.image.get_rect(center=self.lolrect.center)
             screen_x = image_rect.x - cam_offset[0]
             screen_y = image_rect.y - cam_offset[1]
             screen.blit(self.image, (screen_x, screen_y))
-        for f in self.fires:
-            screen_x = int(f["pos"][0]) - cam_offset[0]
-            screen_y = int(f["pos"][1]) - cam_offset[1]
-            pygame.draw.circle(screen, self.FIRE_COLOR, (screen_x, screen_y), 5)
+            screen_y = image_rect.y - cam_offset[1]
+            screen.blit(self.image, (screen_x, screen_y))

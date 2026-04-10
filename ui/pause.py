@@ -7,12 +7,6 @@ pygame.init()
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 import constants
 
-pause_background_image = pygame.image.load("textures/pause_background.jpg")
-pause_background_image = pygame.transform.scale(
-    pause_background_image,
-      (constants.WIDTH, constants.HEIGHT)
-      )
-
 #AN IDEA I WILL IMPLEMENT LATER
 #screen_size = screen.get_size() #big idea that i will apply to others
 #pause_background_image = pygame.image.load("textures/pause_background.jpg")
@@ -27,9 +21,9 @@ class ppause:
         self.font = pygame.font.SysFont(None, 60)
         self.pause_background_image = pygame.image.load("textures/pause_background.jpg")
         self.pause_background_image = pygame.transform.scale(
-            pause_background_image,
+            self.pause_background_image,
             (constants.WIDTH, constants.HEIGHT)
-            )
+        )
         #cooldown between clicks because im too dumb to implement event driven click system
         self.last_click_time = 0
         self.click_cooldown = 0.6
@@ -91,6 +85,5 @@ class ppause:
         main_menu_button.centerx - main_menu_text.get_width() // 2,
         main_menu_button.centery - main_menu_text.get_height() // 2
     ))
-        pygame.display.update()
 
 

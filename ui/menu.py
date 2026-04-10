@@ -1,34 +1,31 @@
 import pygame
 import sys
 import os
+import numpy as np
 
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 import constants
-
-menu_background_image = pygame.image.load("textures/menu_background.jpg")
-menu_background_image = pygame.transform.scale(
-    menu_background_image,
-      (constants.WIDTH, constants.HEIGHT)
-      )
 
 class mmenu:
     def __init__(self):
         self.menu = True
         self.font = pygame.font.SysFont(None, 60)
-        self.pause_background_image = pygame.image.load("textures/menu_background.jpg")
-        self.pause_background_image = pygame.transform.scale(
-            menu_background_image,
+        self.menu_background_image = pygame.image.load("textures/menu_background.jpg")
+        self.menu_background_image = pygame.transform.scale(
+            self.menu_background_image,
             (constants.WIDTH, constants.HEIGHT)
-            )
+        )
         
-    def run(self, screen, clock):
+    def run(self, surface, clock, renderer):
         self.menu = True
         while self.menu:
-            screen.blit(menu_background_image, (0, 0))
+            surface.blit(self.menu_background_image, (0, 0))
             text = self.font.render("WELCOME TO MY GAME", True, (constants.WHITE))
-            screen.blit(text, (screen.get_width() // 2 - text.get_width() // 2, 100))
+            surface.blit(text, (surface.get_width() // 2 - text.get_width() // 2, 100))
             self.handle_events()
-            self.menu_button(screen)
+            self.menu_button(surface)
+            # Use renderer to draw the surface to the GPU
+            renderer.render(surface, np.array([], dtype=np.float32), (0, 0))
             pygame.display.flip()
             clock.tick(60)
 
@@ -69,5 +66,4 @@ class mmenu:
                 sys.exit()
 
         screen.blit(play_text, (play_button.centerx - play_text.get_width() // 2, play_button.centery - play_text.get_height() // 2))
-        screen.blit(quit_text, (quit_button.centerx - quit_text.get_width() // 2, quit_button.centery - quit_text.get_height() // 2)) 
-        pygame.display.update()          
+        screen.blit(quit_text, (quit_button.centerx - quit_text.get_width() // 2, quit_button.centery - quit_text.get_height() // 2))
