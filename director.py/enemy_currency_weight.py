@@ -1,0 +1,1 @@
+#here i will put enemies currency and weight for director

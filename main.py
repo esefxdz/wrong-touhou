@@ -125,7 +125,7 @@ while running:
     display_surface.blit(background_image, (0, 0), (cam_offset[0], cam_offset[1], WIDTH, HEIGHT))
     current_time = pygame.time.get_ticks()
 
-    # enemy spawns logic ... (unchanged)
+    # enemy spawns logic / gonna be removed with new wave director system
     for wave in current_map.ENEMY_WAVES:
         if "timer" not in wave:
             wave["timer"] = 0
@@ -155,7 +155,7 @@ while running:
     check_player_bullets_vs_enemies(projectile_manager, enemies, spatial_grid, player)
     check_enemy_bullets_vs_player(projectile_manager, player)
 
-    # enemy area
+    # enemy area / probably needs changing
     for enemy in enemies:
         enemy.update(display_surface, player, projectile_manager)
         enemy.draw(display_surface, cam_offset)
