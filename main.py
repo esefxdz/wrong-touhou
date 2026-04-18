@@ -27,7 +27,7 @@ pygame.display.set_caption("will it work tho")
 display_surface = pygame.Surface((WIDTH, HEIGHT), pygame.SRCALPHA)
 renderer = MasterRenderer(WIDTH, HEIGHT)
 
-# pick a random map
+# picks a random map
 available_maps = [map_01, map_02]
 
 # initialize the game for the first time
