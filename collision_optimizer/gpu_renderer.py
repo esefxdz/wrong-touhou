@@ -14,7 +14,8 @@ class BulletRenderer:
             # Rotate it 90 degrees if it's horizontal by default, or handle in shader
             tex_data = pygame.image.tostring(bullet_surf, 'RGBA', 1)
             self.bullet_tex = self.ctx.texture(bullet_surf.get_size(), 4, tex_data)
-        except:
+        except Exception as e:
+            print(f"[BulletRenderer] Failed to load bullet texture: {e}")
             self.bullet_tex = self.ctx.texture((1, 1), 4, b'\xff\xff\xff\xff')
 
         # Shaders for instanced bullets (Supports textures and rotations)
@@ -80,7 +81,9 @@ class BulletRenderer:
         self.vbo_geom = self.ctx.buffer(vertices)
 
         # Buffer for: pos(2f), color(3f), radius(1f), angle(1f), type(1i)
-        self.instance_vbo = self.ctx.buffer(reserve=10000 * 8 * 4) 
+        MAX_BULLETS = 10_000
+        FLOATS_PER_BULLET = 8
+        self.instance_vbo = self.ctx.buffer(reserve=MAX_BULLETS * FLOATS_PER_BULLET * 4) 
         self.vao = self.ctx.vertex_array(
             self.bullet_prog,
             [
@@ -127,30 +130,42 @@ class UIRenderer:
                 in vec2 v_texcoord;
                 out vec4 f_color;
                 void main() {
-                    f_color = texture(Texture, v_texcoord);
+                    // Pygame buffer view is BGRA, swizzle it mathematically to RGBA
+                    f_color = texture(Texture, v_texcoord).bgra;
                     // Discard transparent pixels to allow layers below to show
                     if (f_color.a < 0.1) discard;
                 }
             '''
         )
-        # Full screen quad NDC - Corrected UV mapping for pygame.image.tostring(..., 1)
+        # Full screen quad NDC - Adjusted UV mapping for raw un-flipped pygame buffer
         vertices = np.array([
-            -1.0, -1.0, 0.0, 0.0, # Bottom Left NDC -> Bottom Left Tex
-             1.0, -1.0, 1.0, 0.0, # Bottom Right NDC -> Bottom Right Tex
-            -1.0,  1.0, 0.0, 1.0, # Top Left NDC -> Top Left Tex
-             1.0,  1.0, 1.0, 1.0, # Top Right NDC -> Top Right Tex
+            -1.0, -1.0, 0.0, 1.0, # Bottom Left NDC -> Bottom Left Tex (y=1)
+             1.0, -1.0, 1.0, 1.0, # Bottom Right NDC -> Bottom Right Tex (y=1)
+            -1.0,  1.0, 0.0, 0.0, # Top Left NDC -> Top Left Tex (y=0)
+             1.0,  1.0, 1.0, 0.0, # Top Right NDC -> Top Right Tex (y=0)
         ], dtype='f4')
         self.vbo = self.ctx.buffer(vertices)
         self.vao = self.ctx.vertex_array(self.prog, [(self.vbo, '2f 2f', 'in_vert', 'in_texcoord')])
         self.texture = None
+        # PBO for fast asynchronous texture uploads without CPU allocation bottlenecks
+        self.pbo = self.ctx.buffer(reserve=w * h * 4)
 
     def draw(self, surface):
-        # Convert pygame surface to bytes for GL texture
-        texture_data = pygame.image.tostring(surface, 'RGBA', 1)
-        if not self.texture:
-            self.texture = self.ctx.texture(surface.get_size(), 4, texture_data)
-        else:
-            self.texture.write(texture_data)
+        view = surface.get_view('1')
+        
+        # Dynamic PBO resizing in case surface size changes
+        expected_size = surface.get_width() * surface.get_height() * 4
+        if self.pbo.size != expected_size:
+            self.pbo.orphan(expected_size)
+            
+        self.pbo.write(view)
+        
+        if not self.texture or self.texture.size != surface.get_size():
+            if self.texture:
+                self.texture.release()
+            self.texture = self.ctx.texture(surface.get_size(), 4)
+            
+        self.texture.write(self.pbo)
             
         self.texture.use(0)
         self.vao.render(moderngl.TRIANGLE_STRIP)

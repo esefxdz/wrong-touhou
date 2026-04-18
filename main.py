@@ -9,9 +9,13 @@ import numpy as np
 from player_files.player import spaceship
 from ui.pause import ppause
 from ui.menu import mmenu
-from ui.over import gover
+from ui.over import gover, reset_game
 import maps.map_01 as map_01
 import maps.map_02 as map_02
+
+from director.wave_director import WaveDirector
+from director.wave_ui import WaveUI
+wave_ui = WaveUI()
 
 pygame.init()
 
@@ -26,23 +30,8 @@ renderer = MasterRenderer(WIDTH, HEIGHT)
 # pick a random map
 available_maps = [map_01, map_02]
 
-def reset_game():
-    # Get fresh map and assets
-    m = random.choice(available_maps)
-    bg = pygame.image.load(m.MAP_IMAGE)
-    bg = pygame.transform.scale(bg, (m.MAP_WIDTH, m.MAP_HEIGHT))
-    
-    # Reset objects
-    p = spaceship(100, 100, m.MAP_WIDTH, m.MAP_HEIGHT)
-    pm = ProjectileManager()
-    
-    # Reset all map wave timers
-    for wave in m.ENEMY_WAVES:
-        wave.pop("timer", None)
-        
-    return m, bg, p, [], pm
-
-current_map, background_image, player, enemies, projectile_manager = reset_game()
+# initialize the game for the first time
+current_map, background_image, player, enemies, projectile_manager, wave_director = reset_game(available_maps)
 spatial_grid = SpatialHash(cell_size=100)
 
 # fps counter
@@ -100,7 +89,7 @@ while running:
         
         if gover_menu.replay:
             # Clean Reset
-            current_map, background_image, player, enemies, projectile_manager = reset_game()
+            current_map, background_image, player, enemies, projectile_manager, wave_director = reset_game(available_maps)
             gover_menu.replay = False
             gover_menu.game_over = False
             continue
@@ -125,14 +114,23 @@ while running:
     display_surface.blit(background_image, (0, 0), (cam_offset[0], cam_offset[1], WIDTH, HEIGHT))
     current_time = pygame.time.get_ticks()
 
-    # enemy spawns logic / gonna be removed with new wave director system
-    for wave in current_map.ENEMY_WAVES:
-        if "timer" not in wave:
-            wave["timer"] = 0
-        if current_time - wave["timer"] > wave["interval"]:
-            for _ in range(wave["count"]):
-                enemies.append(spawn_enemy(wave["enemy"], player))
-            wave["timer"] = current_time
+    # wave director area
+    dt = 1.0 / 60.0 # logic runs locked to tick cycle length
+    wave_director.update(dt)
+    
+    # purge defeated enemies so the director knows the map is clean
+    spatial_grid.clear()
+    alive_enemies = []
+    for enemy in enemies:
+        if not enemy.defeated:
+            spatial_grid.insert(enemy.lolrect, enemy)
+            alive_enemies.append(enemy)
+    enemies[:] = alive_enemies
+    
+    if wave_director.is_wave_complete():
+        wave_director.generate_wave()
+        
+    wave_ui.draw(display_surface, wave_director)
 
     # fps counter ingame
     fps = clock.get_fps()
@@ -147,11 +145,7 @@ while running:
     player.move(keys)
     player.shoot(cam_offset, projectile_manager)
     
-    # Optimized collision detection logic ... (unchanged)
-    spatial_grid.clear()
-    for enemy in enemies:
-        if not enemy.defeated:
-            spatial_grid.insert(enemy.lolrect, enemy)
+    # Optimized collision detection logic
     check_player_bullets_vs_enemies(projectile_manager, enemies, spatial_grid, player)
     check_enemy_bullets_vs_player(projectile_manager, player)
 

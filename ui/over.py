@@ -2,9 +2,42 @@ import pygame
 import sys
 import os
 import time
+import random
 
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 import constants
+
+from player_files.player import spaceship
+from collision_optimizer.projectile_manager import ProjectileManager
+from director.wave_director import WaveDirector
+from baddies import spawn_enemy
+
+#this is resetting the game after pressing retry i just didnt know where to put it
+def reset_game(available_maps):
+    # get fresh map and assets
+    m = random.choice(available_maps)
+    bg = pygame.image.load(m.MAP_IMAGE)
+    bg = pygame.transform.scale(bg, (m.MAP_WIDTH, m.MAP_HEIGHT))
+    
+    # reset all core entities
+    p = spaceship(100, 100, m.MAP_WIDTH, m.MAP_HEIGHT)
+    pm = ProjectileManager()
+    
+    # wave director setup area
+    enemies_list = []
+    
+    # create the director and give it instructions on how to push enemies into our list
+    wd = WaveDirector(
+        spawn_enemy_callback=lambda type_name: enemies_list.append(spawn_enemy(type_name, p)),
+        active_enemies_ref=enemies_list
+    )
+    wd.generate_wave() # force starts wave 1
+    
+    # reset all map wave timers (legacy maps cleaning)
+    for wave in m.ENEMY_WAVES:
+        wave.pop("timer", None)
+        
+    return m, bg, p, enemies_list, pm, wd
 
 class gover:
     def __init__(self):

@@ -129,13 +129,13 @@ class spaceship:
         screen_y = self.spaceship_rect.y - cam_offset[1]
         screen.blit(self.spaceship_image, (screen_x, screen_y))
 
-    def take_hit(self):
+    def take_hit(self, damage=1):
         current_time = pygame.time.get_ticks()
         if current_time < self.invincible_until:
             return  # i-frames active
             
         if self.hit_count < self.max_hp:
-            self.hit_count += 1
+            self.hit_count += damage
             pygame.mixer.Sound(os.path.join("sounds", "hitsound.wav")).play()
                 
     def draw_health(self, screen):

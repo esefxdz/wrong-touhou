@@ -10,7 +10,10 @@ import constants
 class BaseEnemy:
     """Base class for all enemies. Subclass this and override the config to create new enemies."""
     
-    # === OVERRIDE THESE IN SUBCLASSES ===
+    #------------------------------------------
+    # common enemy stats / the basic stuff
+    # target: @everyone
+    #------------------------------------------
     SPRITE_PATH = None      # path to sprite image relative to baddies folder
     SPRITE_SIZE = (150, 150)
     HITBOX_SIZE = (50, 50)
@@ -20,17 +23,45 @@ class BaseEnemy:
     FIRE_SPEED = 3          # bullet travel speed
     FIRE_COLOR = (255, 0, 0)
 
-    #cirno shotgun area
+    #------------------------------------------
+    # shotgun logic / making em shoot multiple bullets
+    # target: cirno
+    #------------------------------------------
     FIRE_COUNT = 1          # number of bullets per shot
     FIRE_SPREAD_ANGLE = 0   # cone width in degrees
 
-    # patchouli sniper area
+    #------------------------------------------
+    # sniper laser stuff / getting sniped across the map
+    # target: patchouli
+    #------------------------------------------
     IS_SNIPER = False                           # enables lock-on laser + lock behaviour
     FIRE_ON_SCREEN_ONLY = False                 # only fire when visible on screen
     SNIPER_WARN_TIME = 500                      # ms of red lock-on warning before firing
     SNIPER_LASER_TRACK_COLOR = (200, 100, 255)  # thin tracking laser color
     SNIPER_LASER_WARN_COLOR = (255, 50, 50)     # thick warn laser color
     
+    #------------------------------------------
+    # big tank area / just walking into you doing massive damage
+    # target: yukari
+    #------------------------------------------
+    IS_MELEE = False                            # enables contact damage body slam body blocking
+    MELEE_DAMAGE = 1
+    
+    #------------------------------------------
+    # spinner logic / spinning blades that shred you
+    # target: sakuya
+    #------------------------------------------
+    IS_SPINNER = False                          # enables spinning blades that deal contact damage
+    SPINNER_BLADE_COUNT = 2
+    SPINNER_RADIUS = 80
+    SPINNER_SPEED = 0.05
+    SPINNER_COLOR = (192, 192, 192)
+    SPINNER_BLADE_RADIUS = 15
+
+    #------------------------------------------
+    # game initialization area / hooking up the basics
+    # target: @everyone
+    #------------------------------------------
     def __init__(self, player_ref):
         self.player = player_ref
         
@@ -65,9 +96,17 @@ class BaseEnemy:
         self._post_fire_time = 0
         self._post_fire_duration = 300  # the beam disappear timing
         
+        # spinner state
+        if self.IS_SPINNER:
+            self.spinner_angle = 0.0
+            
         # spawn
         self.spawn_outside_screen()
     
+    #------------------------------------------
+    # map spawning stuff / dropping them outside the screen
+    # target: @everyone
+    #------------------------------------------
     def spawn_outside_screen(self):
         player_x = self.player.spaceship_rect.centerx
         player_y = self.player.spaceship_rect.centery
@@ -94,6 +133,10 @@ class BaseEnemy:
         sy = self.lolrect.centery - cam_offset[1]
         return -50 <= sx <= constants.WIDTH + 50 and -50 <= sy <= constants.HEIGHT + 50
 
+    #------------------------------------------
+    # firing system / deciding how they shoot
+    # target: @everyone
+    #------------------------------------------
     def fire(self, proj_manager, cam_offset=(0, 0)):
         if self.defeated:
             return
@@ -107,7 +150,10 @@ class BaseEnemy:
             self._draw_laser = False
             return
 
-        # --- Sniper lock-on logic ---
+        #------------------------------------------
+        # sniper lock-on logic / checking angles
+        # target: patchouli
+        #------------------------------------------
         if self.IS_SNIPER:
             px, py = self.player.spaceship_rect.center
             dx = px - self.lolrect.centerx
@@ -131,7 +177,10 @@ class BaseEnemy:
             return
 
 
-        # --- Normal fire ---
+        #------------------------------------------
+        # normal fire / shotgun shooting
+        # target: @everyone
+        #------------------------------------------
         if time_since > self.fire_cooldown:
             self.last_fire_time = current_time
             enemy_x, enemy_y = self.lolrect.center
@@ -154,6 +203,10 @@ class BaseEnemy:
                     radius=5, color=self.FIRE_COLOR, type_id=0, owner=1, angle=fire_angle
                 )
 
+    #------------------------------------------
+    # health and movement / taking damage and chasing player
+    # target: @everyone
+    #------------------------------------------
     def take_hit(self):
         if not self.defeated:
             self.hit_count += 1
@@ -180,16 +233,57 @@ class BaseEnemy:
         self.lolrect.x += dx * self.SPEED
         self.lolrect.y += dy * self.SPEED
     
+    #------------------------------------------
+    # main update loop / running all the math
+    # target: @everyone
+    #------------------------------------------
+    #------------------------------------------
+    # spinner physics / spinning the blades around
+    # target: sakuya
+    #------------------------------------------
+    def update_spinner(self, player):
+        self.spinner_angle += self.SPINNER_SPEED
+        px, py = player.spaceship_rect.center
+        player_r = 25 # spaceship rect fits in 50x50 physically
+        
+        for i in range(self.SPINNER_BLADE_COUNT):
+            angle = self.spinner_angle + (i * 2 * math.pi / self.SPINNER_BLADE_COUNT)
+            bx = self.lolrect.centerx + math.cos(angle) * self.SPINNER_RADIUS
+            by = self.lolrect.centery + math.sin(angle) * self.SPINNER_RADIUS
+            
+            # Simple circular contact damage against player
+            if math.hypot(bx - px, by - py) < (self.SPINNER_BLADE_RADIUS + player_r):
+                player.take_hit()
+                
     def update(self, screen, player, proj_manager):
         if not self.defeated:
             self.move_toward_player()
+            if self.IS_SPINNER:
+                self.update_spinner(player)
+            
+            #------------------------------------------
+            # tank contact damage / hitting you with their body
+            # target: yukari
+            #------------------------------------------
+            if self.IS_MELEE:
+                # Add base collision shape overlap evaluation
+                if self.lolrect.colliderect(player.spaceship_rect):
+                    player.take_hit(damage=self.MELEE_DAMAGE)
             cam_offset = player.get_camera_offset()
             self.fire(proj_manager, cam_offset)
 
+    #------------------------------------------
+    # master drawing area / slapping all their sprites on screen
+    # target: @everyone
+    #------------------------------------------
     def draw(self, screen, cam_offset):
         if self.defeated:
             return
 
+        #------------------------------------------
+        # rendering laser sights
+        # target: patchouli
+        #------------------------------------------
         if self.IS_SNIPER:
             current_time = pygame.time.get_ticks()
             sx = self.lolrect.centerx - cam_offset[0]
@@ -214,6 +308,39 @@ class BaseEnemy:
                 ey = sy + math.sin(self._locked_angle) * 2000
                 pygame.draw.line(screen, self.SNIPER_LASER_TRACK_COLOR, (int(sx), int(sy)), (int(ex), int(ey)), 1)
 
+        #------------------------------------------
+        # rendering spinning blades
+        # target: sakuya
+        #------------------------------------------
+        if self.IS_SPINNER:
+            for i in range(self.SPINNER_BLADE_COUNT):
+                angle = self.spinner_angle + (i * 2 * math.pi / self.SPINNER_BLADE_COUNT)
+                bx = self.lolrect.centerx + math.cos(angle) * self.SPINNER_RADIUS
+                by = self.lolrect.centery + math.sin(angle) * self.SPINNER_RADIUS
+                pygame.draw.circle(screen, self.SPINNER_COLOR, 
+                                   (int(bx - cam_offset[0]), int(by - cam_offset[1])), 
+                                   self.SPINNER_BLADE_RADIUS)
+
         # Draw sprite
         image_rect = self.image.get_rect(center=self.lolrect.center)
         screen.blit(self.image, (image_rect.x - cam_offset[0], image_rect.y - cam_offset[1]))
+
+        #------------------------------------------
+        # little healthbars on top of their heads
+        # target: @everyone
+        #------------------------------------------
+        current_hp = self.max_hp - self.hit_count
+        bar_w = min(self.lolrect.width, 50)
+        bar_h = 6
+        hp_ratio = max(0.0, current_hp / self.max_hp)
+        fill_w = int(bar_w * hp_ratio)
+        
+        bx = self.lolrect.centerx - cam_offset[0] - (bar_w // 2)
+        by = self.lolrect.top - cam_offset[1] - 15
+        
+        # Draw red background
+        pygame.draw.rect(screen, (255, 0, 0), (bx, by, bar_w, bar_h))
+        # Draw green health fill
+        if fill_w > 0:
+            pygame.draw.rect(screen, (0, 255, 0), (bx, by, fill_w, bar_h))
+        #--------------------------------------------------------
