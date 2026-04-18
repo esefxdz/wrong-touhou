@@ -94,6 +94,22 @@
         "documentation": {}
     },
     {
+        "label": "GREEN",
+        "importPath": "constants",
+        "description": "constants",
+        "isExtraImport": true,
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "LIGHT_GREEN",
+        "importPath": "constants",
+        "description": "constants",
+        "isExtraImport": true,
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
         "label": "WIDTH",
         "importPath": "constants",
         "description": "constants",
@@ -216,12 +232,36 @@
         "documentation": {}
     },
     {
+        "label": "ALL_PERKS",
+        "importPath": "perks.perk_list",
+        "description": "perks.perk_list",
+        "isExtraImport": true,
+        "detail": "perks.perk_list",
+        "documentation": {}
+    },
+    {
         "label": "time",
         "kind": 6,
         "isExtraImport": true,
         "importPath": "time",
         "description": "time",
         "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "get_perk_choices",
+        "importPath": "perks.perk_system",
+        "description": "perks.perk_system",
+        "isExtraImport": true,
+        "detail": "perks.perk_system",
+        "documentation": {}
+    },
+    {
+        "label": "apply_perk",
+        "importPath": "perks.perk_system",
+        "description": "perks.perk_system",
+        "isExtraImport": true,
+        "detail": "perks.perk_system",
         "documentation": {}
     },
     {
@@ -408,7 +448,7 @@
         "kind": 6,
         "importPath": "baddies.cirno",
         "description": "baddies.cirno",
-        "peekOfCode": "class Cirno(BaseEnemy):\n    \"\"\"Cirno - Shotgunner enemy that fires blue projectiles.\"\"\"\n    SPRITE_PATH = \"cirno.png\"\n    SPRITE_SIZE = (150, 150)\n    HITBOX_SIZE = (50, 50)\n    MAX_HP = 4              # Tougher than Rumia\n    SPEED = 1.0             # Slightly slower\n    FIRE_COOLDOWN = 1500    # Shoots slower\n    FIRE_SPEED = 2          # Slower bullets\n    FIRE_COLOR = (0, 200, 255) # Cyan/Blue colored bullets",
+        "peekOfCode": "class Cirno(BaseEnemy):\n    \"\"\"Cirno - Shotgunner enemy that fires blue projectiles in a spread.\"\"\"\n    #------------------------------------------\n    # shotgun config / her stats and spread settings\n    #------------------------------------------\n    SPRITE_PATH = \"cirno.png\"\n    SPRITE_SIZE = (150, 150)\n    HITBOX_SIZE = (50, 50)\n    MAX_HP = 4              # tougher than rumia\n    SPEED = 1.0             # slightly slower",
         "detail": "baddies.cirno",
         "documentation": {}
     },
@@ -417,7 +457,7 @@
         "kind": 6,
         "importPath": "baddies.patchouli",
         "description": "baddies.patchouli",
-        "peekOfCode": "class Patchouli(BaseEnemy):\n    \"\"\"Patchouli - Sniper that locks on with a laser before firing a fast purple beam.\"\"\"\n    SPRITE_PATH = \"patchouli.png\"\n    SPRITE_SIZE = (150, 150)\n    HITBOX_SIZE = (50, 50)\n    MAX_HP = 3\n    SPEED = 1\n    FIRE_COOLDOWN = 3000\n    FIRE_SPEED = 400\n    FIRE_COLOR = (128, 0, 128)          # purple beam",
+        "peekOfCode": "class Patchouli(BaseEnemy):\n    \"\"\"Patchouli - Sniper that locks on with a laser before firing a fast purple beam.\"\"\"\n    #------------------------------------------\n    # sniper config / her stats and laser colors\n    #------------------------------------------\n    SPRITE_PATH = \"patchouli.png\"\n    SPRITE_SIZE = (150, 150)\n    HITBOX_SIZE = (50, 50)\n    MAX_HP = 3\n    SPEED = 1",
         "detail": "baddies.patchouli",
         "documentation": {}
     },
@@ -435,7 +475,7 @@
         "kind": 6,
         "importPath": "baddies.sakuya",
         "description": "baddies.sakuya",
-        "peekOfCode": "class Sakuya(BaseEnemy):\n    \"\"\"Sakuya - Spinner enemy with orbiting blades that tries to physically hit you.\"\"\"\n    SPRITE_PATH = \"sakuya.png\"\n    SPRITE_SIZE = (150, 150)\n    HITBOX_SIZE = (50, 50)\n    MAX_HP = 5              # Tougher\n    SPEED = 2.0             # Fast pursuit\n    FIRE_COUNT = 0          # She doesn't shoot standard bullets\n    # Spinner configuration\n    IS_SPINNER = True",
+        "peekOfCode": "class Sakuya(BaseEnemy):\n    \"\"\"Sakuya - Spinner enemy with orbiting blades that tries to physically hit you.\"\"\"\n    #------------------------------------------\n    # spinner config / her stats and blade settings\n    #------------------------------------------\n    SPRITE_PATH = \"sakuya.png\"\n    SPRITE_SIZE = (150, 150)\n    HITBOX_SIZE = (50, 50)\n    MAX_HP = 5\n    SPEED = 2.0",
         "detail": "baddies.sakuya",
         "documentation": {}
     },
@@ -444,7 +484,7 @@
         "kind": 6,
         "importPath": "baddies.yukari",
         "description": "baddies.yukari",
-        "peekOfCode": "class Yukari(BaseEnemy):\n    \"\"\"Yukari - Tank enemy that body-slams you for massive damage.\"\"\"\n    SPRITE_PATH = \"yukari.png\"\n    SPRITE_SIZE = (200, 200) # Big physical presence\n    HITBOX_SIZE = (100, 100) # Large impact block\n    MAX_HP = 25              # Heavy bullet sponge\n    SPEED = 0.5              # Slow but inevitable\n    FIRE_COUNT = 0           # She doesn't shoot standard bullets\n    IS_MELEE = True          # She attacks by running into you\n    MELEE_DAMAGE = 2         # Hits very hard",
+        "peekOfCode": "class Yukari(BaseEnemy):\n    \"\"\"Yukari - Tank enemy that body-slams you for massive damage.\"\"\"\n    #------------------------------------------\n    # tank config / her stats and melee settings\n    #------------------------------------------\n    SPRITE_PATH = \"yukari.png\"\n    SPRITE_SIZE = (200, 200)  # big physical presence\n    HITBOX_SIZE = (100, 100)  # large impact block\n    MAX_HP = 25               # heavy bullet sponge\n    SPEED = 0.5               # slow but inevitable",
         "detail": "baddies.yukari",
         "documentation": {}
     },
@@ -689,6 +729,33 @@
         "description": "maps.map_02",
         "peekOfCode": "ENEMY_TYPES = [\"rumia\", \"cirno\"]",
         "detail": "maps.map_02",
+        "documentation": {}
+    },
+    {
+        "label": "ALL_PERKS",
+        "kind": 5,
+        "importPath": "perks.perk_list",
+        "description": "perks.perk_list",
+        "peekOfCode": "ALL_PERKS = [\n    #------------------------------------------\n    # offense perks / hitting harder and faster\n    #------------------------------------------\n    {\n        \"name\":        \"Faster Bullets\",\n        \"description\": \"Bullet speed +5\",\n        \"stat\":        \"bullet_speed\",\n        \"delta\":       5,\n        \"icon\":        \"perks/perk_png/faster_bullets.png\",",
+        "detail": "perks.perk_list",
+        "documentation": {}
+    },
+    {
+        "label": "apply_perk",
+        "kind": 2,
+        "importPath": "perks.perk_system",
+        "description": "perks.perk_system",
+        "peekOfCode": "def apply_perk(player, perk):\n    \"\"\"Takes a perk dict and applies its delta to the matching player attribute.\"\"\"\n    stat = perk[\"stat\"]\n    delta = perk[\"delta\"]\n    if hasattr(player, stat):\n        current = getattr(player, stat)\n        setattr(player, stat, current + delta)\n#------------------------------------------\n# perk selection / picking a random set of choices\n#------------------------------------------",
+        "detail": "perks.perk_system",
+        "documentation": {}
+    },
+    {
+        "label": "get_perk_choices",
+        "kind": 2,
+        "importPath": "perks.perk_system",
+        "description": "perks.perk_system",
+        "peekOfCode": "def get_perk_choices(count=3):\n    \"\"\"Returns a list of 'count' randomly chosen perks from ALL_PERKS.\"\"\"\n    pool = list(ALL_PERKS)\n    random.shuffle(pool)\n    return pool[:count]",
+        "detail": "perks.perk_system",
         "documentation": {}
     },
     {

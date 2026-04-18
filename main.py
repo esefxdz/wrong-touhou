@@ -81,6 +81,7 @@ while running:
 
     #level up menu display
     if player.level_system.paused:
+        player.level_system.open_with_player(player)
         player.level_system.draw_level_up_screen(display_surface)
         renderer.render(display_surface, np.array([], dtype=np.float32), (0,0))
         pygame.display.flip()
