@@ -12,6 +12,8 @@ from ui.menu import mmenu
 from ui.over import gover, reset_game
 import maps.map_01 as map_01
 import maps.map_02 as map_02
+from ui.shop_menu.shop import ShopMenu
+from director.wave_shenanigans import WaveTransitionTimer
 
 from director.wave_director import WaveDirector
 from director.wave_ui import WaveUI
@@ -43,6 +45,8 @@ font = pygame.font.Font(None, 36)
 mmmenu = mmenu()
 pause = ppause()
 gover_menu = gover()
+shop_menu = ShopMenu()
+wave_timer = WaveTransitionTimer(delay_ms=3000)
 
 mmmenu.run(display_surface, clock, renderer)
 
@@ -104,6 +108,19 @@ while running:
         gover_menu.game_over = True
         continue
 
+    # shop menu area
+    if shop_menu.active:
+        shop_menu.draw(display_surface)
+        renderer.render(display_surface, np.array([], dtype=np.float32), (0,0))
+        pygame.display.flip()
+        
+        if not shop_menu.active:
+            wave_director.generate_wave()
+            shop_menu.fade_alpha = 0
+            
+        clock.tick(60)
+        continue
+
     # camera
     cam_offset = player.get_camera_offset()
 
@@ -127,9 +144,9 @@ while running:
             alive_enemies.append(enemy)
     enemies[:] = alive_enemies
     
-    if wave_director.is_wave_complete():
-        wave_director.generate_wave()
-        
+    # wave transition delay
+    wave_timer.check_transition(wave_director.is_wave_complete(), pygame.time.get_ticks(), shop_menu)
+
     wave_ui.draw(display_surface, wave_director)
 
     # fps counter ingame

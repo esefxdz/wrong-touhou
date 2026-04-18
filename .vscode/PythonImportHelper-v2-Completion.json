@@ -158,6 +158,22 @@
         "documentation": {}
     },
     {
+        "label": "BaseEnemy",
+        "importPath": "baddies.base_enemy",
+        "description": "baddies.base_enemy",
+        "isExtraImport": true,
+        "detail": "baddies.base_enemy",
+        "documentation": {}
+    },
+    {
+        "label": "BaseEnemy",
+        "importPath": "baddies.base_enemy",
+        "description": "baddies.base_enemy",
+        "isExtraImport": true,
+        "detail": "baddies.base_enemy",
+        "documentation": {}
+    },
+    {
         "label": "moderngl",
         "kind": 6,
         "isExtraImport": true,
@@ -176,12 +192,92 @@
         "documentation": {}
     },
     {
+        "label": "ENEMY_COST",
+        "importPath": "director.enemy_currency_weight",
+        "description": "director.enemy_currency_weight",
+        "isExtraImport": true,
+        "detail": "director.enemy_currency_weight",
+        "documentation": {}
+    },
+    {
+        "label": "ENEMY_UNLOCK_WAVE",
+        "importPath": "director.enemy_currency_weight",
+        "description": "director.enemy_currency_weight",
+        "isExtraImport": true,
+        "detail": "director.enemy_currency_weight",
+        "documentation": {}
+    },
+    {
+        "label": "ENEMY_BASE_WEIGHT",
+        "importPath": "director.enemy_currency_weight",
+        "description": "director.enemy_currency_weight",
+        "isExtraImport": true,
+        "detail": "director.enemy_currency_weight",
+        "documentation": {}
+    },
+    {
         "label": "time",
         "kind": 6,
         "isExtraImport": true,
         "importPath": "time",
         "description": "time",
         "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "spaceship",
+        "importPath": "player_files.player",
+        "description": "player_files.player",
+        "isExtraImport": true,
+        "detail": "player_files.player",
+        "documentation": {}
+    },
+    {
+        "label": "spaceship",
+        "importPath": "player_files.player",
+        "description": "player_files.player",
+        "isExtraImport": true,
+        "detail": "player_files.player",
+        "documentation": {}
+    },
+    {
+        "label": "ProjectileManager",
+        "importPath": "collision_optimizer.projectile_manager",
+        "description": "collision_optimizer.projectile_manager",
+        "isExtraImport": true,
+        "detail": "collision_optimizer.projectile_manager",
+        "documentation": {}
+    },
+    {
+        "label": "ProjectileManager",
+        "importPath": "collision_optimizer.projectile_manager",
+        "description": "collision_optimizer.projectile_manager",
+        "isExtraImport": true,
+        "detail": "collision_optimizer.projectile_manager",
+        "documentation": {}
+    },
+    {
+        "label": "WaveDirector",
+        "importPath": "director.wave_director",
+        "description": "director.wave_director",
+        "isExtraImport": true,
+        "detail": "director.wave_director",
+        "documentation": {}
+    },
+    {
+        "label": "WaveDirector",
+        "importPath": "director.wave_director",
+        "description": "director.wave_director",
+        "isExtraImport": true,
+        "detail": "director.wave_director",
+        "documentation": {}
+    },
+    {
+        "label": "spawn_enemy",
+        "importPath": "baddies",
+        "description": "baddies",
+        "isExtraImport": true,
+        "detail": "baddies",
         "documentation": {}
     },
     {
@@ -225,22 +321,6 @@
         "documentation": {}
     },
     {
-        "label": "ProjectileManager",
-        "importPath": "collision_optimizer.projectile_manager",
-        "description": "collision_optimizer.projectile_manager",
-        "isExtraImport": true,
-        "detail": "collision_optimizer.projectile_manager",
-        "documentation": {}
-    },
-    {
-        "label": "spaceship",
-        "importPath": "player_files.player",
-        "description": "player_files.player",
-        "isExtraImport": true,
-        "detail": "player_files.player",
-        "documentation": {}
-    },
-    {
         "label": "ppause",
         "importPath": "ui.pause",
         "description": "ui.pause",
@@ -258,6 +338,14 @@
     },
     {
         "label": "gover",
+        "importPath": "ui.over",
+        "description": "ui.over",
+        "isExtraImport": true,
+        "detail": "ui.over",
+        "documentation": {}
+    },
+    {
+        "label": "reset_game",
         "importPath": "ui.over",
         "description": "ui.over",
         "isExtraImport": true,
@@ -283,11 +371,35 @@
         "documentation": {}
     },
     {
+        "label": "ShopMenu",
+        "importPath": "ui.shop_menu.shop",
+        "description": "ui.shop_menu.shop",
+        "isExtraImport": true,
+        "detail": "ui.shop_menu.shop",
+        "documentation": {}
+    },
+    {
+        "label": "WaveTransitionTimer",
+        "importPath": "director.wave_shenanigans",
+        "description": "director.wave_shenanigans",
+        "isExtraImport": true,
+        "detail": "director.wave_shenanigans",
+        "documentation": {}
+    },
+    {
+        "label": "WaveUI",
+        "importPath": "director.wave_ui",
+        "description": "director.wave_ui",
+        "isExtraImport": true,
+        "detail": "director.wave_ui",
+        "documentation": {}
+    },
+    {
         "label": "BaseEnemy",
         "kind": 6,
         "importPath": "baddies.base_enemy",
         "description": "baddies.base_enemy",
-        "peekOfCode": "class BaseEnemy:\n    \"\"\"Base class for all enemies. Subclass this and override the config to create new enemies.\"\"\"\n    # === OVERRIDE THESE IN SUBCLASSES ===\n    SPRITE_PATH = None      # path to sprite image relative to baddies folder\n    SPRITE_SIZE = (150, 150)\n    HITBOX_SIZE = (50, 50)\n    MAX_HP = 2\n    SPEED = 1.5\n    FIRE_COOLDOWN = 1000    # ms between shots\n    FIRE_SPEED = 3          # bullet travel speed",
+        "peekOfCode": "class BaseEnemy:\n    \"\"\"Base class for all enemies. Subclass this and override the config to create new enemies.\"\"\"\n    #------------------------------------------\n    # common enemy stats / the basic stuff\n    # target: @everyone\n    #------------------------------------------\n    SPRITE_PATH = None      # path to sprite image relative to baddies folder\n    SPRITE_SIZE = (150, 150)\n    HITBOX_SIZE = (50, 50)\n    MAX_HP = 2",
         "detail": "baddies.base_enemy",
         "documentation": {}
     },
@@ -316,6 +428,24 @@
         "description": "baddies.rumia",
         "peekOfCode": "class Rumia(BaseEnemy):\n    \"\"\"Rumia - basic chaser enemy that fires at player.\"\"\"\n    SPRITE_PATH = \"rumia.png\"\n    SPRITE_SIZE = (150, 150)\n    HITBOX_SIZE = (50, 50)\n    MAX_HP = 2\n    SPEED = 1.5\n    FIRE_COOLDOWN = 1000\n    FIRE_SPEED = 3\n    FIRE_COLOR = (255, 0, 0)",
         "detail": "baddies.rumia",
+        "documentation": {}
+    },
+    {
+        "label": "Sakuya",
+        "kind": 6,
+        "importPath": "baddies.sakuya",
+        "description": "baddies.sakuya",
+        "peekOfCode": "class Sakuya(BaseEnemy):\n    \"\"\"Sakuya - Spinner enemy with orbiting blades that tries to physically hit you.\"\"\"\n    SPRITE_PATH = \"sakuya.png\"\n    SPRITE_SIZE = (150, 150)\n    HITBOX_SIZE = (50, 50)\n    MAX_HP = 5              # Tougher\n    SPEED = 2.0             # Fast pursuit\n    FIRE_COUNT = 0          # She doesn't shoot standard bullets\n    # Spinner configuration\n    IS_SPINNER = True",
+        "detail": "baddies.sakuya",
+        "documentation": {}
+    },
+    {
+        "label": "Yukari",
+        "kind": 6,
+        "importPath": "baddies.yukari",
+        "description": "baddies.yukari",
+        "peekOfCode": "class Yukari(BaseEnemy):\n    \"\"\"Yukari - Tank enemy that body-slams you for massive damage.\"\"\"\n    SPRITE_PATH = \"yukari.png\"\n    SPRITE_SIZE = (200, 200) # Big physical presence\n    HITBOX_SIZE = (100, 100) # Large impact block\n    MAX_HP = 25              # Heavy bullet sponge\n    SPEED = 0.5              # Slow but inevitable\n    FIRE_COUNT = 0           # She doesn't shoot standard bullets\n    IS_MELEE = True          # She attacks by running into you\n    MELEE_DAMAGE = 2         # Hits very hard",
+        "detail": "baddies.yukari",
         "documentation": {}
     },
     {
@@ -397,6 +527,60 @@
         "description": "collision_optimizer.projectile_manager",
         "peekOfCode": "class ProjectileManager:\n    \"\"\"\n    Data-Oriented Projectile Manager.\n    Instead of thousands of Python objects, we use parallel 1D numpy arrays.\n    \"\"\"\n    def __init__(self, max_bullets=20000):\n        self.max_bullets = max_bullets\n        self.active_count = 0\n        # We need these attributes for the shader:\n        # pos(2f), color(3f), radius(1f), angle(1f), type(1i) => 8 floats",
         "detail": "collision_optimizer.projectile_manager",
+        "documentation": {}
+    },
+    {
+        "label": "ENEMY_COST",
+        "kind": 5,
+        "importPath": "director.enemy_currency_weight",
+        "description": "director.enemy_currency_weight",
+        "peekOfCode": "ENEMY_COST = {\n    \"rumia\": 1,\n    \"cirno\": 3,\n    \"sakuya\": 4,\n    \"patchouli\": 5,\n    \"yukari\": 8\n}\n# Maps enemy type to the wave number when it becomes available\nENEMY_UNLOCK_WAVE = {\n    \"rumia\": 1,",
+        "detail": "director.enemy_currency_weight",
+        "documentation": {}
+    },
+    {
+        "label": "ENEMY_UNLOCK_WAVE",
+        "kind": 5,
+        "importPath": "director.enemy_currency_weight",
+        "description": "director.enemy_currency_weight",
+        "peekOfCode": "ENEMY_UNLOCK_WAVE = {\n    \"rumia\": 1,\n    \"cirno\": 3,\n    \"sakuya\": 4,\n    \"patchouli\": 5,\n    \"yukari\": 6\n}\n# Base spawn weight for each enemy (used in weighted random selection)\nENEMY_BASE_WEIGHT = {\n    \"rumia\": 70,",
+        "detail": "director.enemy_currency_weight",
+        "documentation": {}
+    },
+    {
+        "label": "ENEMY_BASE_WEIGHT",
+        "kind": 5,
+        "importPath": "director.enemy_currency_weight",
+        "description": "director.enemy_currency_weight",
+        "peekOfCode": "ENEMY_BASE_WEIGHT = {\n    \"rumia\": 70,\n    \"cirno\": 20,\n    \"sakuya\": 15,\n    \"patchouli\": 10,\n    \"yukari\": 3\n}",
+        "detail": "director.enemy_currency_weight",
+        "documentation": {}
+    },
+    {
+        "label": "WaveDirector",
+        "kind": 6,
+        "importPath": "director.wave_director",
+        "description": "director.wave_director",
+        "peekOfCode": "class WaveDirector:\n    def __init__(self, spawn_enemy_callback, active_enemies_ref):\n        \"\"\"\n        :param spawn_enemy_callback: Function to call when spawning an enemy. i.e., `spawn_enemy(enemy_type)`\n        :param active_enemies_ref: Reference to the collection (list/set/Group) of active enemies\n        \"\"\"\n        self.spawn_enemy = spawn_enemy_callback\n        self.active_enemies = active_enemies_ref\n        self.current_wave = 0\n        self.difficulty = 0.0",
+        "detail": "director.wave_director",
+        "documentation": {}
+    },
+    {
+        "label": "WaveTransitionTimer",
+        "kind": 6,
+        "importPath": "director.wave_shenanigans",
+        "description": "director.wave_shenanigans",
+        "peekOfCode": "class WaveTransitionTimer:\n    def __init__(self, delay_ms=3000):\n        # basic timer settings\n        self.delay_ms = delay_ms\n        self.waiting = False\n        self.wait_start_time = 0\n    def check_transition(self, is_complete, current_time, shop_menu):\n        # wait if wave is finished but we haven't opened shop yet\n        if is_complete:\n            if not self.waiting and not shop_menu.active:",
+        "detail": "director.wave_shenanigans",
+        "documentation": {}
+    },
+    {
+        "label": "WaveUI",
+        "kind": 6,
+        "importPath": "director.wave_ui",
+        "description": "director.wave_ui",
+        "peekOfCode": "class WaveUI:\n    def __init__(self, font_size=36):\n        self.font = pygame.font.Font(None, font_size)\n    def draw(self, surface, wave_director):\n        total = getattr(wave_director, 'total_enemies_this_wave', len(wave_director.spawn_queue))\n        spawned = total - len(wave_director.spawn_queue)\n        text = f\"DEBUG Wave {wave_director.current_wave} | Enemies Spawned: {spawned}/{total} | Queue Left: {len(wave_director.spawn_queue)}\"\n        surf = self.font.render(text, True, (255, 255, 0))\n        surface.blit(surf, (surface.get_width() // 2 - surf.get_width() // 2, surface.get_height() - 40))",
+        "detail": "director.wave_ui",
         "documentation": {}
     },
     {
@@ -526,6 +710,15 @@
         "documentation": {}
     },
     {
+        "label": "ShopMenu",
+        "kind": 6,
+        "importPath": "ui.shop_menu.shop",
+        "description": "ui.shop_menu.shop",
+        "peekOfCode": "class ShopMenu:\n    def __init__(self):\n        # shop state and fading settings\n        self.active = False\n        self.fade_alpha = 0\n        self.fade_speed = 5\n        self.font = pygame.font.SysFont(None, 40)\n        # loading the background picture\n        try:\n            self.background_image = pygame.image.load(\"ui/shop_menu/shop_background.png\").convert_alpha()",
+        "detail": "ui.shop_menu.shop",
+        "documentation": {}
+    },
+    {
         "label": "mmenu",
         "kind": 6,
         "importPath": "ui.menu",
@@ -540,6 +733,15 @@
         "importPath": "ui.over",
         "description": "ui.over",
         "peekOfCode": "class gover:\n    def __init__(self):\n        self.game_over = False\n        self.font = pygame.font.SysFont(None, 60)\n        self.background_image = pygame.image.load(\"textures/over_background.png\")\n        self.background_image = pygame.transform.scale(\n            self.background_image,\n            (constants.WIDTH, constants.HEIGHT)\n        )\n        self.last_click_time = 0",
+        "detail": "ui.over",
+        "documentation": {}
+    },
+    {
+        "label": "reset_game",
+        "kind": 2,
+        "importPath": "ui.over",
+        "description": "ui.over",
+        "peekOfCode": "def reset_game(available_maps):\n    # get fresh map and assets\n    m = random.choice(available_maps)\n    bg = pygame.image.load(m.MAP_IMAGE)\n    bg = pygame.transform.scale(bg, (m.MAP_WIDTH, m.MAP_HEIGHT))\n    # reset all core entities\n    p = spaceship(100, 100, m.MAP_WIDTH, m.MAP_HEIGHT)\n    pm = ProjectileManager()\n    # wave director setup area\n    enemies_list = []",
         "detail": "ui.over",
         "documentation": {}
     },
@@ -634,11 +836,11 @@
         "documentation": {}
     },
     {
-        "label": "reset_game",
-        "kind": 2,
+        "label": "wave_ui",
+        "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "def reset_game():\n    # Get fresh map and assets\n    m = random.choice(available_maps)\n    bg = pygame.image.load(m.MAP_IMAGE)\n    bg = pygame.transform.scale(bg, (m.MAP_WIDTH, m.MAP_HEIGHT))\n    # Reset objects\n    p = spaceship(100, 100, m.MAP_WIDTH, m.MAP_HEIGHT)\n    pm = ProjectileManager()\n    # Reset all map wave timers\n    for wave in m.ENEMY_WAVES:",
+        "peekOfCode": "wave_ui = WaveUI()\npygame.init()\n# game window - Initialize with OpenGL flags\nscreen = pygame.display.set_mode((WIDTH, HEIGHT), pygame.OPENGL | pygame.DOUBLEBUF)\npygame.display.set_caption(\"will it work tho\")\n# Virtual surface for standard Pygame drawing\ndisplay_surface = pygame.Surface((WIDTH, HEIGHT), pygame.SRCALPHA)\nrenderer = MasterRenderer(WIDTH, HEIGHT)\n# picks a random map\navailable_maps = [map_01, map_02]",
         "detail": "main",
         "documentation": {}
     },
@@ -647,7 +849,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "screen = pygame.display.set_mode((WIDTH, HEIGHT), pygame.OPENGL | pygame.DOUBLEBUF)\npygame.display.set_caption(\"will it work tho\")\n# Virtual surface for standard Pygame drawing\ndisplay_surface = pygame.Surface((WIDTH, HEIGHT), pygame.SRCALPHA)\nrenderer = MasterRenderer(WIDTH, HEIGHT)\n# pick a random map\navailable_maps = [map_01, map_02]\ndef reset_game():\n    # Get fresh map and assets\n    m = random.choice(available_maps)",
+        "peekOfCode": "screen = pygame.display.set_mode((WIDTH, HEIGHT), pygame.OPENGL | pygame.DOUBLEBUF)\npygame.display.set_caption(\"will it work tho\")\n# Virtual surface for standard Pygame drawing\ndisplay_surface = pygame.Surface((WIDTH, HEIGHT), pygame.SRCALPHA)\nrenderer = MasterRenderer(WIDTH, HEIGHT)\n# picks a random map\navailable_maps = [map_01, map_02]\n# initialize the game for the first time\ncurrent_map, background_image, player, enemies, projectile_manager, wave_director = reset_game(available_maps)\nspatial_grid = SpatialHash(cell_size=100)",
         "detail": "main",
         "documentation": {}
     },
@@ -656,7 +858,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "display_surface = pygame.Surface((WIDTH, HEIGHT), pygame.SRCALPHA)\nrenderer = MasterRenderer(WIDTH, HEIGHT)\n# pick a random map\navailable_maps = [map_01, map_02]\ndef reset_game():\n    # Get fresh map and assets\n    m = random.choice(available_maps)\n    bg = pygame.image.load(m.MAP_IMAGE)\n    bg = pygame.transform.scale(bg, (m.MAP_WIDTH, m.MAP_HEIGHT))\n    # Reset objects",
+        "peekOfCode": "display_surface = pygame.Surface((WIDTH, HEIGHT), pygame.SRCALPHA)\nrenderer = MasterRenderer(WIDTH, HEIGHT)\n# picks a random map\navailable_maps = [map_01, map_02]\n# initialize the game for the first time\ncurrent_map, background_image, player, enemies, projectile_manager, wave_director = reset_game(available_maps)\nspatial_grid = SpatialHash(cell_size=100)\n# fps counter\nclock = pygame.time.Clock()\npygame.font.init()",
         "detail": "main",
         "documentation": {}
     },
@@ -665,7 +867,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "renderer = MasterRenderer(WIDTH, HEIGHT)\n# pick a random map\navailable_maps = [map_01, map_02]\ndef reset_game():\n    # Get fresh map and assets\n    m = random.choice(available_maps)\n    bg = pygame.image.load(m.MAP_IMAGE)\n    bg = pygame.transform.scale(bg, (m.MAP_WIDTH, m.MAP_HEIGHT))\n    # Reset objects\n    p = spaceship(100, 100, m.MAP_WIDTH, m.MAP_HEIGHT)",
+        "peekOfCode": "renderer = MasterRenderer(WIDTH, HEIGHT)\n# picks a random map\navailable_maps = [map_01, map_02]\n# initialize the game for the first time\ncurrent_map, background_image, player, enemies, projectile_manager, wave_director = reset_game(available_maps)\nspatial_grid = SpatialHash(cell_size=100)\n# fps counter\nclock = pygame.time.Clock()\npygame.font.init()\nfont = pygame.font.Font(None, 36)",
         "detail": "main",
         "documentation": {}
     },
@@ -674,7 +876,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "available_maps = [map_01, map_02]\ndef reset_game():\n    # Get fresh map and assets\n    m = random.choice(available_maps)\n    bg = pygame.image.load(m.MAP_IMAGE)\n    bg = pygame.transform.scale(bg, (m.MAP_WIDTH, m.MAP_HEIGHT))\n    # Reset objects\n    p = spaceship(100, 100, m.MAP_WIDTH, m.MAP_HEIGHT)\n    pm = ProjectileManager()\n    # Reset all map wave timers",
+        "peekOfCode": "available_maps = [map_01, map_02]\n# initialize the game for the first time\ncurrent_map, background_image, player, enemies, projectile_manager, wave_director = reset_game(available_maps)\nspatial_grid = SpatialHash(cell_size=100)\n# fps counter\nclock = pygame.time.Clock()\npygame.font.init()\nfont = pygame.font.Font(None, 36)\n#pause menu, didnt know where to put it\nmmmenu = mmenu()",
         "detail": "main",
         "documentation": {}
     },
@@ -683,7 +885,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "spatial_grid = SpatialHash(cell_size=100)\n# fps counter\nclock = pygame.time.Clock()\npygame.font.init()\nfont = pygame.font.Font(None, 36)\n#pause menu, didnt know where to put it\nmmmenu = mmenu()\npause = ppause()\ngover_menu = gover()\nmmmenu.run(display_surface, clock, renderer)",
+        "peekOfCode": "spatial_grid = SpatialHash(cell_size=100)\n# fps counter\nclock = pygame.time.Clock()\npygame.font.init()\nfont = pygame.font.Font(None, 36)\n#pause menu, didnt know where to put it\nmmmenu = mmenu()\npause = ppause()\ngover_menu = gover()\nshop_menu = ShopMenu()",
         "detail": "main",
         "documentation": {}
     },
@@ -692,7 +894,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "clock = pygame.time.Clock()\npygame.font.init()\nfont = pygame.font.Font(None, 36)\n#pause menu, didnt know where to put it\nmmmenu = mmenu()\npause = ppause()\ngover_menu = gover()\nmmmenu.run(display_surface, clock, renderer)\nin_menu = True\nrunning = True",
+        "peekOfCode": "clock = pygame.time.Clock()\npygame.font.init()\nfont = pygame.font.Font(None, 36)\n#pause menu, didnt know where to put it\nmmmenu = mmenu()\npause = ppause()\ngover_menu = gover()\nshop_menu = ShopMenu()\nwave_timer = WaveTransitionTimer(delay_ms=3000)\nmmmenu.run(display_surface, clock, renderer)",
         "detail": "main",
         "documentation": {}
     },
@@ -701,7 +903,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "font = pygame.font.Font(None, 36)\n#pause menu, didnt know where to put it\nmmmenu = mmenu()\npause = ppause()\ngover_menu = gover()\nmmmenu.run(display_surface, clock, renderer)\nin_menu = True\nrunning = True\nwhile running:\n    for event in pygame.event.get():",
+        "peekOfCode": "font = pygame.font.Font(None, 36)\n#pause menu, didnt know where to put it\nmmmenu = mmenu()\npause = ppause()\ngover_menu = gover()\nshop_menu = ShopMenu()\nwave_timer = WaveTransitionTimer(delay_ms=3000)\nmmmenu.run(display_surface, clock, renderer)\nin_menu = True\nrunning = True",
         "detail": "main",
         "documentation": {}
     },
@@ -710,7 +912,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "mmmenu = mmenu()\npause = ppause()\ngover_menu = gover()\nmmmenu.run(display_surface, clock, renderer)\nin_menu = True\nrunning = True\nwhile running:\n    for event in pygame.event.get():\n        if event.type == pygame.QUIT:\n            running = False",
+        "peekOfCode": "mmmenu = mmenu()\npause = ppause()\ngover_menu = gover()\nshop_menu = ShopMenu()\nwave_timer = WaveTransitionTimer(delay_ms=3000)\nmmmenu.run(display_surface, clock, renderer)\nin_menu = True\nrunning = True\nwhile running:\n    for event in pygame.event.get():",
         "detail": "main",
         "documentation": {}
     },
@@ -719,7 +921,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "pause = ppause()\ngover_menu = gover()\nmmmenu.run(display_surface, clock, renderer)\nin_menu = True\nrunning = True\nwhile running:\n    for event in pygame.event.get():\n        if event.type == pygame.QUIT:\n            running = False\n        if not in_menu and not pause.paused:",
+        "peekOfCode": "pause = ppause()\ngover_menu = gover()\nshop_menu = ShopMenu()\nwave_timer = WaveTransitionTimer(delay_ms=3000)\nmmmenu.run(display_surface, clock, renderer)\nin_menu = True\nrunning = True\nwhile running:\n    for event in pygame.event.get():\n        if event.type == pygame.QUIT:",
         "detail": "main",
         "documentation": {}
     },
@@ -728,7 +930,25 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "gover_menu = gover()\nmmmenu.run(display_surface, clock, renderer)\nin_menu = True\nrunning = True\nwhile running:\n    for event in pygame.event.get():\n        if event.type == pygame.QUIT:\n            running = False\n        if not in_menu and not pause.paused:\n            pause.pause_toggle(event)",
+        "peekOfCode": "gover_menu = gover()\nshop_menu = ShopMenu()\nwave_timer = WaveTransitionTimer(delay_ms=3000)\nmmmenu.run(display_surface, clock, renderer)\nin_menu = True\nrunning = True\nwhile running:\n    for event in pygame.event.get():\n        if event.type == pygame.QUIT:\n            running = False",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "shop_menu",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "shop_menu = ShopMenu()\nwave_timer = WaveTransitionTimer(delay_ms=3000)\nmmmenu.run(display_surface, clock, renderer)\nin_menu = True\nrunning = True\nwhile running:\n    for event in pygame.event.get():\n        if event.type == pygame.QUIT:\n            running = False\n        if not in_menu and not pause.paused:",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "wave_timer",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "wave_timer = WaveTransitionTimer(delay_ms=3000)\nmmmenu.run(display_surface, clock, renderer)\nin_menu = True\nrunning = True\nwhile running:\n    for event in pygame.event.get():\n        if event.type == pygame.QUIT:\n            running = False\n        if not in_menu and not pause.paused:\n            pause.pause_toggle(event)",
         "detail": "main",
         "documentation": {}
     },
