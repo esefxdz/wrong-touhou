@@ -20,6 +20,12 @@ class Cirno(BaseEnemy):
     FIRE_SPREAD_ANGLE = 45  # cone width in degrees
 
     #------------------------------------------
+    # drop table / shotgunner, medium difficulty
+    #------------------------------------------
+    DROP_XP_RANGE = (2, 5)   # 2-5 XP orbs per kill
+    DROP_HP_RANGE  = (0, 1)  # 0-1 HP orb (small chance)
+
+    #------------------------------------------
     # shotgun fire override / blasting a spread at the player
     #------------------------------------------
     def fire(self, proj_manager, cam_offset=(0, 0)):

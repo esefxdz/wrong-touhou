@@ -140,8 +140,12 @@ while running:
     spatial_grid.clear()
     alive_enemies = []
     for enemy in enemies:
+        # keep alive enemies in the spatial hash for collision
         if not enemy.defeated:
             spatial_grid.insert(enemy.lolrect, enemy)
+            alive_enemies.append(enemy)
+        # keep defeated enemies until their dropped orbs are all collected
+        elif enemy.dropped_orbs:
             alive_enemies.append(enemy)
     enemies[:] = alive_enemies
     
@@ -171,6 +175,11 @@ while running:
     for enemy in enemies:
         enemy.update(display_surface, player, projectile_manager)
         enemy.draw(display_surface, cam_offset)
+
+    # orb pass — runs for all enemies including defeated ones so dropped orbs persist
+    for enemy in enemies:
+        enemy.update_orbs(player)
+        enemy.draw_orbs(display_surface, cam_offset)
 
     # Calculate vectorized physics updates for all active bullets
     projectile_manager.update(current_map.MAP_WIDTH, current_map.MAP_HEIGHT)

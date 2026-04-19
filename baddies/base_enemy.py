@@ -8,6 +8,81 @@ pygame.mixer.init()
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 import constants
 
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Orb
+# A single pickupable orb sitting in world space.
+# type_: "xp" or "hp"
+# ─────────────────────────────────────────────────────────────────────────────
+class Orb:
+    PICKUP_RADIUS  = 30   # how close the player must be to collect
+    MAGNET_RADIUS  = 150  # orbs slide toward the player when within this range
+    MAGNET_SPEED   = 4    # pixels per frame when magnetising
+    FLOAT_SPEED    = 0.04 # gentle bob frequency
+    FLOAT_AMP      = 3    # bob height in pixels
+
+    # visual radii and colours per type
+    _STYLE = {
+        "xp": {"radius": 7,  "color": (80, 220, 255),  "glow": (30, 120, 200)},
+        "hp": {"radius": 8,  "color": (255, 80, 100),  "glow": (180, 20, 40)},
+    }
+
+    def __init__(self, x, y, type_):
+        self.x     = float(x)
+        self.y     = float(y)
+        self.type_ = type_
+        self.collected = False
+        self._age  = random.uniform(0, 6.28)  # phase-offset so orbs don't all bob in sync
+
+    def update(self, player):
+        if self.collected:
+            return
+
+        px, py = player.spaceship_rect.center
+        dx = px - self.x
+        dy = py - self.y
+        dist = math.hypot(dx, dy)
+
+        # slide toward player when within magnet range (faster the closer they are)
+        if dist < self.MAGNET_RADIUS and dist > 0:
+            speed = self.MAGNET_SPEED * (1 + (self.MAGNET_RADIUS - dist) / self.MAGNET_RADIUS)
+            self.x += (dx / dist) * speed
+            self.y += (dy / dist) * speed
+            dist = math.hypot(px - self.x, py - self.y)  # recalc after move
+
+        # collected when close enough to the player's hitbox
+        if dist < self.PICKUP_RADIUS:
+            self.collected = True
+            if self.type_ == "xp":
+                player.level_system.add_xp(3)
+            elif self.type_ == "hp":
+                # heal 1 point, never over max
+                player.hit_count = max(0, player.hit_count - 1)
+
+        self._age += self.FLOAT_SPEED
+
+    def draw(self, screen, cam_offset):
+        if self.collected:
+            return
+
+        style = self._STYLE.get(self.type_, self._STYLE["xp"])
+        r     = style["radius"]
+
+        # screen position with gentle vertical bob
+        sx = int(self.x - cam_offset[0])
+        sy = int(self.y - cam_offset[1] + math.sin(self._age) * self.FLOAT_AMP)
+
+        # soft glow ring
+        glow_surf = pygame.Surface((r * 5, r * 5), pygame.SRCALPHA)
+        pygame.draw.circle(glow_surf, (*style["glow"], 60), (r * 5 // 2, r * 5 // 2), r * 2)
+        screen.blit(glow_surf, (sx - r * 5 // 2, sy - r * 5 // 2))
+
+        # bright core
+        pygame.draw.circle(screen, style["color"], (sx, sy), r)
+        # white specular glint
+        pygame.draw.circle(screen, (255, 255, 255), (sx - r // 3, sy - r // 3), max(1, r // 3))
+
+
 class BaseEnemy:
     """Base class for all enemies. Subclass this and override the config to create new enemies."""
     
@@ -23,6 +98,14 @@ class BaseEnemy:
     FIRE_COOLDOWN = 1000    # ms between shots
     FIRE_SPEED = 3          # bullet travel speed
     FIRE_COLOR = (255, 0, 0)
+
+    #------------------------------------------
+    # drop tables / subclasses set these to control loot
+    # store as (min, max) inclusive — randint is rolled fresh on each kill
+    # target: @everyone
+    #------------------------------------------
+    DROP_XP_RANGE = (0, 0)   # how many XP orbs this enemy can drop
+    DROP_HP_RANGE  = (0, 0)  # how many HP orbs this enemy can drop
 
     #------------------------------------------
     # game initialization area / hooking up the basics
@@ -47,6 +130,9 @@ class BaseEnemy:
         self.max_hp = self.MAX_HP
         self.hit_count = 0
         self.defeated = False
+
+        # orbs waiting to be picked up — populated in take_hit when the enemy dies
+        self.dropped_orbs: list[Orb] = []
         
         # shooting
         self.last_fire_time = pygame.time.get_ticks()
@@ -120,6 +206,19 @@ class BaseEnemy:
                 self.defeated = True
                 self.player.enemies_killed += 1
                 pygame.mixer.Sound(os.path.join("sounds", "killsound.wav")).play()
+
+                # roll drop counts fresh per kill using the subclass range
+                xp_count = random.randint(*self.DROP_XP_RANGE)
+                hp_count = random.randint(*self.DROP_HP_RANGE)
+                cx, cy = self.lolrect.center
+                for _ in range(xp_count):
+                    ox = cx + random.randint(-20, 20)
+                    oy = cy + random.randint(-20, 20)
+                    self.dropped_orbs.append(Orb(ox, oy, "xp"))
+                for _ in range(hp_count):
+                    ox = cx + random.randint(-20, 20)
+                    oy = cy + random.randint(-20, 20)
+                    self.dropped_orbs.append(Orb(ox, oy, "hp"))
     
     def move_toward_player(self):
         enemy_x = self.lolrect.centerx
@@ -137,6 +236,21 @@ class BaseEnemy:
         dy = dy / distance
         self.lolrect.x += dx * self.SPEED
         self.lolrect.y += dy * self.SPEED
+
+    #------------------------------------------
+    # orb lifecycle / called from main loop after enemy.update / enemy.draw
+    # target: @everyone
+    #------------------------------------------
+    def update_orbs(self, player):
+        """Tick every live orb; remove ones that have been collected."""
+        self.dropped_orbs = [o for o in self.dropped_orbs if not o.collected]
+        for orb in self.dropped_orbs:
+            orb.update(player)
+
+    def draw_orbs(self, screen, cam_offset):
+        """Draw every live orb belonging to this enemy."""
+        for orb in self.dropped_orbs:
+            orb.draw(screen, cam_offset)
     
     #------------------------------------------
     # main update loop / running all the math

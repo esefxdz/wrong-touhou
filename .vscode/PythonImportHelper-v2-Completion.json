@@ -435,6 +435,15 @@
         "documentation": {}
     },
     {
+        "label": "Orb",
+        "kind": 6,
+        "importPath": "baddies.base_enemy",
+        "description": "baddies.base_enemy",
+        "peekOfCode": "class Orb:\n    PICKUP_RADIUS  = 30   # how close the player must be to collect\n    MAGNET_RADIUS  = 150  # orbs slide toward the player when within this range\n    MAGNET_SPEED   = 4    # pixels per frame when magnetising\n    FLOAT_SPEED    = 0.04 # gentle bob frequency\n    FLOAT_AMP      = 3    # bob height in pixels\n    # visual radii and colours per type\n    _STYLE = {\n        \"xp\": {\"radius\": 7,  \"color\": (80, 220, 255),  \"glow\": (30, 120, 200)},\n        \"hp\": {\"radius\": 8,  \"color\": (255, 80, 100),  \"glow\": (180, 20, 40)},",
+        "detail": "baddies.base_enemy",
+        "documentation": {}
+    },
+    {
         "label": "BaseEnemy",
         "kind": 6,
         "importPath": "baddies.base_enemy",
@@ -538,7 +547,7 @@
         "kind": 2,
         "importPath": "collision_optimizer.hit_register",
         "description": "collision_optimizer.hit_register",
-        "peekOfCode": "def check_enemy_bullets_vs_player(proj_manager, player):\n    \"\"\"Vectorized check for all enemy bullets against the single player.\n    Uses segment-vs-circle sweep to handle fast-moving bullets (no tunneling).\"\"\"\n    en_mask = proj_manager.active & (proj_manager.owner == 1)\n    if not np.any(en_mask): return\n    px, py = player.spaceship_rect.center\n    player_radius = 25.0  # half of 50x50 rect\n    # Current positions\n    cx = proj_manager.pos_x[en_mask]\n    cy = proj_manager.pos_y[en_mask]",
+        "peekOfCode": "def check_enemy_bullets_vs_player(proj_manager, player):\n    # Only look at active enemy-owned bullets\n    en_mask = proj_manager.active & (proj_manager.owner == 1)\n    if not np.any(en_mask):\n        return\n    px, py = player.spaceship_rect.center\n    # Reconstruct each bullet's movement segment for this frame.\n    # update() already moved bullets forward by velocity, so previous pos = current - velocity.\n    cur_x, cur_y = proj_manager.pos_x[en_mask], proj_manager.pos_y[en_mask]\n    vx,    vy    = proj_manager.vel_x[en_mask],  proj_manager.vel_y[en_mask]",
         "detail": "collision_optimizer.hit_register",
         "documentation": {}
     },

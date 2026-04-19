@@ -20,6 +20,12 @@ class Sakuya(BaseEnemy):
     SPINNER_COLOR = (192, 192, 192)  # silver knives
     SPINNER_BLADE_RADIUS = 15        # threat size per blade
 
+    #------------------------------------------
+    # drop table / fast and dangerous, rewarding to kill
+    #------------------------------------------
+    DROP_XP_RANGE = (4, 7)   # 4-7 XP orbs per kill
+    DROP_HP_RANGE  = (0, 2)  # 0-2 HP orbs
+
     def __init__(self, player_ref):
         super().__init__(player_ref)
         

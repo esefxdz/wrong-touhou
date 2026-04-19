@@ -10,3 +10,9 @@ class Rumia(BaseEnemy):
     FIRE_COOLDOWN = 1000
     FIRE_SPEED = 3
     FIRE_COLOR = (255, 0, 0)
+
+    #------------------------------------------
+    # drop table / she's weak so drops are minimal
+    #------------------------------------------
+    DROP_XP_RANGE = (1, 3)   # 1-3 XP orbs per kill
+    DROP_HP_RANGE  = (0, 0)  # no health drops

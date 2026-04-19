@@ -15,6 +15,12 @@ class Yukari(BaseEnemy):
     MELEE_DAMAGE = 2          # hits very hard per contact
 
     #------------------------------------------
+    # drop table / absolute tank, highest reward in the game
+    #------------------------------------------
+    DROP_XP_RANGE = (8, 14)  # 8-14 XP orbs per kill
+    DROP_HP_RANGE  = (1, 3)  # 1-3 HP orbs, always drops at least one
+
+    #------------------------------------------
     # melee update override / body slam contact damage
     #------------------------------------------
     def update(self, screen, player, proj_manager):

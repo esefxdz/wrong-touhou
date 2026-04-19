@@ -21,6 +21,12 @@ class Patchouli(BaseEnemy):
     SNIPER_LASER_TRACK_COLOR = (200, 100, 255)  # thin tracking laser color
     POST_FIRE_DURATION = 300            # ms the thick beam lingers after firing
 
+    #------------------------------------------
+    # drop table / sniper, high threat so decent reward
+    #------------------------------------------
+    DROP_XP_RANGE = (3, 6)   # 3-6 XP orbs per kill
+    DROP_HP_RANGE  = (0, 1)  # 0-1 HP orb
+
     def __init__(self, player_ref):
         super().__init__(player_ref)
         

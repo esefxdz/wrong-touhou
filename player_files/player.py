@@ -19,6 +19,16 @@ class spaceship:
         self.hit_count = 0
         self.enemies_killed = 0
         self.damage_dealt = 0
+
+        # Touhou-style hitbox circles (world-space radii)
+        self.hitbox_radius = 6    # tiny core — actual damage circle
+        self.graze_radius  = 28   # larger invisible ring — bullets passing through grant XP
+
+        # Graze state: set of bullet indices already counted this logical frame
+        self.grazed_this_frame: set = set()
+
+        # Damage flash visual
+        self._hit_flash_until = 0
         
         # Dash and iframe variables
         self.is_dashing = False
@@ -129,6 +139,34 @@ class spaceship:
         screen_y = self.spaceship_rect.y - cam_offset[1]
         screen.blit(self.spaceship_image, (screen_x, screen_y))
 
+#######################################################################################################################################
+#ENTIRE HITBOX BULLSHITTERY
+        # --- circle visualisation ---
+        cx = self.spaceship_rect.centerx - cam_offset[0]
+        cy = self.spaceship_rect.centery - cam_offset[1]
+
+        # Outer glow layers (soft, transparent orange)
+        for glow_r, glow_alpha in ((14, 40), (10, 80), (8, 130)):
+            glow_surf = pygame.Surface((glow_r * 2, glow_r * 2), pygame.SRCALPHA)
+            pygame.draw.circle(glow_surf, (255, 130, 0, glow_alpha), (glow_r, glow_r), glow_r)
+            screen.blit(glow_surf, (cx - glow_r, cy - glow_r))
+
+        # Bright orange core circle
+        pygame.draw.circle(screen, (255, 165, 0), (cx, cy), self.hitbox_radius)
+        # White pinpoint centre
+        pygame.draw.circle(screen, (255, 255, 255), (cx, cy), 2)
+
+        # Flash overlay when hit (red tint)
+        if current_time < self._hit_flash_until:
+            remaining = self._hit_flash_until - current_time
+            flash_alpha = min(180, int(remaining / 3))
+            flash_surf = pygame.Surface((self.spaceship_rect.width, self.spaceship_rect.height), pygame.SRCALPHA)
+            flash_surf.fill((255, 60, 60, flash_alpha))
+            screen.blit(flash_surf, (screen_x, screen_y))
+
+        # Clear per-frame graze tracking
+        self.grazed_this_frame.clear()
+
     def take_hit(self, damage=1):
         current_time = pygame.time.get_ticks()
         if current_time < self.invincible_until:
@@ -136,8 +174,12 @@ class spaceship:
             
         if self.hit_count < self.max_hp:
             self.hit_count += damage
+            self._hit_flash_until = current_time + 400  # 400 ms red flash
+            self.invincible_until = current_time + 600   # brief post-hit i-frames
             pygame.mixer.Sound(os.path.join("sounds", "hitsound.wav")).play()
                 
+############################################################################################################################
+
     def draw_health(self, screen):
         current_hp = self.max_hp - self.hit_count
         if current_hp < 0:

@@ -1,4 +1,5 @@
 import pygame
+import numpy as np
 
 class SpatialHash:
     def __init__(self, cell_size=100):
@@ -33,7 +34,6 @@ class SpatialHash:
                         candidates.add(item)
         return candidates
 
-import numpy as np
 
 def check_player_bullets_vs_enemies(proj_manager, enemies, spatial_hash, player):
     """Checks player bullets against enemies stored in the spatial hash."""
@@ -63,46 +63,53 @@ def check_player_bullets_vs_enemies(proj_manager, enemies, spatial_hash, player)
                 proj_manager.active_count -= 1
                 break
 
+
 def check_enemy_bullets_vs_player(proj_manager, player):
-    """Vectorized check for all enemy bullets against the single player.
-    Uses segment-vs-circle sweep to handle fast-moving bullets (no tunneling)."""
+    # Only look at active enemy-owned bullets
     en_mask = proj_manager.active & (proj_manager.owner == 1)
-    if not np.any(en_mask): return
+    if not np.any(en_mask):
+        return
 
     px, py = player.spaceship_rect.center
-    player_radius = 25.0  # half of 50x50 rect
 
-    # Current positions
-    cx = proj_manager.pos_x[en_mask]
-    cy = proj_manager.pos_y[en_mask]
-    # Previous positions (current - velocity, since update already moved them)
-    vx = proj_manager.vel_x[en_mask]
-    vy = proj_manager.vel_y[en_mask]
-    sx = cx - vx  # start of segment this frame
-    sy = cy - vy  # end is cx, cy
+    # Reconstruct each bullet's movement segment for this frame.
+    # update() already moved bullets forward by velocity, so previous pos = current - velocity.
+    cur_x, cur_y = proj_manager.pos_x[en_mask], proj_manager.pos_y[en_mask]
+    vx,    vy    = proj_manager.vel_x[en_mask],  proj_manager.vel_y[en_mask]
+    prv_x, prv_y = cur_x - vx, cur_y - vy
 
-    radii = proj_manager.radius[en_mask] + player_radius
-
-    # Segment-vs-circle: find closest point on segment [S->C] to P
-    dx_seg = cx - sx
-    dy_seg = cy - sy
-    seg_len_sq = dx_seg**2 + dy_seg**2
-
-    # t = dot(P-S, seg) / |seg|^2  clamped 0..1
-    t = ((px - sx) * dx_seg + (py - sy) * dy_seg) / np.where(seg_len_sq > 0, seg_len_sq, 1.0)
+    # Find the closest point on each segment to the player centre (swept, no tunneling).
+    # t is the normalised distance along the segment clamped to [0, 1].
+    seg_x, seg_y = cur_x - prv_x, cur_y - prv_y
+    seg_len_sq   = seg_x**2 + seg_y**2
+    t = ((px - prv_x)*seg_x + (py - prv_y)*seg_y) / np.where(seg_len_sq > 0, seg_len_sq, 1.0)
     t = np.clip(t, 0.0, 1.0)
+    close_x = prv_x + t * seg_x
+    close_y = prv_y + t * seg_y
 
-    closest_x = sx + t * dx_seg
-    closest_y = sy + t * dy_seg
+    # Squared distance from that closest point to the player centre
+    dist_sq  = (close_x - px)**2 + (close_y - py)**2
+    bullet_r = proj_manager.radius[en_mask]
 
-    dist_sq = (closest_x - px)**2 + (closest_y - py)**2
-    hit_mask = dist_sq < (radii ** 2)
+    # Two circle hitboxes — these are the only player hitboxes:
+    #   hitbox_radius : tiny bright-orange dot  → real damage, bullet consumed
+    #   graze_radius  : larger invisible ring    → earns XP, bullet kept
+    is_hit   = dist_sq < (player.hitbox_radius + bullet_r)**2
+    is_graze = ~is_hit & (dist_sq < (player.graze_radius + bullet_r)**2)
 
-    if np.any(hit_mask):
-        active_indices = np.where(en_mask)[0]
-        hit_indices = active_indices[hit_mask]
-        hits_count = len(hit_indices)
-        for _ in range(hits_count):
+    indices = np.where(en_mask)[0]
+
+    # Real hits: deal damage and consume the bullet
+    if np.any(is_hit):
+        hit_idx = indices[is_hit]
+        for _ in hit_idx:
             player.take_hit()
-        proj_manager.active[hit_indices] = False
-        proj_manager.active_count -= hits_count
+        proj_manager.active[hit_idx] = False
+        proj_manager.active_count -= len(hit_idx)
+
+    # Grazes: reward XP once per bullet (deduped via grazed_this_frame set, cleared each draw call)
+    if np.any(is_graze):
+        for idx in indices[is_graze]:
+            if int(idx) not in player.grazed_this_frame:
+                player.grazed_this_frame.add(int(idx))
+                player.level_system.add_xp(0.2)
