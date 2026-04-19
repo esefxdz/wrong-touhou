@@ -1,6 +1,6 @@
 import pygame
 import time
-from constants import WIDTH, HEIGHT, WHITE, RED, LIGHT_RED, GREEN, LIGHT_GREEN
+from constants import WIDTH, HEIGHT, WHITE, RED, LIGHT_RED, GREEN, LIGHT_GREEN, DARK_GRAY, CYAN, YELLOW, TRANSPARENT_BLACK, LIGHT_GRAY, FONT_LARGE
 from perks.perk_system import get_perk_choices, apply_perk
 
 class LevelSystem:
@@ -15,7 +15,7 @@ class LevelSystem:
         self.paused = False
         self.last_click_time = 0
         self.click_cooldown = 0.6
-        self.font = pygame.font.SysFont(None, 60)
+        self.font = pygame.font.SysFont(None, FONT_LARGE)
         self.small_font = pygame.font.Font(None, 24)
         self.card_font = pygame.font.SysFont(None, 34)
         self.card_desc_font = pygame.font.SysFont(None, 26)
@@ -81,20 +81,20 @@ class LevelSystem:
         if fill_width > bar_width:
             fill_width = bar_width
 
-        pygame.draw.rect(screen, (50, 50, 50), (x_pos, y_pos, bar_width, bar_height))
-        pygame.draw.rect(screen, (0, 200, 255), (x_pos, y_pos, fill_width, bar_height))
+        pygame.draw.rect(screen, DARK_GRAY, (x_pos, y_pos, bar_width, bar_height))
+        pygame.draw.rect(screen, CYAN, (x_pos, y_pos, fill_width, bar_height))
         
         lvl_text = self.small_font.render(f"Lvl {self.level}", True, (255, 255, 255))
         screen.blit(lvl_text, (x_pos - 50, y_pos - 4))
         
         if self.level_up_text_timer > 0:
-            up_text = self.small_font.render("Level Up!", True, (255, 255, 0))
+            up_text = self.small_font.render("Level Up!", True, YELLOW)
             screen.blit(up_text, (x_pos + bar_width + 10, y_pos - 4))
             self.level_up_text_timer -= 1
         
         # show pending perks count
         if self.pending_levels > 0:
-            pending_text = self.small_font.render(f"({self.pending_levels} pending - press L)", True, (255, 255, 0))
+            pending_text = self.small_font.render(f"({self.pending_levels} pending - press L)", True, YELLOW)
             screen.blit(pending_text, (x_pos + bar_width + 10, y_pos - 4))
 
     #------------------------------------------
@@ -107,7 +107,7 @@ class LevelSystem:
 
         # transparent dark overlay
         dark_surface = pygame.Surface((WIDTH, HEIGHT), pygame.SRCALPHA)
-        dark_surface.fill((0, 0, 0, 100))
+        dark_surface.fill(TRANSPARENT_BLACK)
         screen.blit(dark_surface, (0, 0))
         
         # backdrop strip
@@ -191,7 +191,7 @@ class LevelSystem:
                     screen.blit(icon, (card_rect.centerx - icon_size // 2, icon_y))
                 else:
                     # missing file fallback - draw a small placeholder square
-                    pygame.draw.rect(screen, (100, 100, 100),
+                    pygame.draw.rect(screen, LIGHT_GRAY,
                                      (card_rect.centerx - icon_size // 2, icon_y, icon_size, icon_size),
                                      border_radius=4)
 

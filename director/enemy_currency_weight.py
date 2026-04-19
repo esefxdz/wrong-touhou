@@ -4,7 +4,10 @@ ENEMY_COST = {
     "cirno": 3,
     "sakuya": 4,
     "patchouli": 5,
-    "yukari": 8
+    "yukari": 8,
+    "tewi": 4,
+    "sanae": 5,
+    "flandre": 6
 }
 
 # Maps enemy type to the wave number when it becomes available
@@ -13,7 +16,10 @@ ENEMY_UNLOCK_WAVE = {
     "cirno": 3,
     "sakuya": 4,
     "patchouli": 5,
-    "yukari": 6
+    "yukari": 6,
+    "tewi": 4,
+    "sanae": 5,
+    "flandre": 6
 }
 
 # Base spawn weight for each enemy (used in weighted random selection)
@@ -22,5 +28,8 @@ ENEMY_BASE_WEIGHT = {
     "cirno": 20,
     "sakuya": 15,
     "patchouli": 10,
-    "yukari": 3
+    "yukari": 3,
+    "tewi": 15,
+    "sanae": 10,
+    "flandre": 8
 }

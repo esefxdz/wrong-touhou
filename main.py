@@ -1,7 +1,7 @@
 import pygame
 import random
 from baddies import spawn_enemy
-from constants import WIDTH, HEIGHT, BLACK
+from constants import WIDTH, HEIGHT, BLACK, FPS
 from collision_optimizer.hit_register import check_player_bullets_vs_enemies, check_enemy_bullets_vs_player, SpatialHash
 from collision_optimizer.gpu_renderer import MasterRenderer
 from collision_optimizer.projectile_manager import ProjectileManager
@@ -13,7 +13,7 @@ from ui.over import gover, reset_game
 import maps.map_01 as map_01
 import maps.map_02 as map_02
 from ui.shop_menu.shop import ShopMenu
-from director.wave_shenanigans import WaveTransitionTimer
+from director.wave_shenanigans import WaveTransitionTimer, draw_enemy_pointers
 
 from director.wave_director import WaveDirector
 from director.wave_ui import WaveUI
@@ -119,7 +119,7 @@ while running:
             wave_director.generate_wave()
             shop_menu.fade_alpha = 0
             
-        clock.tick(60)
+        clock.tick(FPS)
         continue
 
     # camera
@@ -133,7 +133,7 @@ while running:
     current_time = pygame.time.get_ticks()
 
     # wave director area
-    dt = 1.0 / 60.0 # logic runs locked to tick cycle length
+    dt = 1.0 / FPS # logic runs locked to tick cycle length
     wave_director.update(dt)
     
     # purge defeated enemies so the director knows the map is clean
@@ -173,13 +173,21 @@ while running:
 
     # enemy area / probably needs changing
     for enemy in enemies:
+        enemy.active_enemies_list = enemies
         enemy.update(display_surface, player, projectile_manager)
         enemy.draw(display_surface, cam_offset)
 
+    # Ensure wave ends if only orbs remain
+    living_enemies_count = sum(1 for e in enemies if not e.defeated)
+    wave_is_over = (living_enemies_count == 0 and len(wave_director.spawn_queue) == 0)
+
     # orb pass — runs for all enemies including defeated ones so dropped orbs persist
     for enemy in enemies:
-        enemy.update_orbs(player)
+        enemy.update_orbs(player, force_magnet=wave_is_over)
         enemy.draw_orbs(display_surface, cam_offset)
+
+    # draw straggler pointers if under 10 enemies left
+    draw_enemy_pointers(display_surface, enemies, wave_director, cam_offset, WIDTH, HEIGHT)
 
     # Calculate vectorized physics updates for all active bullets
     projectile_manager.update(current_map.MAP_WIDTH, current_map.MAP_HEIGHT)
@@ -189,7 +197,7 @@ while running:
     renderer.render(display_surface, vbo_data, cam_offset)
 
     pygame.display.flip()
-    clock.tick(60)
+    clock.tick(FPS)
 
 # just quittin
 pygame.quit()

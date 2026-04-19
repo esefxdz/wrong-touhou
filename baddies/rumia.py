@@ -1,4 +1,5 @@
 from baddies.base_enemy import BaseEnemy
+from constants import RED
 
 class Rumia(BaseEnemy):
     """Rumia - basic chaser enemy that fires at player."""
@@ -9,7 +10,7 @@ class Rumia(BaseEnemy):
     SPEED = 1.5
     FIRE_COOLDOWN = 1000
     FIRE_SPEED = 3
-    FIRE_COLOR = (255, 0, 0)
+    FIRE_COLOR = RED
 
     #------------------------------------------
     # drop table / she's weak so drops are minimal

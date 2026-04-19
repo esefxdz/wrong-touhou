@@ -1,7 +1,38 @@
 WIDTH, HEIGHT = 1000, 1000
+
+# Game Configs
+FPS = 60
+
+# Typography Standard Sizes
+FONT_LARGE = 60
+FONT_MEDIUM = 40
+FONT_SMALL = 30
+
+# Colors
+WIDTH, HEIGHT = 1000, 1000
+
+# Game Configs
+FPS = 60
+
+# Typography Standard Sizes
+FONT_LARGE = 60
+FONT_MEDIUM = 40
+FONT_SMALL = 30
+
+# Colors
 RED = (255, 0, 0)
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 GREEN = (0, 200, 0)
 LIGHT_GREEN = (100, 255, 100)
 LIGHT_RED = (255, 100, 100)
+YELLOW = (255, 255, 0)
+ORANGE = (255, 165, 0)
+CYAN = (0, 200, 255)
+DARK_GRAY = (50, 50, 50)
+LIGHT_GRAY = (100, 100, 100)
+SILVER = (192, 192, 192)
+MAGENTA = (255, 0, 255)
+PURPLE = (128, 0, 128)
+LIGHT_PURPLE = (200, 100, 255)
+TRANSPARENT_BLACK = (0, 0, 0, 100)

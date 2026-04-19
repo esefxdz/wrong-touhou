@@ -2,9 +2,9 @@ import pygame
 import sys
 import os
 import time
+from constants import WIDTH, HEIGHT, FONT_MEDIUM, DARK_GRAY, BLACK, GREEN, LIGHT_GREEN, WHITE
 
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
-import constants
 
 class ShopMenu:
     def __init__(self):
@@ -12,25 +12,25 @@ class ShopMenu:
         self.active = False
         self.fade_alpha = 0
         self.fade_speed = 5
-        self.font = pygame.font.SysFont(None, 40)
+        self.font = pygame.font.SysFont(None, FONT_MEDIUM)
         
         # loading the background picture
         try:
             self.background_image = pygame.image.load("ui/shop_menu/shop_background.png").convert_alpha()
             self.background_image = pygame.transform.scale(
                 self.background_image,
-                (constants.WIDTH, constants.HEIGHT)
+                (WIDTH, HEIGHT)
             )
         except Exception:
-            self.background_image = pygame.Surface((constants.WIDTH, constants.HEIGHT), pygame.SRCALPHA)
-            self.background_image.fill((50, 50, 50, 255))
+            self.background_image = pygame.Surface((WIDTH, HEIGHT), pygame.SRCALPHA)
+            self.background_image.fill((*DARK_GRAY, 255))
             
         # skip button cooldowns
         self.last_click_time = 0
         self.click_cooldown = 0.5
         
         # setup the fade surface
-        self.fade_surface = pygame.Surface((constants.WIDTH, constants.HEIGHT), pygame.SRCALPHA)
+        self.fade_surface = pygame.Surface((WIDTH, HEIGHT), pygame.SRCALPHA)
         self.fade_surface.fill((0, 0, 0, 0))
 
     def trigger(self):
@@ -54,8 +54,8 @@ class ShopMenu:
             bg_copy = self.background_image.copy()
             bg_copy.set_alpha(self.fade_alpha)
             
-            overlay = pygame.Surface((constants.WIDTH, constants.HEIGHT))
-            overlay.fill(constants.BLACK)
+            overlay = pygame.Surface((WIDTH, HEIGHT))
+            overlay.fill(BLACK)
             overlay.set_alpha(self.fade_alpha)
             
             # blit the darkening overlay first then the shop background
@@ -72,13 +72,13 @@ class ShopMenu:
         mouse_click = pygame.mouse.get_pressed()
         
         # skip button visuals
-        skip_button = pygame.Rect(constants.WIDTH - 150, constants.HEIGHT - 80, 130, 50)
-        skip_text = self.font.render("Skip", True, constants.WHITE)
+        skip_button = pygame.Rect(WIDTH - 150, HEIGHT - 80, 130, 50)
+        skip_text = self.font.render("Skip", True, WHITE)
         
         # hover effects and click logic
-        pygame.draw.rect(screen, constants.GREEN, skip_button)
+        pygame.draw.rect(screen, GREEN, skip_button)
         if skip_button.collidepoint(mouse_pos):
-            pygame.draw.rect(screen, constants.LIGHT_GREEN, skip_button)
+            pygame.draw.rect(screen, LIGHT_GREEN, skip_button)
             current_time = time.time()
             if mouse_click[0] and current_time - self.last_click_time > self.click_cooldown:
                 self.last_click_time = current_time

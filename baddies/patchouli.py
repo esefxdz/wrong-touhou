@@ -2,6 +2,7 @@ import math
 import pygame
 import os
 from baddies.base_enemy import BaseEnemy
+from constants import PURPLE, LIGHT_PURPLE
 
 class Patchouli(BaseEnemy):
     """Patchouli - Sniper that locks on with a laser before firing a fast purple beam."""
@@ -16,9 +17,9 @@ class Patchouli(BaseEnemy):
     SPEED = 1
     FIRE_COOLDOWN = 3000
     FIRE_SPEED = 400
-    FIRE_COLOR = (128, 0, 128)          # purple beam
+    FIRE_COLOR = PURPLE          # purple beam
     FIRE_ON_SCREEN_ONLY = True          # won't fire off-screen
-    SNIPER_LASER_TRACK_COLOR = (200, 100, 255)  # thin tracking laser color
+    SNIPER_LASER_TRACK_COLOR = LIGHT_PURPLE  # thin tracking laser color
     POST_FIRE_DURATION = 300            # ms the thick beam lingers after firing
 
     #------------------------------------------

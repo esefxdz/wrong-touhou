@@ -1,6 +1,6 @@
 import pygame
 import os
-from constants import WIDTH, HEIGHT
+from constants import WIDTH, HEIGHT, ORANGE, WHITE, RED, GREEN, FONT_SMALL
 import math
 class spaceship:
     def __init__(self, x, y, map_w=3000, map_h=3000):
@@ -117,7 +117,7 @@ class spaceship:
             angle = math.atan2(direction[1], direction[0])
             proj_manager.spawn(
                 px, py, direction[0], direction[1], self.bullet_speed,
-                radius=10, color=(255, 255, 255), type_id=1, owner=0, angle=angle
+                radius=10, color=WHITE, type_id=1, owner=0, angle=angle
             )
 
     def draw(self, screen, cam_offset):
@@ -148,20 +148,20 @@ class spaceship:
         # Outer glow layers (soft, transparent orange)
         for glow_r, glow_alpha in ((14, 40), (10, 80), (8, 130)):
             glow_surf = pygame.Surface((glow_r * 2, glow_r * 2), pygame.SRCALPHA)
-            pygame.draw.circle(glow_surf, (255, 130, 0, glow_alpha), (glow_r, glow_r), glow_r)
+            pygame.draw.circle(glow_surf, (*ORANGE, glow_alpha), (glow_r, glow_r), glow_r)
             screen.blit(glow_surf, (cx - glow_r, cy - glow_r))
 
         # Bright orange core circle
-        pygame.draw.circle(screen, (255, 165, 0), (cx, cy), self.hitbox_radius)
+        pygame.draw.circle(screen, ORANGE, (cx, cy), self.hitbox_radius)
         # White pinpoint centre
-        pygame.draw.circle(screen, (255, 255, 255), (cx, cy), 2)
+        pygame.draw.circle(screen, WHITE, (cx, cy), 2)
 
         # Flash overlay when hit (red tint)
         if current_time < self._hit_flash_until:
             remaining = self._hit_flash_until - current_time
             flash_alpha = min(180, int(remaining / 3))
             flash_surf = pygame.Surface((self.spaceship_rect.width, self.spaceship_rect.height), pygame.SRCALPHA)
-            flash_surf.fill((255, 60, 60, flash_alpha))
+            flash_surf.fill((*RED, flash_alpha))
             screen.blit(flash_surf, (screen_x, screen_y))
 
         # Clear per-frame graze tracking
@@ -192,10 +192,10 @@ class spaceship:
         
         fill_width = (current_hp / self.max_hp) * bar_width
 
-        pygame.draw.rect(screen, (255, 0, 0), (x_pos, y_pos, bar_width, bar_height))
-        pygame.draw.rect(screen, (0, 255, 0), (x_pos, y_pos, fill_width, bar_height))
+        pygame.draw.rect(screen, RED, (x_pos, y_pos, bar_width, bar_height))
+        pygame.draw.rect(screen, GREEN, (x_pos, y_pos, fill_width, bar_height))
         
-        font = pygame.font.Font(None, 30)
-        hp_text = font.render(f"{current_hp} / {self.max_hp}", True, (255, 255, 255))
+        font = pygame.font.SysFont(None, FONT_SMALL)
+        hp_text = font.render(f"{current_hp} / {self.max_hp}", True, WHITE)
         text_rect = hp_text.get_rect(center=(WIDTH // 2, y_pos + bar_height // 2))
         screen.blit(hp_text, text_rect)

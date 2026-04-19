@@ -3,6 +3,9 @@ from baddies.cirno import Cirno
 from baddies.patchouli import Patchouli
 from baddies.sakuya import Sakuya
 from baddies.yukari import Yukari
+from baddies.flandre import Flandre
+from baddies.sanae import Sanae
+from baddies.tewi import Tewi
 
 ENEMY_REGISTRY = {
     "rumia": Rumia,
@@ -10,6 +13,9 @@ ENEMY_REGISTRY = {
     "patchouli": Patchouli,
     "sakuya": Sakuya,
     "yukari": Yukari,
+    "flandre": Flandre,
+    "sanae": Sanae,
+    "tewi": Tewi,
 }
 
 def spawn_enemy(name, player_ref):

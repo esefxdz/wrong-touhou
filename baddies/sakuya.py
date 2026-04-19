@@ -1,6 +1,7 @@
 import math
 import pygame
 from baddies.base_enemy import BaseEnemy
+from constants import SILVER
 
 class Sakuya(BaseEnemy):
     """Sakuya - Spinner enemy with orbiting blades that tries to physically hit you."""
@@ -17,7 +18,7 @@ class Sakuya(BaseEnemy):
     SPINNER_BLADE_COUNT = 2
     SPINNER_RADIUS = 90     # orbit distance from center
     SPINNER_SPEED = 0.08    # rotation speed in radians per frame
-    SPINNER_COLOR = (192, 192, 192)  # silver knives
+    SPINNER_COLOR = SILVER  # silver knives
     SPINNER_BLADE_RADIUS = 15        # threat size per blade
 
     #------------------------------------------

@@ -2,6 +2,7 @@ import pygame
 import sys
 import os
 import numpy as np
+from constants import WIDTH, HEIGHT, FPS, FONT_LARGE, FONT_MEDIUM
 
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 import constants
@@ -9,7 +10,8 @@ import constants
 class mmenu:
     def __init__(self):
         self.menu = True
-        self.font = pygame.font.SysFont(None, 60)
+        self.font = pygame.font.SysFont(None, FONT_LARGE)
+        self.small_font = pygame.font.SysFont(None, FONT_MEDIUM)
         self.menu_background_image = pygame.image.load("textures/menu_background.jpg")
         self.menu_background_image = pygame.transform.scale(
             self.menu_background_image,
@@ -27,7 +29,7 @@ class mmenu:
             # Use renderer to draw the surface to the GPU
             renderer.render(surface, np.array([], dtype=np.float32), (0, 0))
             pygame.display.flip()
-            clock.tick(60)
+            clock.tick(FPS)
 
     def handle_events(self):
         for event in pygame.event.get():
@@ -46,8 +48,8 @@ class mmenu:
     def menu_button(self, screen):
         mouse_pos = pygame.mouse.get_pos()
         mouse_click = pygame.mouse.get_pressed()
-        play_button = pygame.Rect(constants.WIDTH // 2 - 100, constants.HEIGHT // 2 - 50, 200, 50)
-        quit_button = pygame.Rect(constants.WIDTH // 2 - 100, constants.HEIGHT // 2 + 25, 200, 50)
+        play_button = pygame.Rect(WIDTH // 2 - 100, HEIGHT // 2 - 50, 200, 50)
+        quit_button = pygame.Rect(WIDTH // 2 - 100, HEIGHT // 2 + 25, 200, 50)
         #its better than getting normal coordinates because this one doesnt shit itself with different resolutions 
         play_text = self.font.render("Play", True, constants.WHITE)
         quit_text = self.font.render("Quit", True, constants.WHITE)

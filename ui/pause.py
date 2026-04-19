@@ -2,6 +2,7 @@ import pygame
 import sys
 import os
 import time
+from constants import WIDTH, HEIGHT, FONT_LARGE, FONT_MEDIUM
 pygame.init()
 
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
@@ -18,11 +19,12 @@ class ppause:
     def __init__(self):
         self.paused = False
         self.menu = False
-        self.font = pygame.font.SysFont(None, 60)
+        self.font = pygame.font.SysFont(None, FONT_LARGE)
+        self.small_font = pygame.font.SysFont(None, FONT_MEDIUM)
         self.pause_background_image = pygame.image.load("textures/pause_background.jpg")
         self.pause_background_image = pygame.transform.scale(
             self.pause_background_image,
-            (constants.WIDTH, constants.HEIGHT)
+            (WIDTH, HEIGHT)
         )
         #cooldown between clicks because im too dumb to implement event driven click system
         self.last_click_time = 0
@@ -43,9 +45,9 @@ class ppause:
     def pause_button(self, screen):
         mouse_pos = pygame.mouse.get_pos()
         mouse_click = pygame.mouse.get_pressed()
-        resume_button = pygame.Rect(constants.WIDTH // 2 - 100, constants.HEIGHT // 2 - 90, 200, 50)
-        main_menu_button = pygame.Rect(constants.WIDTH // 2 - 112, constants.HEIGHT // 2 - 30, 225, 50)
-        quit_button = pygame.Rect(constants.WIDTH // 2 - 100, constants.HEIGHT // 2 + 25, 200, 50)
+        resume_button = pygame.Rect(WIDTH // 2 - 100, HEIGHT // 2 - 90, 200, 50)
+        main_menu_button = pygame.Rect(WIDTH // 2 - 112, HEIGHT // 2 - 30, 225, 50)
+        quit_button = pygame.Rect(WIDTH // 2 - 100, HEIGHT // 2 + 25, 200, 50)
         #its better than getting normal coordinates because this one doesnt shit itself with different resolutions 
         resume_text = self.font.render("Resume", True, constants.WHITE)
         main_menu_text = self.font.render("Main Menu", True, constants.WHITE)

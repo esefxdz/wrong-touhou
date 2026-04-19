@@ -6,7 +6,7 @@ import math
 pygame.mixer.init()
 
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
-import constants
+from constants import RED, GREEN, WHITE, MAGENTA, WIDTH, HEIGHT
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -24,7 +24,7 @@ class Orb:
     # visual radii and colours per type
     _STYLE = {
         "xp": {"radius": 7,  "color": (80, 220, 255),  "glow": (30, 120, 200)},
-        "hp": {"radius": 8,  "color": (255, 80, 100),  "glow": (180, 20, 40)},
+        "hp": {"radius": 8,  "color": (50, 255, 50),   "glow": (20, 180, 20)},
     }
 
     def __init__(self, x, y, type_):
@@ -34,7 +34,7 @@ class Orb:
         self.collected = False
         self._age  = random.uniform(0, 6.28)  # phase-offset so orbs don't all bob in sync
 
-    def update(self, player):
+    def update(self, player, force_magnet=False):
         if self.collected:
             return
 
@@ -44,8 +44,11 @@ class Orb:
         dist = math.hypot(dx, dy)
 
         # slide toward player when within magnet range (faster the closer they are)
-        if dist < self.MAGNET_RADIUS and dist > 0:
-            speed = self.MAGNET_SPEED * (1 + (self.MAGNET_RADIUS - dist) / self.MAGNET_RADIUS)
+        if force_magnet or (dist < self.MAGNET_RADIUS and dist > 0):
+            # If wave ended, yank them extremely fast from anywhere on the map
+            base_speed = self.MAGNET_SPEED * 10 if force_magnet else self.MAGNET_SPEED
+            speed = base_speed * (1 + max(0, self.MAGNET_RADIUS - dist) / self.MAGNET_RADIUS)
+            
             self.x += (dx / dist) * speed
             self.y += (dy / dist) * speed
             dist = math.hypot(px - self.x, py - self.y)  # recalc after move
@@ -67,6 +70,17 @@ class Orb:
 
         style = self._STYLE.get(self.type_, self._STYLE["xp"])
         r     = style["radius"]
+        color = style["color"]
+        glow_color = style["glow"]
+
+        # If XP orb, calculate dynamic rainbow colors
+        if self.type_ == "xp":
+            import colorsys
+            hue = ((pygame.time.get_ticks() / 1500.0) + self._age) % 1.0 
+            rgb = colorsys.hsv_to_rgb(hue, 0.8, 1.0)
+            color = (int(rgb[0] * 255), int(rgb[1] * 255), int(rgb[2] * 255))
+            glow_rgb = colorsys.hsv_to_rgb(hue, 0.8, 0.6)
+            glow_color = (int(glow_rgb[0] * 255), int(glow_rgb[1] * 255), int(glow_rgb[2] * 255))
 
         # screen position with gentle vertical bob
         sx = int(self.x - cam_offset[0])
@@ -74,13 +88,13 @@ class Orb:
 
         # soft glow ring
         glow_surf = pygame.Surface((r * 5, r * 5), pygame.SRCALPHA)
-        pygame.draw.circle(glow_surf, (*style["glow"], 60), (r * 5 // 2, r * 5 // 2), r * 2)
+        pygame.draw.circle(glow_surf, (*glow_color, 60), (r * 5 // 2, r * 5 // 2), r * 2)
         screen.blit(glow_surf, (sx - r * 5 // 2, sy - r * 5 // 2))
 
         # bright core
-        pygame.draw.circle(screen, style["color"], (sx, sy), r)
+        pygame.draw.circle(screen, color, (sx, sy), r)
         # white specular glint
-        pygame.draw.circle(screen, (255, 255, 255), (sx - r // 3, sy - r // 3), max(1, r // 3))
+        pygame.draw.circle(screen, WHITE, (sx, sy), max(1, r // 3))
 
 
 class BaseEnemy:
@@ -97,7 +111,7 @@ class BaseEnemy:
     SPEED = 1.5
     FIRE_COOLDOWN = 1000    # ms between shots
     FIRE_SPEED = 3          # bullet travel speed
-    FIRE_COLOR = (255, 0, 0)
+    FIRE_COLOR = RED
 
     #------------------------------------------
     # drop tables / subclasses set these to control loot
@@ -120,7 +134,7 @@ class BaseEnemy:
             self.image = pygame.image.load(image_path)
         else:
             self.image = pygame.Surface(self.SPRITE_SIZE)
-            self.image.fill((255, 0, 255))  # magenta = missing texture
+            self.image.fill(MAGENTA)  # magenta = missing texture
         self.image = pygame.transform.scale(self.image, self.SPRITE_SIZE)
         
         # hitbox
@@ -152,17 +166,17 @@ class BaseEnemy:
         margin = 200
         side = random.choice(['top', 'bottom', 'left', 'right'])
         if side == 'top':
-            x = player_x + random.randint(-constants.WIDTH // 2, constants.WIDTH // 2)
-            y = player_y - constants.HEIGHT // 2 - margin
+            x = player_x + random.randint(-WIDTH // 2, WIDTH // 2)
+            y = player_y - HEIGHT // 2 - margin
         elif side == 'bottom':
-            x = player_x + random.randint(-constants.WIDTH // 2, constants.WIDTH // 2)
-            y = player_y + constants.HEIGHT // 2 + margin
+            x = player_x + random.randint(-WIDTH // 2, WIDTH // 2)
+            y = player_y + HEIGHT // 2 + margin
         elif side == 'left':
-            x = player_x - constants.WIDTH // 2 - margin
-            y = player_y + random.randint(-constants.HEIGHT // 2, constants.HEIGHT // 2)
+            x = player_x - WIDTH // 2 - margin
+            y = player_y + random.randint(-HEIGHT // 2, HEIGHT // 2)
         else:
-            x = player_x + constants.WIDTH // 2 + margin
-            y = player_y + random.randint(-constants.HEIGHT // 2, constants.HEIGHT // 2)
+            x = player_x + WIDTH // 2 + margin
+            y = player_y + random.randint(-HEIGHT // 2, HEIGHT // 2)
         x = max(0, min(x, self.player.map_w))
         y = max(0, min(y, self.player.map_h))
         self.lolrect.topleft = (x, y)
@@ -170,7 +184,7 @@ class BaseEnemy:
     def _is_on_screen(self, cam_offset):
         sx = self.lolrect.centerx - cam_offset[0]
         sy = self.lolrect.centery - cam_offset[1]
-        return -50 <= sx <= constants.WIDTH + 50 and -50 <= sy <= constants.HEIGHT + 50
+        return -50 <= sx <= WIDTH + 50 and -50 <= sy <= HEIGHT + 50
 
     #------------------------------------------
     # firing system / single bullet aimed at player
@@ -241,11 +255,11 @@ class BaseEnemy:
     # orb lifecycle / called from main loop after enemy.update / enemy.draw
     # target: @everyone
     #------------------------------------------
-    def update_orbs(self, player):
+    def update_orbs(self, player, force_magnet=False):
         """Tick every live orb; remove ones that have been collected."""
         self.dropped_orbs = [o for o in self.dropped_orbs if not o.collected]
         for orb in self.dropped_orbs:
-            orb.update(player)
+            orb.update(player, force_magnet)
 
     def draw_orbs(self, screen, cam_offset):
         """Draw every live orb belonging to this enemy."""
@@ -288,6 +302,6 @@ class BaseEnemy:
         by = self.lolrect.top - cam_offset[1] - 15
         
         # red background then green health fill
-        pygame.draw.rect(screen, (255, 0, 0), (bx, by, bar_w, bar_h))
+        pygame.draw.rect(screen, RED, (bx, by, bar_w, bar_h))
         if fill_w > 0:
-            pygame.draw.rect(screen, (0, 255, 0), (bx, by, fill_w, bar_h))
+            pygame.draw.rect(screen, GREEN, (bx, by, fill_w, bar_h))

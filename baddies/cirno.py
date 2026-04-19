@@ -1,6 +1,7 @@
 import math
 import pygame
 from baddies.base_enemy import BaseEnemy
+from constants import CYAN
 
 class Cirno(BaseEnemy):
     """Cirno - Shotgunner enemy that fires blue projectiles in a spread."""
@@ -15,7 +16,7 @@ class Cirno(BaseEnemy):
     SPEED = 1.0             # slightly slower
     FIRE_COOLDOWN = 1500    # shoots slower
     FIRE_SPEED = 2          # slower bullets
-    FIRE_COLOR = (0, 200, 255)  # cyan / blue
+    FIRE_COLOR = CYAN  # cyan / blue
     FIRE_COUNT = 5          # pellets per shot
     FIRE_SPREAD_ANGLE = 45  # cone width in degrees
 
