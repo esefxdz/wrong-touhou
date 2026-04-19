@@ -1097,7 +1097,7 @@
         "kind": 5,
         "importPath": "maps.map_01",
         "description": "maps.map_01",
-        "peekOfCode": "MAP_NAME = \"The Field\"\nMAP_IMAGE = os.path.join(\"maps\", \"map_01.jpg\")\nMAP_WIDTH = 3000\nMAP_HEIGHT = 3000\n# enemy spawning\nENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 2000, \"count\": 3},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"patchouli\", \"interval\": 1500, \"count\": 5}\n]",
+        "peekOfCode": "MAP_NAME = \"The Field\"\nMAP_IMAGE = os.path.join(\"maps\", \"map_01.jpg\")\nMAP_WIDTH = 3000\nMAP_HEIGHT = 3000\n#DOESNT WORK\n# enemy spawning\nENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 2000, \"count\": 3},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"patchouli\", \"interval\": 1500, \"count\": 5}",
         "detail": "maps.map_01",
         "documentation": {}
     },
@@ -1106,7 +1106,7 @@
         "kind": 5,
         "importPath": "maps.map_01",
         "description": "maps.map_01",
-        "peekOfCode": "MAP_IMAGE = os.path.join(\"maps\", \"map_01.jpg\")\nMAP_WIDTH = 3000\nMAP_HEIGHT = 3000\n# enemy spawning\nENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 2000, \"count\": 3},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"patchouli\", \"interval\": 1500, \"count\": 5}\n]\n# enemy types available on this map",
+        "peekOfCode": "MAP_IMAGE = os.path.join(\"maps\", \"map_01.jpg\")\nMAP_WIDTH = 3000\nMAP_HEIGHT = 3000\n#DOESNT WORK\n# enemy spawning\nENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 2000, \"count\": 3},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"patchouli\", \"interval\": 1500, \"count\": 5}\n]",
         "detail": "maps.map_01",
         "documentation": {}
     },
@@ -1115,7 +1115,7 @@
         "kind": 5,
         "importPath": "maps.map_01",
         "description": "maps.map_01",
-        "peekOfCode": "MAP_WIDTH = 3000\nMAP_HEIGHT = 3000\n# enemy spawning\nENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 2000, \"count\": 3},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"patchouli\", \"interval\": 1500, \"count\": 5}\n]\n# enemy types available on this map\nENEMY_TYPES = [\"rumia\", \"cirno\", \"patchouli\"]",
+        "peekOfCode": "MAP_WIDTH = 3000\nMAP_HEIGHT = 3000\n#DOESNT WORK\n# enemy spawning\nENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 2000, \"count\": 3},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"patchouli\", \"interval\": 1500, \"count\": 5}\n]\n#DOESNT WORK",
         "detail": "maps.map_01",
         "documentation": {}
     },
@@ -1124,7 +1124,7 @@
         "kind": 5,
         "importPath": "maps.map_01",
         "description": "maps.map_01",
-        "peekOfCode": "MAP_HEIGHT = 3000\n# enemy spawning\nENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 2000, \"count\": 3},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"patchouli\", \"interval\": 1500, \"count\": 5}\n]\n# enemy types available on this map\nENEMY_TYPES = [\"rumia\", \"cirno\", \"patchouli\"]",
+        "peekOfCode": "MAP_HEIGHT = 3000\n#DOESNT WORK\n# enemy spawning\nENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 2000, \"count\": 3},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"patchouli\", \"interval\": 1500, \"count\": 5}\n]\n#DOESNT WORK\n# enemy types available on this map",
         "detail": "maps.map_01",
         "documentation": {}
     },
@@ -1133,7 +1133,7 @@
         "kind": 5,
         "importPath": "maps.map_01",
         "description": "maps.map_01",
-        "peekOfCode": "ENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 2000, \"count\": 3},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"patchouli\", \"interval\": 1500, \"count\": 5}\n]\n# enemy types available on this map\nENEMY_TYPES = [\"rumia\", \"cirno\", \"patchouli\"]",
+        "peekOfCode": "ENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 2000, \"count\": 3},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"patchouli\", \"interval\": 1500, \"count\": 5}\n]\n#DOESNT WORK\n# enemy types available on this map\nENEMY_TYPES = [\"rumia\", \"cirno\", \"patchouli\"]",
         "detail": "maps.map_01",
         "documentation": {}
     },
