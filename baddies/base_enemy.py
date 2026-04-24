@@ -34,7 +34,7 @@ class Orb:
         self.collected = False
         self._age  = random.uniform(0, 6.28)  # phase-offset so orbs don't all bob in sync
 
-    def update(self, player, force_magnet=False):
+    def update(self, player, current_map, force_magnet=False):
         if self.collected:
             return
 
@@ -50,8 +50,21 @@ class Orb:
             speed = base_speed * (1 + max(0, self.MAGNET_RADIUS - dist) / self.MAGNET_RADIUS)
             
             self.x += (dx / dist) * speed
+            # don't magnet Y aggressively if we want it to stay on ground, but let's just let magnet override gravity
             self.y += (dy / dist) * speed
             dist = math.hypot(px - self.x, py - self.y)  # recalc after move
+        else:
+            # Gravity
+            self.velocity_y = getattr(self, 'velocity_y', 0)
+            self.velocity_y += current_map.GRAVITY
+            self.y += self.velocity_y
+            
+            r = self._STYLE.get(self.type_, self._STYLE["xp"])["radius"]
+            for rx, ry, rw, rh in current_map.COLLISION_RECTS:
+                if (rx <= self.x <= rx + rw) and (ry <= self.y + r <= ry + rh):
+                    if self.velocity_y > 0:
+                        self.y = ry - r
+                        self.velocity_y = 0
 
         # collected when close enough to the player's hitbox
         if dist < self.PICKUP_RADIUS:
@@ -112,6 +125,10 @@ class BaseEnemy:
     FIRE_COOLDOWN = 1000    # ms between shots
     FIRE_SPEED = 3          # bullet travel speed
     FIRE_COLOR = RED
+    
+    GRAVITY_MULTIPLIER = 1.0 # Multiplier of map gravity
+    JUMP_STRENGTH = -10.0
+    IS_FLYING = False
 
     #------------------------------------------
     # drop tables / subclasses set these to control loot
@@ -152,6 +169,9 @@ class BaseEnemy:
         self.last_fire_time = pygame.time.get_ticks()
         self.fire_cooldown = self.FIRE_COOLDOWN
         self.fire_speed = self.FIRE_SPEED
+        
+        # platformer jumping/gravity
+        self.velocity_y = 0.0
             
         # spawn
         self.spawn_outside_screen()
@@ -164,7 +184,7 @@ class BaseEnemy:
         player_x = self.player.spaceship_rect.centerx
         player_y = self.player.spaceship_rect.centery
         margin = 200
-        side = random.choice(['top', 'bottom', 'left', 'right'])
+        side = random.choice(['top', 'left', 'right'])
         if side == 'top':
             x = player_x + random.randint(-WIDTH // 2, WIDTH // 2)
             y = player_y - HEIGHT // 2 - margin
@@ -234,7 +254,7 @@ class BaseEnemy:
                     oy = cy + random.randint(-20, 20)
                     self.dropped_orbs.append(Orb(ox, oy, "hp"))
     
-    def move_toward_player(self):
+    def move_toward_player(self, current_map):
         enemy_x = self.lolrect.centerx
         enemy_y = self.lolrect.centery
         player_x = self.player.spaceship_rect.centerx
@@ -242,24 +262,51 @@ class BaseEnemy:
         
         dx = player_x - enemy_x
         dy = player_y - enemy_y
-        distance = math.hypot(dx, dy)
-        if distance == 0:
-            return
         
-        dx = dx / distance
-        dy = dy / distance
-        self.lolrect.x += dx * self.SPEED
-        self.lolrect.y += dy * self.SPEED
+        if self.IS_FLYING:
+            distance = math.hypot(dx, dy)
+            if distance > 0:
+                self.lolrect.x += (dx / distance) * self.SPEED
+                self.lolrect.y += (dy / distance) * self.SPEED
+            return
+            
+        # Ground movement
+        # Horizontal
+        speed = self.SPEED
+        h_dir = 1 if dx > 0 else -1 if dx < 0 else 0
+        h_vel = h_dir * speed
+        self.lolrect.x += h_vel
+        
+        for rx, ry, rw, rh in current_map.COLLISION_RECTS:
+            rect = pygame.Rect(rx, ry, rw, rh)
+            if self.lolrect.colliderect(rect):
+                if h_vel > 0: self.lolrect.right = rect.left
+                if h_vel < 0: self.lolrect.left = rect.right
+                    
+        # Vertical (Gravity)
+        gravity = current_map.GRAVITY * self.GRAVITY_MULTIPLIER
+        self.velocity_y += gravity
+        self.lolrect.y += self.velocity_y
+        
+        for rx, ry, rw, rh in current_map.COLLISION_RECTS:
+            rect = pygame.Rect(rx, ry, rw, rh)
+            if self.lolrect.colliderect(rect):
+                if self.velocity_y > 0:
+                    self.lolrect.bottom = rect.top
+                    self.velocity_y = 0
+                elif self.velocity_y < 0:
+                    self.lolrect.top = rect.bottom
+                    self.velocity_y = 0
 
     #------------------------------------------
     # orb lifecycle / called from main loop after enemy.update / enemy.draw
     # target: @everyone
     #------------------------------------------
-    def update_orbs(self, player, force_magnet=False):
+    def update_orbs(self, player, current_map, force_magnet=False):
         """Tick every live orb; remove ones that have been collected."""
         self.dropped_orbs = [o for o in self.dropped_orbs if not o.collected]
         for orb in self.dropped_orbs:
-            orb.update(player, force_magnet)
+            orb.update(player, current_map, force_magnet)
 
     def draw_orbs(self, screen, cam_offset):
         """Draw every live orb belonging to this enemy."""
@@ -270,9 +317,9 @@ class BaseEnemy:
     # main update loop / running all the math
     # target: @everyone
     #------------------------------------------
-    def update(self, screen, player, proj_manager):
+    def update(self, screen, player, proj_manager, current_map):
         if not self.defeated:
-            self.move_toward_player()
+            self.move_toward_player(current_map)
             cam_offset = player.get_camera_offset()
             self.fire(proj_manager, cam_offset)
 

@@ -6,6 +6,11 @@ MAP_IMAGE = os.path.join("maps", "map_02.jpg")
 MAP_WIDTH = 4000
 MAP_HEIGHT = 4000
 
+GRAVITY = 0.45
+COLLISION_RECTS = [
+    (0, 3750, 4000, 250)
+]
+
 # enemy spawning
 ENEMY_WAVES = [
     {"enemy": "rumia", "interval": 1500, "count": 5},

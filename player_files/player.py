@@ -24,6 +24,10 @@ class spaceship:
         self.hitbox_radius = 6    # tiny core — actual damage circle
         self.graze_radius  = 28   # larger invisible ring — bullets passing through grant XP
 
+        # platformer physics variables
+        self.velocity_y = 0.0
+        self.jump_strength = -12.0
+
         # Graze state: set of bullet indices already counted this logical frame
         self.grazed_this_frame: set = set()
 
@@ -43,7 +47,7 @@ class spaceship:
         from player_files.level import LevelSystem
         self.level_system = LevelSystem()
 
-    def move(self, keys):
+    def move(self, keys, current_map):
         current_time = pygame.time.get_ticks()
         keys = pygame.key.get_pressed()
         self.player_speed = 10
@@ -53,7 +57,19 @@ class spaceship:
                 self.is_dashing = False
             else:
                 self.spaceship_rect.x += self.dash_dir[0] * self.player_speed * self.dash_speed_multiplier
+                for rx, ry, rw, rh in current_map.COLLISION_RECTS:
+                    rect = pygame.Rect(rx, ry, rw, rh)
+                    if self.spaceship_rect.colliderect(rect):
+                        if self.dash_dir[0] > 0: self.spaceship_rect.right = rect.left
+                        elif self.dash_dir[0] < 0: self.spaceship_rect.left = rect.right
+                            
                 self.spaceship_rect.y += self.dash_dir[1] * self.player_speed * self.dash_speed_multiplier
+                self.velocity_y = 0 # reset gravity while dashing
+                for rx, ry, rw, rh in current_map.COLLISION_RECTS:
+                    rect = pygame.Rect(rx, ry, rw, rh)
+                    if self.spaceship_rect.colliderect(rect):
+                        if self.dash_dir[1] > 0: self.spaceship_rect.bottom = rect.top
+                        elif self.dash_dir[1] < 0: self.spaceship_rect.top = rect.bottom
                 
                 # Clamp to map boundaries
                 self.spaceship_rect.x = max(0, min(self.spaceship_rect.x, self.map_w - self.spaceship_rect.width))
@@ -79,14 +95,54 @@ class spaceship:
                 self.afterimages.append((self.spaceship_image.copy(), self.spaceship_rect.x, self.spaceship_rect.y, current_time))
                 return
 
-        if keys[pygame.K_a] and self.spaceship_rect.left > 0:
-            self.spaceship_rect.x -= self.player_speed
-        if keys[pygame.K_d] and self.spaceship_rect.right < self.map_w:
-            self.spaceship_rect.x += self.player_speed
-        if keys [pygame.K_w] and self.spaceship_rect.top > 0:
-            self.spaceship_rect.y -= self.player_speed
-        if keys[pygame.K_s] and self.spaceship_rect.bottom < self.map_h:
-            self.spaceship_rect.y += self.player_speed
+#######################################################################################################################################
+#PLATFORMER PHYSICS BULLSHITTERY
+
+        grav = current_map.GRAVITY
+
+        # Horizontal Movement and Collision
+        dx = 0
+        if keys[pygame.K_a]: dx -= self.player_speed
+        if keys[pygame.K_d]: dx += self.player_speed
+        
+        self.spaceship_rect.x += dx
+        for rx, ry, rw, rh in current_map.COLLISION_RECTS:
+            rect = pygame.Rect(rx, ry, rw, rh)
+            if self.spaceship_rect.colliderect(rect):
+                if dx > 0: self.spaceship_rect.right = rect.left
+                if dx < 0: self.spaceship_rect.left = rect.right
+                    
+        self.spaceship_rect.x = max(0, min(self.spaceship_rect.x, self.map_w - self.spaceship_rect.width))
+
+        # Vertical Movement and Collision
+        self.velocity_y += grav
+        self.spaceship_rect.y += self.velocity_y
+        
+        on_ground = False
+        for rx, ry, rw, rh in current_map.COLLISION_RECTS:
+            rect = pygame.Rect(rx, ry, rw, rh)
+            if self.spaceship_rect.colliderect(rect):
+                if self.velocity_y > 0:
+                    self.spaceship_rect.bottom = rect.top
+                    self.velocity_y = 0
+                    on_ground = True
+                elif self.velocity_y < 0:
+                    self.spaceship_rect.top = rect.bottom
+                    self.velocity_y = 0
+                        
+        if self.spaceship_rect.bottom > self.map_h:
+            self.spaceship_rect.bottom = self.map_h
+            self.velocity_y = 0
+            on_ground = True
+        if self.spaceship_rect.top < 0:
+            self.spaceship_rect.top = 0
+            self.velocity_y = 0
+
+        # Jumping
+        if on_ground and keys[pygame.K_w]:
+            self.velocity_y = self.jump_strength
+
+#######################################################################################################################################
 
     def get_camera_offset(self):
         """Camera centers on player, clamped to map edges"""

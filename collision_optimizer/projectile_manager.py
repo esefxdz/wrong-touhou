@@ -60,7 +60,7 @@ class ProjectileManager:
         
         self.active_count += 1
 
-    def update(self, map_w, map_h):
+    def update(self, current_map):
         """Vectorized update of all active bullets."""
         if self.active_count == 0:
             return
@@ -75,9 +75,19 @@ class ProjectileManager:
         # 2. Map Boundaries Check
         # Disable objects out of bounds
         out_of_bounds = (
-            (self.pos_x < 0) | (self.pos_x > map_w) |
-            (self.pos_y < 0) | (self.pos_y > map_h)
+            (self.pos_x < 0) | (self.pos_x > current_map.MAP_WIDTH) |
+            (self.pos_y < 0) | (self.pos_y > current_map.MAP_HEIGHT)
         )
+        
+        # 3. Terrain/Floor check
+        for rx, ry, rw, rh in current_map.COLLISION_RECTS:
+            hit_wall = (
+                (self.pos_x + self.radius >= rx) &
+                (self.pos_x - self.radius <= rx + rw) &
+                (self.pos_y + self.radius >= ry) &
+                (self.pos_y - self.radius <= ry + rh)
+            )
+            out_of_bounds |= hit_wall
         
         # We only want to turn True active elements to False
         to_deactivate = self.active & out_of_bounds

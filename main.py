@@ -164,7 +164,7 @@ while running:
     player.draw(display_surface, cam_offset)
     player.draw_health(display_surface)
     player.level_system.draw_xp_bar(display_surface)
-    player.move(keys)
+    player.move(keys, current_map)
     player.shoot(cam_offset, projectile_manager)
     
     # Optimized collision detection logic
@@ -174,7 +174,7 @@ while running:
     # enemy area / probably needs changing
     for enemy in enemies:
         enemy.active_enemies_list = enemies
-        enemy.update(display_surface, player, projectile_manager)
+        enemy.update(display_surface, player, projectile_manager, current_map)
         enemy.draw(display_surface, cam_offset)
 
     # Ensure wave ends if only orbs remain
@@ -183,14 +183,14 @@ while running:
 
     # orb pass — runs for all enemies including defeated ones so dropped orbs persist
     for enemy in enemies:
-        enemy.update_orbs(player, force_magnet=wave_is_over)
+        enemy.update_orbs(player, current_map, force_magnet=wave_is_over)
         enemy.draw_orbs(display_surface, cam_offset)
 
     # draw straggler pointers if under 10 enemies left
     draw_enemy_pointers(display_surface, enemies, wave_director, cam_offset, WIDTH, HEIGHT)
 
     # Calculate vectorized physics updates for all active bullets
-    projectile_manager.update(current_map.MAP_WIDTH, current_map.MAP_HEIGHT)
+    projectile_manager.update(current_map)
 
     # FINAL GPU RENDER
     vbo_data = projectile_manager.get_vbo_data()

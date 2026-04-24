@@ -6,6 +6,11 @@ MAP_IMAGE = os.path.join("maps", "map_01.jpg")
 MAP_WIDTH = 3000
 MAP_HEIGHT = 3000
 
+GRAVITY = 0.5
+COLLISION_RECTS = [
+    (0, 2750, 3000, 250)
+]
+
 #DOESNT WORK
 # enemy spawning
 ENEMY_WAVES = [
