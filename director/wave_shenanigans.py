@@ -1,4 +1,5 @@
 import pygame
+from constants import BRIGHT_RED, WHITE
 
 class WaveTransitionTimer:
     def __init__(self, delay_ms=3000):
@@ -81,6 +82,6 @@ def draw_enemy_pointers(screen, enemies, wave_director, cam_offset, width, heigh
         p3 = (ax - arrow_size * math.cos(angle + 0.5), ay - arrow_size * math.sin(angle + 0.5))
         
         # solid red arrow with bright white outline
-        pygame.draw.polygon(screen, (255, 30, 30), [p1, p2, p3])
-        pygame.draw.polygon(screen, (255, 255, 255), [p1, p2, p3], 2)
+        pygame.draw.polygon(screen, BRIGHT_RED, [p1, p2, p3])
+        pygame.draw.polygon(screen, WHITE, [p1, p2, p3], 2)
 

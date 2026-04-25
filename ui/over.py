@@ -30,7 +30,8 @@ def reset_game(available_maps):
     # create the director and give it instructions on how to push enemies into our list
     wd = WaveDirector(
         spawn_enemy_callback=lambda type_name: enemies_list.append(spawn_enemy(type_name, p)),
-        active_enemies_ref=enemies_list
+        active_enemies_ref=enemies_list,
+        current_map=m
     )
     wd.generate_wave() # force starts wave 1
     
@@ -67,10 +68,10 @@ class gover:
             screen.blit(text, (WIDTH // 2 - text.get_width() // 2, 100))
             
             # Draw stats using the smaller font
-            kill_text = self.small_font.render(f"Enemies Defeated: {self.enemies_killed}", True, (255, 200, 200))
+            kill_text = self.small_font.render(f"Enemies Defeated: {self.enemies_killed}", True, constants.LIGHT_PINK)
             screen.blit(kill_text, (WIDTH // 2 - kill_text.get_width() // 2, 170))
             
-            dmg_text = self.small_font.render(f"Damage Dealt: {self.damage_dealt}", True, (255, 200, 200))
+            dmg_text = self.small_font.render(f"Damage Dealt: {self.damage_dealt}", True, constants.LIGHT_PINK)
             screen.blit(dmg_text, (WIDTH // 2 - dmg_text.get_width() // 2, 220))
 
     def buttons(self, screen):

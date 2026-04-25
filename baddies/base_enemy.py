@@ -6,7 +6,7 @@ import math
 pygame.mixer.init()
 
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
-from constants import RED, GREEN, WHITE, MAGENTA, WIDTH, HEIGHT
+from constants import RED, GREEN, WHITE, MAGENTA, WIDTH, HEIGHT, ORB_STYLE
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -21,11 +21,7 @@ class Orb:
     FLOAT_SPEED    = 0.04 # gentle bob frequency
     FLOAT_AMP      = 3    # bob height in pixels
 
-    # visual radii and colours per type
-    _STYLE = {
-        "xp": {"radius": 7,  "color": (80, 220, 255),  "glow": (30, 120, 200)},
-        "hp": {"radius": 8,  "color": (50, 255, 50),   "glow": (20, 180, 20)},
-    }
+    # visual radii and colours are taken from constants.py
 
     def __init__(self, x, y, type_):
         self.x     = float(x)
@@ -59,7 +55,7 @@ class Orb:
             self.velocity_y += current_map.GRAVITY
             self.y += self.velocity_y
             
-            r = self._STYLE.get(self.type_, self._STYLE["xp"])["radius"]
+            r = ORB_STYLE.get(self.type_, ORB_STYLE["xp"])["radius"]
             for rx, ry, rw, rh in current_map.COLLISION_RECTS:
                 if (rx <= self.x <= rx + rw) and (ry <= self.y + r <= ry + rh):
                     if self.velocity_y > 0:
@@ -81,7 +77,7 @@ class Orb:
         if self.collected:
             return
 
-        style = self._STYLE.get(self.type_, self._STYLE["xp"])
+        style = ORB_STYLE.get(self.type_, ORB_STYLE["xp"])
         r     = style["radius"]
         color = style["color"]
         glow_color = style["glow"]

@@ -36,3 +36,14 @@ MAGENTA = (255, 0, 255)
 PURPLE = (128, 0, 128)
 LIGHT_PURPLE = (200, 100, 255)
 TRANSPARENT_BLACK = (0, 0, 0, 100)
+LIGHT_PINK = (255, 200, 200)
+INDIGO_BLUE = (80, 80, 160)
+HOVER_GREEN = (80, 160, 80)
+DARK_GREEN = (50, 100, 50)
+PALE_GREEN = (200, 255, 200)
+BRIGHT_RED = (255, 30, 30)
+
+ORB_STYLE = {
+    "xp": {"radius": 7,  "color": (80, 220, 255),  "glow": (30, 120, 200)},
+    "hp": {"radius": 8,  "color": (50, 255, 50),   "glow": (20, 180, 20)},
+}

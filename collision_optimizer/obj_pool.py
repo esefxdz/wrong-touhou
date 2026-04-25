@@ -1,4 +1,5 @@
 import pygame
+from constants import WHITE
 
 class Bullet:
     """A lightweight bullet object using __slots__ for memory efficiency."""
@@ -10,12 +11,12 @@ class Bullet:
         self.pos_y = 0
         self.dir_x = 0
         self.dir_y = 0
-        self.color = (255, 255, 255)
+        self.color = WHITE
         self.radius = 5
         self.type_id = 0 # 0 = Circle, 1 = Bullet PNG
         self.angle = 0
 
-    def reset(self, x, y, dx, dy, color=(255, 255, 255), radius=5, type_id=0):
+    def reset(self, x, y, dx, dy, color=WHITE, radius=5, type_id=0):
         """Re-initializes the bullet for reuse."""
         self.pos_x = x
         self.pos_y = y
@@ -34,7 +35,7 @@ class DynamicPool:
         self.inactive = [Bullet() for _ in range(initial_size)]
         self.active_count = 0
 
-    def get(self, x, y, dx, dy, color=(255, 255, 255), radius=5, type_id=0):
+    def get(self, x, y, dx, dy, color=WHITE, radius=5, type_id=0):
         """Grabs a bullet from the pool or grows it if empty."""
         if not self.inactive:
             # Grow by 50% or at least 50 units

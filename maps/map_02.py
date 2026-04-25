@@ -11,6 +11,7 @@ COLLISION_RECTS = [
     (0, 3750, 4000, 250)
 ]
 
+#DOESNT WORK
 # enemy spawning
 ENEMY_WAVES = [
     {"enemy": "rumia", "interval": 1500, "count": 5},
@@ -18,5 +19,6 @@ ENEMY_WAVES = [
     {"enemy": "patchouli", "interval": 1500, "count": 5}
 ]
 
+#DOESNT WORK
 # enemy types available on this map
 ENEMY_TYPES = ["rumia", "cirno"]

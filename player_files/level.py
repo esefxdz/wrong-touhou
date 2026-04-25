@@ -1,6 +1,9 @@
 import pygame
 import time
-from constants import WIDTH, HEIGHT, WHITE, RED, LIGHT_RED, GREEN, LIGHT_GREEN, DARK_GRAY, CYAN, YELLOW, TRANSPARENT_BLACK, LIGHT_GRAY, FONT_LARGE
+from constants import (
+    WIDTH, HEIGHT, WHITE, RED, LIGHT_RED, GREEN, LIGHT_GREEN, DARK_GRAY, CYAN, YELLOW, TRANSPARENT_BLACK, LIGHT_GRAY, FONT_LARGE,
+    INDIGO_BLUE, HOVER_GREEN, DARK_GREEN, PALE_GREEN
+)
 from perks.perk_system import get_perk_choices, apply_perk
 
 class LevelSystem:
@@ -25,7 +28,7 @@ class LevelSystem:
             self.line_image = pygame.image.load("textures/level_line.png").convert_alpha()
         except:
             self.line_image = pygame.Surface((600, 200), pygame.SRCALPHA)
-            self.line_image.fill((80, 80, 160))
+            self.line_image.fill(INDIGO_BLUE)
         
         # thinner strip - about 30% of screen height
         line_height = int(HEIGHT * 0.30)
@@ -84,7 +87,7 @@ class LevelSystem:
         pygame.draw.rect(screen, DARK_GRAY, (x_pos, y_pos, bar_width, bar_height))
         pygame.draw.rect(screen, CYAN, (x_pos, y_pos, fill_width, bar_height))
         
-        lvl_text = self.small_font.render(f"Lvl {self.level}", True, (255, 255, 255))
+        lvl_text = self.small_font.render(f"Lvl {self.level}", True, WHITE)
         screen.blit(lvl_text, (x_pos - 50, y_pos - 4))
         
         if self.level_up_text_timer > 0:
@@ -178,7 +181,7 @@ class LevelSystem:
 
             # hover highlight
             hovered = card_rect.collidepoint(mouse_pos)
-            color = (80, 160, 80) if hovered else (50, 100, 50)
+            color = HOVER_GREEN if hovered else DARK_GREEN
             pygame.draw.rect(screen, color, card_rect, border_radius=8)
             pygame.draw.rect(screen, GREEN, card_rect, 2, border_radius=8)
 
@@ -203,7 +206,7 @@ class LevelSystem:
             ))
 
             # perk description below name
-            desc_surf = self.card_desc_font.render(perk["description"], True, (200, 255, 200))
+            desc_surf = self.card_desc_font.render(perk["description"], True, PALE_GREEN)
             screen.blit(desc_surf, (
                 card_rect.centerx - desc_surf.get_width() // 2,
                 card_rect.top + icon_size + 52
