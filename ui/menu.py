@@ -17,16 +17,18 @@ class mmenu:
             self.menu_background_image,
             (constants.WIDTH, constants.HEIGHT)
         )
+        self.has_active_game = False  # flips true after first play
+        self.wants_reset = False      # main.py reads this to know if it should call reset_game
         
     def run(self, surface, clock, renderer):
         self.menu = True
+        self.wants_reset = False
         while self.menu:
             surface.blit(self.menu_background_image, (0, 0))
             text = self.font.render("WELCOME TO MY GAME", True, (constants.WHITE))
             surface.blit(text, (surface.get_width() // 2 - text.get_width() // 2, 100))
             self.handle_events()
             self.menu_button(surface)
-            # Use renderer to draw the surface to the GPU
             renderer.render(surface, np.array([], dtype=np.float32), (0, 0))
             pygame.display.flip()
             clock.tick(FPS)
@@ -39,6 +41,8 @@ class mmenu:
         
         koys = pygame.key.get_pressed()
         if koys[pygame.K_RETURN]:
+            self.wants_reset = True
+            self.has_active_game = True
             self.menu = False
         if self.menu:
             if koys[pygame.K_ESCAPE]:
@@ -48,16 +52,37 @@ class mmenu:
     def menu_button(self, screen):
         mouse_pos = pygame.mouse.get_pos()
         mouse_click = pygame.mouse.get_pressed()
-        play_button = pygame.Rect(WIDTH // 2 - 100, HEIGHT // 2 - 50, 200, 50)
-        quit_button = pygame.Rect(WIDTH // 2 - 100, HEIGHT // 2 + 25, 200, 50)
-        #its better than getting normal coordinates because this one doesnt shit itself with different resolutions 
-        play_text = self.font.render("Play", True, constants.WHITE)
-        quit_text = self.font.render("Quit", True, constants.WHITE)
+        
+        # shift buttons down a bit if continue is visible
+        offset = 40 if self.has_active_game else 0
+        
+        continue_button = pygame.Rect(WIDTH // 2 - 100, HEIGHT // 2 - 90, 200, 50)
+        play_button    = pygame.Rect(WIDTH // 2 - 100, HEIGHT // 2 - 30 + offset, 200, 50)
+        quit_button    = pygame.Rect(WIDTH // 2 - 100, HEIGHT // 2 + 45 + offset, 200, 50)
 
-        pygame.draw.rect(screen, (constants.GREEN), play_button)
+        play_text    = self.font.render("Play", True, constants.WHITE)
+        quit_text    = self.font.render("Quit", True, constants.WHITE)
+        continue_text = self.font.render("Continue", True, constants.WHITE)
+
+        # continue button — only shown when a game is already in progress
+        if self.has_active_game:
+            pygame.draw.rect(screen, constants.CYAN, continue_button)
+            if continue_button.collidepoint(mouse_pos):
+                pygame.draw.rect(screen, constants.LIGHT_GREEN, continue_button)
+                if mouse_click[0]:
+                    self.wants_reset = False  # do NOT reset, just resume
+                    self.menu = False
+            screen.blit(continue_text, (
+                continue_button.centerx - continue_text.get_width() // 2,
+                continue_button.centery - continue_text.get_height() // 2
+            ))
+
+        pygame.draw.rect(screen, constants.GREEN, play_button)
         if play_button.collidepoint(mouse_pos):
             pygame.draw.rect(screen, constants.LIGHT_GREEN, play_button)
             if mouse_click[0]:
+                self.wants_reset = True   # fresh game
+                self.has_active_game = True
                 self.menu = False
         
         pygame.draw.rect(screen, constants.RED, quit_button)

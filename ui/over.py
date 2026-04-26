@@ -8,20 +8,19 @@ from constants import WIDTH, HEIGHT, FONT_LARGE, FONT_MEDIUM
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 import constants
 
-from player_files.player import spaceship
+from player_files import create_player
 from collision_optimizer.projectile_manager import ProjectileManager
 from director.wave_director import WaveDirector
 from baddies import spawn_enemy
 
 #this is resetting the game after pressing retry i just didnt know where to put it
-def reset_game(available_maps):
+def reset_game(available_maps, player_class_name="commando"):
     # get fresh map and assets
     m = random.choice(available_maps)
     bg = pygame.image.load(m.MAP_IMAGE)
     bg = pygame.transform.scale(bg, (m.MAP_WIDTH, m.MAP_HEIGHT))
     
-    # reset all core entities
-    p = spaceship(100, 100, m.MAP_WIDTH, m.MAP_HEIGHT)
+    p = create_player(player_class_name, 100, 100, m.MAP_WIDTH, m.MAP_HEIGHT)
     pm = ProjectileManager()
     
     # wave director setup area

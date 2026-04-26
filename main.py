@@ -6,7 +6,7 @@ from collision_optimizer.hit_register import check_player_bullets_vs_enemies, ch
 from collision_optimizer.gpu_renderer import MasterRenderer
 from collision_optimizer.projectile_manager import ProjectileManager
 import numpy as np
-from player_files.player import spaceship
+from player_files import create_player
 from ui.pause import ppause
 from ui.menu import mmenu
 from ui.over import gover, reset_game
@@ -17,7 +17,9 @@ from director.wave_shenanigans import WaveTransitionTimer, draw_enemy_pointers
 
 from director.wave_director import WaveDirector
 from director.wave_ui import WaveUI
+from ui.character_selection import CharacterSelect
 wave_ui = WaveUI()
+char_select = CharacterSelect()
 
 pygame.init()
 
@@ -32,9 +34,8 @@ renderer = MasterRenderer(WIDTH, HEIGHT)
 # picks a random map
 available_maps = [map_01, map_02]
 
-# initialize the game for the first time
-current_map, background_image, player, enemies, projectile_manager, wave_director = reset_game(available_maps)
-spatial_grid = SpatialHash(cell_size=100)
+# track chosen character — will be set properly after char select on first launch
+chosen_character = "commando"
 
 # fps counter
 clock = pygame.time.Clock()
@@ -49,8 +50,12 @@ shop_menu = ShopMenu()
 wave_timer = WaveTransitionTimer(delay_ms=3000)
 
 mmmenu.run(display_surface, clock, renderer)
+chosen_character = char_select.run(display_surface, clock, renderer)
+current_map, background_image, player, enemies, projectile_manager, wave_director = reset_game(available_maps, chosen_character)
+spatial_grid = SpatialHash(cell_size=100)
+mmmenu.has_active_game = True  # first launch always starts fresh
 
-in_menu = True
+in_menu = False  # menu already ran above, don't re-enter on first frame
 running = True
 while running:
     for event in pygame.event.get():
@@ -64,6 +69,12 @@ while running:
     if in_menu:
         mmmenu.run(display_surface, clock, renderer)
         in_menu = False
+        if mmmenu.wants_reset:
+            chosen_character = char_select.run(display_surface, clock, renderer)
+            current_map, background_image, player, enemies, projectile_manager, wave_director = reset_game(available_maps, chosen_character)
+            spatial_grid = SpatialHash(cell_size=100)
+            gover_menu.game_over = False
+            gover_menu.replay = False
         continue
     else:
         pass

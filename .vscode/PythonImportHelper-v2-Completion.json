@@ -102,6 +102,14 @@
         "documentation": {}
     },
     {
+        "label": "ORB_STYLE",
+        "importPath": "constants",
+        "description": "constants",
+        "isExtraImport": true,
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
         "label": "CYAN",
         "importPath": "constants",
         "description": "constants",
@@ -175,6 +183,94 @@
     },
     {
         "label": "DARK_GRAY",
+        "importPath": "constants",
+        "description": "constants",
+        "isExtraImport": true,
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "WHITE",
+        "importPath": "constants",
+        "description": "constants",
+        "isExtraImport": true,
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "BRIGHT_RED",
+        "importPath": "constants",
+        "description": "constants",
+        "isExtraImport": true,
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "WHITE",
+        "importPath": "constants",
+        "description": "constants",
+        "isExtraImport": true,
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "YELLOW",
+        "importPath": "constants",
+        "description": "constants",
+        "isExtraImport": true,
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "WIDTH",
+        "importPath": "constants",
+        "description": "constants",
+        "isExtraImport": true,
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "HEIGHT",
+        "importPath": "constants",
+        "description": "constants",
+        "isExtraImport": true,
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "ORANGE",
+        "importPath": "constants",
+        "description": "constants",
+        "isExtraImport": true,
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "WHITE",
+        "importPath": "constants",
+        "description": "constants",
+        "isExtraImport": true,
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "RED",
+        "importPath": "constants",
+        "description": "constants",
+        "isExtraImport": true,
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "GREEN",
+        "importPath": "constants",
+        "description": "constants",
+        "isExtraImport": true,
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "FONT_SMALL",
         "importPath": "constants",
         "description": "constants",
         "isExtraImport": true,
@@ -286,7 +382,7 @@
         "documentation": {}
     },
     {
-        "label": "WIDTH",
+        "label": "INDIGO_BLUE",
         "importPath": "constants",
         "description": "constants",
         "isExtraImport": true,
@@ -294,7 +390,7 @@
         "documentation": {}
     },
     {
-        "label": "HEIGHT",
+        "label": "HOVER_GREEN",
         "importPath": "constants",
         "description": "constants",
         "isExtraImport": true,
@@ -302,7 +398,7 @@
         "documentation": {}
     },
     {
-        "label": "ORANGE",
+        "label": "DARK_GREEN",
         "importPath": "constants",
         "description": "constants",
         "isExtraImport": true,
@@ -310,31 +406,7 @@
         "documentation": {}
     },
     {
-        "label": "WHITE",
-        "importPath": "constants",
-        "description": "constants",
-        "isExtraImport": true,
-        "detail": "constants",
-        "documentation": {}
-    },
-    {
-        "label": "RED",
-        "importPath": "constants",
-        "description": "constants",
-        "isExtraImport": true,
-        "detail": "constants",
-        "documentation": {}
-    },
-    {
-        "label": "GREEN",
-        "importPath": "constants",
-        "description": "constants",
-        "isExtraImport": true,
-        "detail": "constants",
-        "documentation": {}
-    },
-    {
-        "label": "FONT_SMALL",
+        "label": "PALE_GREEN",
         "importPath": "constants",
         "description": "constants",
         "isExtraImport": true,
@@ -399,6 +471,126 @@
     },
     {
         "label": "WHITE",
+        "importPath": "constants",
+        "description": "constants",
+        "isExtraImport": true,
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "WIDTH",
+        "importPath": "constants",
+        "description": "constants",
+        "isExtraImport": true,
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "HEIGHT",
+        "importPath": "constants",
+        "description": "constants",
+        "isExtraImport": true,
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "FPS",
+        "importPath": "constants",
+        "description": "constants",
+        "isExtraImport": true,
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "WHITE",
+        "importPath": "constants",
+        "description": "constants",
+        "isExtraImport": true,
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "BLACK",
+        "importPath": "constants",
+        "description": "constants",
+        "isExtraImport": true,
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "GREEN",
+        "importPath": "constants",
+        "description": "constants",
+        "isExtraImport": true,
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "LIGHT_GREEN",
+        "importPath": "constants",
+        "description": "constants",
+        "isExtraImport": true,
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "RED",
+        "importPath": "constants",
+        "description": "constants",
+        "isExtraImport": true,
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "LIGHT_RED",
+        "importPath": "constants",
+        "description": "constants",
+        "isExtraImport": true,
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "CYAN",
+        "importPath": "constants",
+        "description": "constants",
+        "isExtraImport": true,
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "DARK_GRAY",
+        "importPath": "constants",
+        "description": "constants",
+        "isExtraImport": true,
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "LIGHT_GRAY",
+        "importPath": "constants",
+        "description": "constants",
+        "isExtraImport": true,
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "FONT_LARGE",
+        "importPath": "constants",
+        "description": "constants",
+        "isExtraImport": true,
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "FONT_MEDIUM",
+        "importPath": "constants",
+        "description": "constants",
+        "isExtraImport": true,
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "FONT_SMALL",
         "importPath": "constants",
         "description": "constants",
         "isExtraImport": true,
@@ -656,6 +848,22 @@
         "documentation": {}
     },
     {
+        "label": "BasePlayer",
+        "importPath": "player_files.base_player",
+        "description": "player_files.base_player",
+        "isExtraImport": true,
+        "detail": "player_files.base_player",
+        "documentation": {}
+    },
+    {
+        "label": "LevelSystem",
+        "importPath": "player_files.level",
+        "description": "player_files.level",
+        "isExtraImport": true,
+        "detail": "player_files.level",
+        "documentation": {}
+    },
+    {
         "label": "time",
         "kind": 6,
         "isExtraImport": true,
@@ -681,19 +889,27 @@
         "documentation": {}
     },
     {
-        "label": "spaceship",
-        "importPath": "player_files.player",
-        "description": "player_files.player",
+        "label": "PLAYER_REGISTRY",
+        "importPath": "player_files",
+        "description": "player_files",
         "isExtraImport": true,
-        "detail": "player_files.player",
+        "detail": "player_files",
         "documentation": {}
     },
     {
-        "label": "spaceship",
-        "importPath": "player_files.player",
-        "description": "player_files.player",
+        "label": "create_player",
+        "importPath": "player_files",
+        "description": "player_files",
         "isExtraImport": true,
-        "detail": "player_files.player",
+        "detail": "player_files",
+        "documentation": {}
+    },
+    {
+        "label": "create_player",
+        "importPath": "player_files",
+        "description": "player_files",
+        "isExtraImport": true,
+        "detail": "player_files",
         "documentation": {}
     },
     {
@@ -859,11 +1075,19 @@
         "documentation": {}
     },
     {
+        "label": "CharacterSelect",
+        "importPath": "ui.character_selection",
+        "description": "ui.character_selection",
+        "isExtraImport": true,
+        "detail": "ui.character_selection",
+        "documentation": {}
+    },
+    {
         "label": "Orb",
         "kind": 6,
         "importPath": "baddies.base_enemy",
         "description": "baddies.base_enemy",
-        "peekOfCode": "class Orb:\n    PICKUP_RADIUS  = 30   # how close the player must be to collect\n    MAGNET_RADIUS  = 150  # orbs slide toward the player when within this range\n    MAGNET_SPEED   = 4    # pixels per frame when magnetising\n    FLOAT_SPEED    = 0.04 # gentle bob frequency\n    FLOAT_AMP      = 3    # bob height in pixels\n    # visual radii and colours per type\n    _STYLE = {\n        \"xp\": {\"radius\": 7,  \"color\": (80, 220, 255),  \"glow\": (30, 120, 200)},\n        \"hp\": {\"radius\": 8,  \"color\": (50, 255, 50),   \"glow\": (20, 180, 20)},",
+        "peekOfCode": "class Orb:\n    PICKUP_RADIUS  = 30   # how close the player must be to collect\n    MAGNET_RADIUS  = 150  # orbs slide toward the player when within this range\n    MAGNET_SPEED   = 4    # pixels per frame when magnetising\n    FLOAT_SPEED    = 0.04 # gentle bob frequency\n    FLOAT_AMP      = 3    # bob height in pixels\n    # visual radii and colours are taken from constants.py\n    def __init__(self, x, y, type_):\n        self.x     = float(x)\n        self.y     = float(y)",
         "detail": "baddies.base_enemy",
         "documentation": {}
     },
@@ -1007,7 +1231,7 @@
         "kind": 6,
         "importPath": "collision_optimizer.obj_pool",
         "description": "collision_optimizer.obj_pool",
-        "peekOfCode": "class Bullet:\n    \"\"\"A lightweight bullet object using __slots__ for memory efficiency.\"\"\"\n    __slots__ = ['pos_x', 'pos_y', 'dir_x', 'dir_y', 'active', 'color', 'radius', 'type_id', 'angle']\n    def __init__(self):\n        self.active = False\n        self.pos_x = 0\n        self.pos_y = 0\n        self.dir_x = 0\n        self.dir_y = 0\n        self.color = (255, 255, 255)",
+        "peekOfCode": "class Bullet:\n    \"\"\"A lightweight bullet object using __slots__ for memory efficiency.\"\"\"\n    __slots__ = ['pos_x', 'pos_y', 'dir_x', 'dir_y', 'active', 'color', 'radius', 'type_id', 'angle']\n    def __init__(self):\n        self.active = False\n        self.pos_x = 0\n        self.pos_y = 0\n        self.dir_x = 0\n        self.dir_y = 0\n        self.color = WHITE",
         "detail": "collision_optimizer.obj_pool",
         "documentation": {}
     },
@@ -1016,7 +1240,7 @@
         "kind": 6,
         "importPath": "collision_optimizer.obj_pool",
         "description": "collision_optimizer.obj_pool",
-        "peekOfCode": "class DynamicPool:\n    \"\"\"A dynamic object pool that grows as needed.\"\"\"\n    def __init__(self, initial_size=100):\n        self.inactive = [Bullet() for _ in range(initial_size)]\n        self.active_count = 0\n    def get(self, x, y, dx, dy, color=(255, 255, 255), radius=5, type_id=0):\n        \"\"\"Grabs a bullet from the pool or grows it if empty.\"\"\"\n        if not self.inactive:\n            # Grow by 50% or at least 50 units\n            growth_size = max(50, len(self.inactive) // 2)",
+        "peekOfCode": "class DynamicPool:\n    \"\"\"A dynamic object pool that grows as needed.\"\"\"\n    def __init__(self, initial_size=100):\n        self.inactive = [Bullet() for _ in range(initial_size)]\n        self.active_count = 0\n    def get(self, x, y, dx, dy, color=WHITE, radius=5, type_id=0):\n        \"\"\"Grabs a bullet from the pool or grows it if empty.\"\"\"\n        if not self.inactive:\n            # Grow by 50% or at least 50 units\n            growth_size = max(50, len(self.inactive) // 2)",
         "detail": "collision_optimizer.obj_pool",
         "documentation": {}
     },
@@ -1061,7 +1285,7 @@
         "kind": 6,
         "importPath": "director.wave_director",
         "description": "director.wave_director",
-        "peekOfCode": "class WaveDirector:\n    def __init__(self, spawn_enemy_callback, active_enemies_ref):\n        \"\"\"\n        :param spawn_enemy_callback: Function to call when spawning an enemy. i.e., `spawn_enemy(enemy_type)`\n        :param active_enemies_ref: Reference to the collection (list/set/Group) of active enemies\n        \"\"\"\n        self.spawn_enemy = spawn_enemy_callback\n        self.active_enemies = active_enemies_ref\n        self.current_wave = 0\n        self.difficulty = 0.0",
+        "peekOfCode": "class WaveDirector:\n    #------------------------------------------\n    # initialization / hooking up spawn callback and map\n    # target: @everyone\n    #------------------------------------------\n    def __init__(self, spawn_enemy_callback, active_enemies_ref, current_map=None):\n        self.spawn_enemy = spawn_enemy_callback\n        self.active_enemies = active_enemies_ref\n        self.current_map = current_map\n        self.current_wave = 0",
         "detail": "director.wave_director",
         "documentation": {}
     },
@@ -1088,7 +1312,7 @@
         "kind": 6,
         "importPath": "director.wave_ui",
         "description": "director.wave_ui",
-        "peekOfCode": "class WaveUI:\n    def __init__(self, font_size=36):\n        self.font = pygame.font.Font(None, font_size)\n    def draw(self, surface, wave_director):\n        total = getattr(wave_director, 'total_enemies_this_wave', len(wave_director.spawn_queue))\n        spawned = total - len(wave_director.spawn_queue)\n        text = f\"DEBUG Wave {wave_director.current_wave} | Enemies Spawned: {spawned}/{total} | Queue Left: {len(wave_director.spawn_queue)}\"\n        surf = self.font.render(text, True, (255, 255, 0))\n        surface.blit(surf, (surface.get_width() // 2 - surf.get_width() // 2, surface.get_height() - 40))",
+        "peekOfCode": "class WaveUI:\n    def __init__(self, font_size=36):\n        self.font = pygame.font.Font(None, font_size)\n    def draw(self, surface, wave_director):\n        total = getattr(wave_director, 'total_enemies_this_wave', len(wave_director.spawn_queue))\n        spawned = total - len(wave_director.spawn_queue)\n        text = f\"DEBUG Wave {wave_director.current_wave} | Enemies Spawned: {spawned}/{total} | Queue Left: {len(wave_director.spawn_queue)}\"\n        surf = self.font.render(text, True, YELLOW)\n        surface.blit(surf, (surface.get_width() // 2 - surf.get_width() // 2, surface.get_height() - 40))",
         "detail": "director.wave_ui",
         "documentation": {}
     },
@@ -1097,7 +1321,7 @@
         "kind": 5,
         "importPath": "maps.map_01",
         "description": "maps.map_01",
-        "peekOfCode": "MAP_NAME = \"The Field\"\nMAP_IMAGE = os.path.join(\"maps\", \"map_01.jpg\")\nMAP_WIDTH = 3000\nMAP_HEIGHT = 3000\n#DOESNT WORK\n# enemy spawning\nENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 2000, \"count\": 3},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"patchouli\", \"interval\": 1500, \"count\": 5}",
+        "peekOfCode": "MAP_NAME = \"The Field\"\nMAP_IMAGE = os.path.join(\"maps\", \"map_01.jpg\")\nMAP_WIDTH = 3000\nMAP_HEIGHT = 3000\nGRAVITY = 0.5\nCOLLISION_RECTS = [\n    (0, 2750, 3000, 250)\n]\n# enemy spawning\nENEMY_WAVES = [",
         "detail": "maps.map_01",
         "documentation": {}
     },
@@ -1106,7 +1330,7 @@
         "kind": 5,
         "importPath": "maps.map_01",
         "description": "maps.map_01",
-        "peekOfCode": "MAP_IMAGE = os.path.join(\"maps\", \"map_01.jpg\")\nMAP_WIDTH = 3000\nMAP_HEIGHT = 3000\n#DOESNT WORK\n# enemy spawning\nENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 2000, \"count\": 3},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"patchouli\", \"interval\": 1500, \"count\": 5}\n]",
+        "peekOfCode": "MAP_IMAGE = os.path.join(\"maps\", \"map_01.jpg\")\nMAP_WIDTH = 3000\nMAP_HEIGHT = 3000\nGRAVITY = 0.5\nCOLLISION_RECTS = [\n    (0, 2750, 3000, 250)\n]\n# enemy spawning\nENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 2000, \"count\": 3},",
         "detail": "maps.map_01",
         "documentation": {}
     },
@@ -1115,7 +1339,7 @@
         "kind": 5,
         "importPath": "maps.map_01",
         "description": "maps.map_01",
-        "peekOfCode": "MAP_WIDTH = 3000\nMAP_HEIGHT = 3000\n#DOESNT WORK\n# enemy spawning\nENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 2000, \"count\": 3},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"patchouli\", \"interval\": 1500, \"count\": 5}\n]\n#DOESNT WORK",
+        "peekOfCode": "MAP_WIDTH = 3000\nMAP_HEIGHT = 3000\nGRAVITY = 0.5\nCOLLISION_RECTS = [\n    (0, 2750, 3000, 250)\n]\n# enemy spawning\nENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 2000, \"count\": 3},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5},",
         "detail": "maps.map_01",
         "documentation": {}
     },
@@ -1124,7 +1348,25 @@
         "kind": 5,
         "importPath": "maps.map_01",
         "description": "maps.map_01",
-        "peekOfCode": "MAP_HEIGHT = 3000\n#DOESNT WORK\n# enemy spawning\nENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 2000, \"count\": 3},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"patchouli\", \"interval\": 1500, \"count\": 5}\n]\n#DOESNT WORK\n# enemy types available on this map",
+        "peekOfCode": "MAP_HEIGHT = 3000\nGRAVITY = 0.5\nCOLLISION_RECTS = [\n    (0, 2750, 3000, 250)\n]\n# enemy spawning\nENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 2000, \"count\": 3},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"patchouli\", \"interval\": 1500, \"count\": 5}",
+        "detail": "maps.map_01",
+        "documentation": {}
+    },
+    {
+        "label": "GRAVITY",
+        "kind": 5,
+        "importPath": "maps.map_01",
+        "description": "maps.map_01",
+        "peekOfCode": "GRAVITY = 0.5\nCOLLISION_RECTS = [\n    (0, 2750, 3000, 250)\n]\n# enemy spawning\nENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 2000, \"count\": 3},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"patchouli\", \"interval\": 1500, \"count\": 5}\n]",
+        "detail": "maps.map_01",
+        "documentation": {}
+    },
+    {
+        "label": "COLLISION_RECTS",
+        "kind": 5,
+        "importPath": "maps.map_01",
+        "description": "maps.map_01",
+        "peekOfCode": "COLLISION_RECTS = [\n    (0, 2750, 3000, 250)\n]\n# enemy spawning\nENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 2000, \"count\": 3},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"patchouli\", \"interval\": 1500, \"count\": 5}\n]\n# enemy types available on this map",
         "detail": "maps.map_01",
         "documentation": {}
     },
@@ -1133,7 +1375,7 @@
         "kind": 5,
         "importPath": "maps.map_01",
         "description": "maps.map_01",
-        "peekOfCode": "ENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 2000, \"count\": 3},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"patchouli\", \"interval\": 1500, \"count\": 5}\n]\n#DOESNT WORK\n# enemy types available on this map\nENEMY_TYPES = [\"rumia\", \"cirno\", \"patchouli\"]",
+        "peekOfCode": "ENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 2000, \"count\": 3},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"patchouli\", \"interval\": 1500, \"count\": 5}\n]\n# enemy types available on this map\nENEMY_TYPES = [\"rumia\", \"cirno\", \"patchouli\"]",
         "detail": "maps.map_01",
         "documentation": {}
     },
@@ -1151,7 +1393,7 @@
         "kind": 5,
         "importPath": "maps.map_02",
         "description": "maps.map_02",
-        "peekOfCode": "MAP_NAME = \"The Void\"\nMAP_IMAGE = os.path.join(\"maps\", \"map_02.jpg\")\nMAP_WIDTH = 4000\nMAP_HEIGHT = 4000\n# enemy spawning\nENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"patchouli\", \"interval\": 1500, \"count\": 5}\n]",
+        "peekOfCode": "MAP_NAME = \"The Void\"\nMAP_IMAGE = os.path.join(\"maps\", \"map_02.jpg\")\nMAP_WIDTH = 4000\nMAP_HEIGHT = 4000\nGRAVITY = 0.45\nCOLLISION_RECTS = [\n    (0, 3750, 4000, 250)\n]\n#DOESNT WORK\n# enemy spawning",
         "detail": "maps.map_02",
         "documentation": {}
     },
@@ -1160,7 +1402,7 @@
         "kind": 5,
         "importPath": "maps.map_02",
         "description": "maps.map_02",
-        "peekOfCode": "MAP_IMAGE = os.path.join(\"maps\", \"map_02.jpg\")\nMAP_WIDTH = 4000\nMAP_HEIGHT = 4000\n# enemy spawning\nENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"patchouli\", \"interval\": 1500, \"count\": 5}\n]\n# enemy types available on this map",
+        "peekOfCode": "MAP_IMAGE = os.path.join(\"maps\", \"map_02.jpg\")\nMAP_WIDTH = 4000\nMAP_HEIGHT = 4000\nGRAVITY = 0.45\nCOLLISION_RECTS = [\n    (0, 3750, 4000, 250)\n]\n#DOESNT WORK\n# enemy spawning\nENEMY_WAVES = [",
         "detail": "maps.map_02",
         "documentation": {}
     },
@@ -1169,7 +1411,7 @@
         "kind": 5,
         "importPath": "maps.map_02",
         "description": "maps.map_02",
-        "peekOfCode": "MAP_WIDTH = 4000\nMAP_HEIGHT = 4000\n# enemy spawning\nENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"patchouli\", \"interval\": 1500, \"count\": 5}\n]\n# enemy types available on this map\nENEMY_TYPES = [\"rumia\", \"cirno\"]",
+        "peekOfCode": "MAP_WIDTH = 4000\nMAP_HEIGHT = 4000\nGRAVITY = 0.45\nCOLLISION_RECTS = [\n    (0, 3750, 4000, 250)\n]\n#DOESNT WORK\n# enemy spawning\nENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 1500, \"count\": 5},",
         "detail": "maps.map_02",
         "documentation": {}
     },
@@ -1178,7 +1420,25 @@
         "kind": 5,
         "importPath": "maps.map_02",
         "description": "maps.map_02",
-        "peekOfCode": "MAP_HEIGHT = 4000\n# enemy spawning\nENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"patchouli\", \"interval\": 1500, \"count\": 5}\n]\n# enemy types available on this map\nENEMY_TYPES = [\"rumia\", \"cirno\"]",
+        "peekOfCode": "MAP_HEIGHT = 4000\nGRAVITY = 0.45\nCOLLISION_RECTS = [\n    (0, 3750, 4000, 250)\n]\n#DOESNT WORK\n# enemy spawning\nENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5},",
+        "detail": "maps.map_02",
+        "documentation": {}
+    },
+    {
+        "label": "GRAVITY",
+        "kind": 5,
+        "importPath": "maps.map_02",
+        "description": "maps.map_02",
+        "peekOfCode": "GRAVITY = 0.45\nCOLLISION_RECTS = [\n    (0, 3750, 4000, 250)\n]\n#DOESNT WORK\n# enemy spawning\nENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"patchouli\", \"interval\": 1500, \"count\": 5}",
+        "detail": "maps.map_02",
+        "documentation": {}
+    },
+    {
+        "label": "COLLISION_RECTS",
+        "kind": 5,
+        "importPath": "maps.map_02",
+        "description": "maps.map_02",
+        "peekOfCode": "COLLISION_RECTS = [\n    (0, 3750, 4000, 250)\n]\n#DOESNT WORK\n# enemy spawning\nENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"patchouli\", \"interval\": 1500, \"count\": 5}\n]",
         "detail": "maps.map_02",
         "documentation": {}
     },
@@ -1187,7 +1447,7 @@
         "kind": 5,
         "importPath": "maps.map_02",
         "description": "maps.map_02",
-        "peekOfCode": "ENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"patchouli\", \"interval\": 1500, \"count\": 5}\n]\n# enemy types available on this map\nENEMY_TYPES = [\"rumia\", \"cirno\"]",
+        "peekOfCode": "ENEMY_WAVES = [\n    {\"enemy\": \"rumia\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"cirno\", \"interval\": 1500, \"count\": 5},\n    {\"enemy\": \"patchouli\", \"interval\": 1500, \"count\": 5}\n]\n#DOESNT WORK\n# enemy types available on this map\nENEMY_TYPES = [\"rumia\", \"cirno\"]",
         "detail": "maps.map_02",
         "documentation": {}
     },
@@ -1228,6 +1488,24 @@
         "documentation": {}
     },
     {
+        "label": "Commando",
+        "kind": 6,
+        "importPath": "player_files.commando.commando",
+        "description": "player_files.commando.commando",
+        "peekOfCode": "class Commando(BasePlayer):\n    \"\"\"Commando - balanced starter character.\"\"\"\n    NAME        = \"Commando\"\n    DESCRIPTION = \"A well-rounded soldier. Fast shooter, sturdy health.\"\n    PORTRAIT_PATH = \"commando/commando_sprite.png\"  # reuse first frame as portrait\n    SPRITE_PATH  = \"commando/commando_sprite.png\"\n    SPRITE_SIZE  = (64, 64)\n    FRAME_COUNT  = 8           # adjust to the actual number of frames in your sheet\n    FRAME_SPEED  = 100         # ms per frame\n    HITBOX_SIZE    = (50, 50)",
+        "detail": "player_files.commando.commando",
+        "documentation": {}
+    },
+    {
+        "label": "BasePlayer",
+        "kind": 6,
+        "importPath": "player_files.base_player",
+        "description": "player_files.base_player",
+        "peekOfCode": "class BasePlayer:\n    \"\"\"Base class for all playable characters. Subclass and override configs to make new ones.\"\"\"\n    #------------------------------------------\n    # character config / subclasses set these\n    # target: @everyone\n    #------------------------------------------\n    NAME        = \"Unknown\"\n    DESCRIPTION = \"No description.\"\n    PORTRAIT_PATH = None        # path relative to player_files/ for the selection screen\n    SPRITE_PATH   = None        # spritesheet path relative to player_files/",
+        "detail": "player_files.base_player",
+        "documentation": {}
+    },
+    {
         "label": "LevelSystem",
         "kind": 6,
         "importPath": "player_files.level",
@@ -1237,21 +1515,21 @@
         "documentation": {}
     },
     {
-        "label": "spaceship",
-        "kind": 6,
-        "importPath": "player_files.player",
-        "description": "player_files.player",
-        "peekOfCode": "class spaceship:\n    def __init__(self, x, y, map_w=3000, map_h=3000):\n        super().__init__()\n        self.map_w = map_w\n        self.map_h = map_h\n        self.rect = pygame.Rect(x, y, 50, 50)\n        self.spaceship_image = pygame.image.load(\"textures/spaceship.png\")\n        self.spaceship_image = pygame.transform.scale(self.spaceship_image, (50, 50))\n        self.spaceship_rect = self.spaceship_image.get_rect()\n        self.spaceship_rect.center = (map_w // 2, map_h // 2)",
-        "detail": "player_files.player",
-        "documentation": {}
-    },
-    {
         "label": "ShopMenu",
         "kind": 6,
         "importPath": "ui.shop_menu.shop",
         "description": "ui.shop_menu.shop",
         "peekOfCode": "class ShopMenu:\n    def __init__(self):\n        # shop state and fading settings\n        self.active = False\n        self.fade_alpha = 0\n        self.fade_speed = 5\n        self.font = pygame.font.SysFont(None, FONT_MEDIUM)\n        # loading the background picture\n        try:\n            self.background_image = pygame.image.load(\"ui/shop_menu/shop_background.png\").convert_alpha()",
         "detail": "ui.shop_menu.shop",
+        "documentation": {}
+    },
+    {
+        "label": "CharacterSelect",
+        "kind": 6,
+        "importPath": "ui.character_selection",
+        "description": "ui.character_selection",
+        "peekOfCode": "class CharacterSelect:\n    #------------------------------------------\n    # initialization / fonts and state\n    # target: @everyone\n    #------------------------------------------\n    def __init__(self):\n        self.selected_name = None\n        self.font_large  = pygame.font.SysFont(None, FONT_LARGE)\n        self.font_medium = pygame.font.SysFont(None, FONT_MEDIUM)\n        self.font_small  = pygame.font.SysFont(None, FONT_SMALL)",
+        "detail": "ui.character_selection",
         "documentation": {}
     },
     {
@@ -1277,7 +1555,7 @@
         "kind": 2,
         "importPath": "ui.over",
         "description": "ui.over",
-        "peekOfCode": "def reset_game(available_maps):\n    # get fresh map and assets\n    m = random.choice(available_maps)\n    bg = pygame.image.load(m.MAP_IMAGE)\n    bg = pygame.transform.scale(bg, (m.MAP_WIDTH, m.MAP_HEIGHT))\n    # reset all core entities\n    p = spaceship(100, 100, m.MAP_WIDTH, m.MAP_HEIGHT)\n    pm = ProjectileManager()\n    # wave director setup area\n    enemies_list = []",
+        "peekOfCode": "def reset_game(available_maps, player_class_name=\"commando\"):\n    # get fresh map and assets\n    m = random.choice(available_maps)\n    bg = pygame.image.load(m.MAP_IMAGE)\n    bg = pygame.transform.scale(bg, (m.MAP_WIDTH, m.MAP_HEIGHT))\n    p = create_player(player_class_name, 100, 100, m.MAP_WIDTH, m.MAP_HEIGHT)\n    pm = ProjectileManager()\n    # wave director setup area\n    enemies_list = []\n    # create the director and give it instructions on how to push enemies into our list",
         "detail": "ui.over",
         "documentation": {}
     },
@@ -1457,7 +1735,7 @@
         "kind": 5,
         "importPath": "constants",
         "description": "constants",
-        "peekOfCode": "ORANGE = (255, 165, 0)\nCYAN = (0, 200, 255)\nDARK_GRAY = (50, 50, 50)\nLIGHT_GRAY = (100, 100, 100)\nSILVER = (192, 192, 192)\nMAGENTA = (255, 0, 255)\nPURPLE = (128, 0, 128)\nLIGHT_PURPLE = (200, 100, 255)\nTRANSPARENT_BLACK = (0, 0, 0, 100)",
+        "peekOfCode": "ORANGE = (255, 165, 0)\nCYAN = (0, 200, 255)\nDARK_GRAY = (50, 50, 50)\nLIGHT_GRAY = (100, 100, 100)\nSILVER = (192, 192, 192)\nMAGENTA = (255, 0, 255)\nPURPLE = (128, 0, 128)\nLIGHT_PURPLE = (200, 100, 255)\nTRANSPARENT_BLACK = (0, 0, 0, 100)\nLIGHT_PINK = (255, 200, 200)",
         "detail": "constants",
         "documentation": {}
     },
@@ -1466,7 +1744,7 @@
         "kind": 5,
         "importPath": "constants",
         "description": "constants",
-        "peekOfCode": "CYAN = (0, 200, 255)\nDARK_GRAY = (50, 50, 50)\nLIGHT_GRAY = (100, 100, 100)\nSILVER = (192, 192, 192)\nMAGENTA = (255, 0, 255)\nPURPLE = (128, 0, 128)\nLIGHT_PURPLE = (200, 100, 255)\nTRANSPARENT_BLACK = (0, 0, 0, 100)",
+        "peekOfCode": "CYAN = (0, 200, 255)\nDARK_GRAY = (50, 50, 50)\nLIGHT_GRAY = (100, 100, 100)\nSILVER = (192, 192, 192)\nMAGENTA = (255, 0, 255)\nPURPLE = (128, 0, 128)\nLIGHT_PURPLE = (200, 100, 255)\nTRANSPARENT_BLACK = (0, 0, 0, 100)\nLIGHT_PINK = (255, 200, 200)\nINDIGO_BLUE = (80, 80, 160)",
         "detail": "constants",
         "documentation": {}
     },
@@ -1475,7 +1753,7 @@
         "kind": 5,
         "importPath": "constants",
         "description": "constants",
-        "peekOfCode": "DARK_GRAY = (50, 50, 50)\nLIGHT_GRAY = (100, 100, 100)\nSILVER = (192, 192, 192)\nMAGENTA = (255, 0, 255)\nPURPLE = (128, 0, 128)\nLIGHT_PURPLE = (200, 100, 255)\nTRANSPARENT_BLACK = (0, 0, 0, 100)",
+        "peekOfCode": "DARK_GRAY = (50, 50, 50)\nLIGHT_GRAY = (100, 100, 100)\nSILVER = (192, 192, 192)\nMAGENTA = (255, 0, 255)\nPURPLE = (128, 0, 128)\nLIGHT_PURPLE = (200, 100, 255)\nTRANSPARENT_BLACK = (0, 0, 0, 100)\nLIGHT_PINK = (255, 200, 200)\nINDIGO_BLUE = (80, 80, 160)\nHOVER_GREEN = (80, 160, 80)",
         "detail": "constants",
         "documentation": {}
     },
@@ -1484,7 +1762,7 @@
         "kind": 5,
         "importPath": "constants",
         "description": "constants",
-        "peekOfCode": "LIGHT_GRAY = (100, 100, 100)\nSILVER = (192, 192, 192)\nMAGENTA = (255, 0, 255)\nPURPLE = (128, 0, 128)\nLIGHT_PURPLE = (200, 100, 255)\nTRANSPARENT_BLACK = (0, 0, 0, 100)",
+        "peekOfCode": "LIGHT_GRAY = (100, 100, 100)\nSILVER = (192, 192, 192)\nMAGENTA = (255, 0, 255)\nPURPLE = (128, 0, 128)\nLIGHT_PURPLE = (200, 100, 255)\nTRANSPARENT_BLACK = (0, 0, 0, 100)\nLIGHT_PINK = (255, 200, 200)\nINDIGO_BLUE = (80, 80, 160)\nHOVER_GREEN = (80, 160, 80)\nDARK_GREEN = (50, 100, 50)",
         "detail": "constants",
         "documentation": {}
     },
@@ -1493,7 +1771,7 @@
         "kind": 5,
         "importPath": "constants",
         "description": "constants",
-        "peekOfCode": "SILVER = (192, 192, 192)\nMAGENTA = (255, 0, 255)\nPURPLE = (128, 0, 128)\nLIGHT_PURPLE = (200, 100, 255)\nTRANSPARENT_BLACK = (0, 0, 0, 100)",
+        "peekOfCode": "SILVER = (192, 192, 192)\nMAGENTA = (255, 0, 255)\nPURPLE = (128, 0, 128)\nLIGHT_PURPLE = (200, 100, 255)\nTRANSPARENT_BLACK = (0, 0, 0, 100)\nLIGHT_PINK = (255, 200, 200)\nINDIGO_BLUE = (80, 80, 160)\nHOVER_GREEN = (80, 160, 80)\nDARK_GREEN = (50, 100, 50)\nPALE_GREEN = (200, 255, 200)",
         "detail": "constants",
         "documentation": {}
     },
@@ -1502,7 +1780,7 @@
         "kind": 5,
         "importPath": "constants",
         "description": "constants",
-        "peekOfCode": "MAGENTA = (255, 0, 255)\nPURPLE = (128, 0, 128)\nLIGHT_PURPLE = (200, 100, 255)\nTRANSPARENT_BLACK = (0, 0, 0, 100)",
+        "peekOfCode": "MAGENTA = (255, 0, 255)\nPURPLE = (128, 0, 128)\nLIGHT_PURPLE = (200, 100, 255)\nTRANSPARENT_BLACK = (0, 0, 0, 100)\nLIGHT_PINK = (255, 200, 200)\nINDIGO_BLUE = (80, 80, 160)\nHOVER_GREEN = (80, 160, 80)\nDARK_GREEN = (50, 100, 50)\nPALE_GREEN = (200, 255, 200)\nBRIGHT_RED = (255, 30, 30)",
         "detail": "constants",
         "documentation": {}
     },
@@ -1511,7 +1789,7 @@
         "kind": 5,
         "importPath": "constants",
         "description": "constants",
-        "peekOfCode": "PURPLE = (128, 0, 128)\nLIGHT_PURPLE = (200, 100, 255)\nTRANSPARENT_BLACK = (0, 0, 0, 100)",
+        "peekOfCode": "PURPLE = (128, 0, 128)\nLIGHT_PURPLE = (200, 100, 255)\nTRANSPARENT_BLACK = (0, 0, 0, 100)\nLIGHT_PINK = (255, 200, 200)\nINDIGO_BLUE = (80, 80, 160)\nHOVER_GREEN = (80, 160, 80)\nDARK_GREEN = (50, 100, 50)\nPALE_GREEN = (200, 255, 200)\nBRIGHT_RED = (255, 30, 30)\nORB_STYLE = {",
         "detail": "constants",
         "documentation": {}
     },
@@ -1520,7 +1798,7 @@
         "kind": 5,
         "importPath": "constants",
         "description": "constants",
-        "peekOfCode": "LIGHT_PURPLE = (200, 100, 255)\nTRANSPARENT_BLACK = (0, 0, 0, 100)",
+        "peekOfCode": "LIGHT_PURPLE = (200, 100, 255)\nTRANSPARENT_BLACK = (0, 0, 0, 100)\nLIGHT_PINK = (255, 200, 200)\nINDIGO_BLUE = (80, 80, 160)\nHOVER_GREEN = (80, 160, 80)\nDARK_GREEN = (50, 100, 50)\nPALE_GREEN = (200, 255, 200)\nBRIGHT_RED = (255, 30, 30)\nORB_STYLE = {\n    \"xp\": {\"radius\": 7,  \"color\": (80, 220, 255),  \"glow\": (30, 120, 200)},",
         "detail": "constants",
         "documentation": {}
     },
@@ -1529,7 +1807,70 @@
         "kind": 5,
         "importPath": "constants",
         "description": "constants",
-        "peekOfCode": "TRANSPARENT_BLACK = (0, 0, 0, 100)",
+        "peekOfCode": "TRANSPARENT_BLACK = (0, 0, 0, 100)\nLIGHT_PINK = (255, 200, 200)\nINDIGO_BLUE = (80, 80, 160)\nHOVER_GREEN = (80, 160, 80)\nDARK_GREEN = (50, 100, 50)\nPALE_GREEN = (200, 255, 200)\nBRIGHT_RED = (255, 30, 30)\nORB_STYLE = {\n    \"xp\": {\"radius\": 7,  \"color\": (80, 220, 255),  \"glow\": (30, 120, 200)},\n    \"hp\": {\"radius\": 8,  \"color\": (50, 255, 50),   \"glow\": (20, 180, 20)},",
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "LIGHT_PINK",
+        "kind": 5,
+        "importPath": "constants",
+        "description": "constants",
+        "peekOfCode": "LIGHT_PINK = (255, 200, 200)\nINDIGO_BLUE = (80, 80, 160)\nHOVER_GREEN = (80, 160, 80)\nDARK_GREEN = (50, 100, 50)\nPALE_GREEN = (200, 255, 200)\nBRIGHT_RED = (255, 30, 30)\nORB_STYLE = {\n    \"xp\": {\"radius\": 7,  \"color\": (80, 220, 255),  \"glow\": (30, 120, 200)},\n    \"hp\": {\"radius\": 8,  \"color\": (50, 255, 50),   \"glow\": (20, 180, 20)},\n}",
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "INDIGO_BLUE",
+        "kind": 5,
+        "importPath": "constants",
+        "description": "constants",
+        "peekOfCode": "INDIGO_BLUE = (80, 80, 160)\nHOVER_GREEN = (80, 160, 80)\nDARK_GREEN = (50, 100, 50)\nPALE_GREEN = (200, 255, 200)\nBRIGHT_RED = (255, 30, 30)\nORB_STYLE = {\n    \"xp\": {\"radius\": 7,  \"color\": (80, 220, 255),  \"glow\": (30, 120, 200)},\n    \"hp\": {\"radius\": 8,  \"color\": (50, 255, 50),   \"glow\": (20, 180, 20)},\n}",
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "HOVER_GREEN",
+        "kind": 5,
+        "importPath": "constants",
+        "description": "constants",
+        "peekOfCode": "HOVER_GREEN = (80, 160, 80)\nDARK_GREEN = (50, 100, 50)\nPALE_GREEN = (200, 255, 200)\nBRIGHT_RED = (255, 30, 30)\nORB_STYLE = {\n    \"xp\": {\"radius\": 7,  \"color\": (80, 220, 255),  \"glow\": (30, 120, 200)},\n    \"hp\": {\"radius\": 8,  \"color\": (50, 255, 50),   \"glow\": (20, 180, 20)},\n}",
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "DARK_GREEN",
+        "kind": 5,
+        "importPath": "constants",
+        "description": "constants",
+        "peekOfCode": "DARK_GREEN = (50, 100, 50)\nPALE_GREEN = (200, 255, 200)\nBRIGHT_RED = (255, 30, 30)\nORB_STYLE = {\n    \"xp\": {\"radius\": 7,  \"color\": (80, 220, 255),  \"glow\": (30, 120, 200)},\n    \"hp\": {\"radius\": 8,  \"color\": (50, 255, 50),   \"glow\": (20, 180, 20)},\n}",
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "PALE_GREEN",
+        "kind": 5,
+        "importPath": "constants",
+        "description": "constants",
+        "peekOfCode": "PALE_GREEN = (200, 255, 200)\nBRIGHT_RED = (255, 30, 30)\nORB_STYLE = {\n    \"xp\": {\"radius\": 7,  \"color\": (80, 220, 255),  \"glow\": (30, 120, 200)},\n    \"hp\": {\"radius\": 8,  \"color\": (50, 255, 50),   \"glow\": (20, 180, 20)},\n}",
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "BRIGHT_RED",
+        "kind": 5,
+        "importPath": "constants",
+        "description": "constants",
+        "peekOfCode": "BRIGHT_RED = (255, 30, 30)\nORB_STYLE = {\n    \"xp\": {\"radius\": 7,  \"color\": (80, 220, 255),  \"glow\": (30, 120, 200)},\n    \"hp\": {\"radius\": 8,  \"color\": (50, 255, 50),   \"glow\": (20, 180, 20)},\n}",
+        "detail": "constants",
+        "documentation": {}
+    },
+    {
+        "label": "ORB_STYLE",
+        "kind": 5,
+        "importPath": "constants",
+        "description": "constants",
+        "peekOfCode": "ORB_STYLE = {\n    \"xp\": {\"radius\": 7,  \"color\": (80, 220, 255),  \"glow\": (30, 120, 200)},\n    \"hp\": {\"radius\": 8,  \"color\": (50, 255, 50),   \"glow\": (20, 180, 20)},\n}",
         "detail": "constants",
         "documentation": {}
     },
@@ -1538,7 +1879,16 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "wave_ui = WaveUI()\npygame.init()\n# game window - Initialize with OpenGL flags\nscreen = pygame.display.set_mode((WIDTH, HEIGHT), pygame.OPENGL | pygame.DOUBLEBUF)\npygame.display.set_caption(\"will it work tho\")\n# Virtual surface for standard Pygame drawing\ndisplay_surface = pygame.Surface((WIDTH, HEIGHT), pygame.SRCALPHA)\nrenderer = MasterRenderer(WIDTH, HEIGHT)\n# picks a random map\navailable_maps = [map_01, map_02]",
+        "peekOfCode": "wave_ui = WaveUI()\nchar_select = CharacterSelect()\npygame.init()\n# game window - Initialize with OpenGL flags\nscreen = pygame.display.set_mode((WIDTH, HEIGHT), pygame.OPENGL | pygame.DOUBLEBUF)\npygame.display.set_caption(\"will it work tho\")\n# Virtual surface for standard Pygame drawing\ndisplay_surface = pygame.Surface((WIDTH, HEIGHT), pygame.SRCALPHA)\nrenderer = MasterRenderer(WIDTH, HEIGHT)\n# picks a random map",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "char_select",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "char_select = CharacterSelect()\npygame.init()\n# game window - Initialize with OpenGL flags\nscreen = pygame.display.set_mode((WIDTH, HEIGHT), pygame.OPENGL | pygame.DOUBLEBUF)\npygame.display.set_caption(\"will it work tho\")\n# Virtual surface for standard Pygame drawing\ndisplay_surface = pygame.Surface((WIDTH, HEIGHT), pygame.SRCALPHA)\nrenderer = MasterRenderer(WIDTH, HEIGHT)\n# picks a random map\navailable_maps = [map_01, map_02]",
         "detail": "main",
         "documentation": {}
     },
@@ -1547,7 +1897,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "screen = pygame.display.set_mode((WIDTH, HEIGHT), pygame.OPENGL | pygame.DOUBLEBUF)\npygame.display.set_caption(\"will it work tho\")\n# Virtual surface for standard Pygame drawing\ndisplay_surface = pygame.Surface((WIDTH, HEIGHT), pygame.SRCALPHA)\nrenderer = MasterRenderer(WIDTH, HEIGHT)\n# picks a random map\navailable_maps = [map_01, map_02]\n# initialize the game for the first time\ncurrent_map, background_image, player, enemies, projectile_manager, wave_director = reset_game(available_maps)\nspatial_grid = SpatialHash(cell_size=100)",
+        "peekOfCode": "screen = pygame.display.set_mode((WIDTH, HEIGHT), pygame.OPENGL | pygame.DOUBLEBUF)\npygame.display.set_caption(\"will it work tho\")\n# Virtual surface for standard Pygame drawing\ndisplay_surface = pygame.Surface((WIDTH, HEIGHT), pygame.SRCALPHA)\nrenderer = MasterRenderer(WIDTH, HEIGHT)\n# picks a random map\navailable_maps = [map_01, map_02]\n# track chosen character — will be set properly after char select on first launch\nchosen_character = \"commando\"\n# fps counter",
         "detail": "main",
         "documentation": {}
     },
@@ -1556,7 +1906,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "display_surface = pygame.Surface((WIDTH, HEIGHT), pygame.SRCALPHA)\nrenderer = MasterRenderer(WIDTH, HEIGHT)\n# picks a random map\navailable_maps = [map_01, map_02]\n# initialize the game for the first time\ncurrent_map, background_image, player, enemies, projectile_manager, wave_director = reset_game(available_maps)\nspatial_grid = SpatialHash(cell_size=100)\n# fps counter\nclock = pygame.time.Clock()\npygame.font.init()",
+        "peekOfCode": "display_surface = pygame.Surface((WIDTH, HEIGHT), pygame.SRCALPHA)\nrenderer = MasterRenderer(WIDTH, HEIGHT)\n# picks a random map\navailable_maps = [map_01, map_02]\n# track chosen character — will be set properly after char select on first launch\nchosen_character = \"commando\"\n# fps counter\nclock = pygame.time.Clock()\npygame.font.init()\nfont = pygame.font.Font(None, 36)",
         "detail": "main",
         "documentation": {}
     },
@@ -1565,7 +1915,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "renderer = MasterRenderer(WIDTH, HEIGHT)\n# picks a random map\navailable_maps = [map_01, map_02]\n# initialize the game for the first time\ncurrent_map, background_image, player, enemies, projectile_manager, wave_director = reset_game(available_maps)\nspatial_grid = SpatialHash(cell_size=100)\n# fps counter\nclock = pygame.time.Clock()\npygame.font.init()\nfont = pygame.font.Font(None, 36)",
+        "peekOfCode": "renderer = MasterRenderer(WIDTH, HEIGHT)\n# picks a random map\navailable_maps = [map_01, map_02]\n# track chosen character — will be set properly after char select on first launch\nchosen_character = \"commando\"\n# fps counter\nclock = pygame.time.Clock()\npygame.font.init()\nfont = pygame.font.Font(None, 36)\n#pause menu, didnt know where to put it",
         "detail": "main",
         "documentation": {}
     },
@@ -1574,16 +1924,16 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "available_maps = [map_01, map_02]\n# initialize the game for the first time\ncurrent_map, background_image, player, enemies, projectile_manager, wave_director = reset_game(available_maps)\nspatial_grid = SpatialHash(cell_size=100)\n# fps counter\nclock = pygame.time.Clock()\npygame.font.init()\nfont = pygame.font.Font(None, 36)\n#pause menu, didnt know where to put it\nmmmenu = mmenu()",
+        "peekOfCode": "available_maps = [map_01, map_02]\n# track chosen character — will be set properly after char select on first launch\nchosen_character = \"commando\"\n# fps counter\nclock = pygame.time.Clock()\npygame.font.init()\nfont = pygame.font.Font(None, 36)\n#pause menu, didnt know where to put it\nmmmenu = mmenu()\npause = ppause()",
         "detail": "main",
         "documentation": {}
     },
     {
-        "label": "spatial_grid",
+        "label": "chosen_character",
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "spatial_grid = SpatialHash(cell_size=100)\n# fps counter\nclock = pygame.time.Clock()\npygame.font.init()\nfont = pygame.font.Font(None, 36)\n#pause menu, didnt know where to put it\nmmmenu = mmenu()\npause = ppause()\ngover_menu = gover()\nshop_menu = ShopMenu()",
+        "peekOfCode": "chosen_character = \"commando\"\n# fps counter\nclock = pygame.time.Clock()\npygame.font.init()\nfont = pygame.font.Font(None, 36)\n#pause menu, didnt know where to put it\nmmmenu = mmenu()\npause = ppause()\ngover_menu = gover()\nshop_menu = ShopMenu()",
         "detail": "main",
         "documentation": {}
     },
@@ -1601,7 +1951,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "font = pygame.font.Font(None, 36)\n#pause menu, didnt know where to put it\nmmmenu = mmenu()\npause = ppause()\ngover_menu = gover()\nshop_menu = ShopMenu()\nwave_timer = WaveTransitionTimer(delay_ms=3000)\nmmmenu.run(display_surface, clock, renderer)\nin_menu = True\nrunning = True",
+        "peekOfCode": "font = pygame.font.Font(None, 36)\n#pause menu, didnt know where to put it\nmmmenu = mmenu()\npause = ppause()\ngover_menu = gover()\nshop_menu = ShopMenu()\nwave_timer = WaveTransitionTimer(delay_ms=3000)\nmmmenu.run(display_surface, clock, renderer)\nchosen_character = char_select.run(display_surface, clock, renderer)\ncurrent_map, background_image, player, enemies, projectile_manager, wave_director = reset_game(available_maps, chosen_character)",
         "detail": "main",
         "documentation": {}
     },
@@ -1610,7 +1960,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "mmmenu = mmenu()\npause = ppause()\ngover_menu = gover()\nshop_menu = ShopMenu()\nwave_timer = WaveTransitionTimer(delay_ms=3000)\nmmmenu.run(display_surface, clock, renderer)\nin_menu = True\nrunning = True\nwhile running:\n    for event in pygame.event.get():",
+        "peekOfCode": "mmmenu = mmenu()\npause = ppause()\ngover_menu = gover()\nshop_menu = ShopMenu()\nwave_timer = WaveTransitionTimer(delay_ms=3000)\nmmmenu.run(display_surface, clock, renderer)\nchosen_character = char_select.run(display_surface, clock, renderer)\ncurrent_map, background_image, player, enemies, projectile_manager, wave_director = reset_game(available_maps, chosen_character)\nspatial_grid = SpatialHash(cell_size=100)\nmmmenu.has_active_game = True  # first launch always starts fresh",
         "detail": "main",
         "documentation": {}
     },
@@ -1619,7 +1969,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "pause = ppause()\ngover_menu = gover()\nshop_menu = ShopMenu()\nwave_timer = WaveTransitionTimer(delay_ms=3000)\nmmmenu.run(display_surface, clock, renderer)\nin_menu = True\nrunning = True\nwhile running:\n    for event in pygame.event.get():\n        if event.type == pygame.QUIT:",
+        "peekOfCode": "pause = ppause()\ngover_menu = gover()\nshop_menu = ShopMenu()\nwave_timer = WaveTransitionTimer(delay_ms=3000)\nmmmenu.run(display_surface, clock, renderer)\nchosen_character = char_select.run(display_surface, clock, renderer)\ncurrent_map, background_image, player, enemies, projectile_manager, wave_director = reset_game(available_maps, chosen_character)\nspatial_grid = SpatialHash(cell_size=100)\nmmmenu.has_active_game = True  # first launch always starts fresh\nin_menu = False  # menu already ran above, don't re-enter on first frame",
         "detail": "main",
         "documentation": {}
     },
@@ -1628,7 +1978,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "gover_menu = gover()\nshop_menu = ShopMenu()\nwave_timer = WaveTransitionTimer(delay_ms=3000)\nmmmenu.run(display_surface, clock, renderer)\nin_menu = True\nrunning = True\nwhile running:\n    for event in pygame.event.get():\n        if event.type == pygame.QUIT:\n            running = False",
+        "peekOfCode": "gover_menu = gover()\nshop_menu = ShopMenu()\nwave_timer = WaveTransitionTimer(delay_ms=3000)\nmmmenu.run(display_surface, clock, renderer)\nchosen_character = char_select.run(display_surface, clock, renderer)\ncurrent_map, background_image, player, enemies, projectile_manager, wave_director = reset_game(available_maps, chosen_character)\nspatial_grid = SpatialHash(cell_size=100)\nmmmenu.has_active_game = True  # first launch always starts fresh\nin_menu = False  # menu already ran above, don't re-enter on first frame\nrunning = True",
         "detail": "main",
         "documentation": {}
     },
@@ -1637,7 +1987,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "shop_menu = ShopMenu()\nwave_timer = WaveTransitionTimer(delay_ms=3000)\nmmmenu.run(display_surface, clock, renderer)\nin_menu = True\nrunning = True\nwhile running:\n    for event in pygame.event.get():\n        if event.type == pygame.QUIT:\n            running = False\n        if not in_menu and not pause.paused:",
+        "peekOfCode": "shop_menu = ShopMenu()\nwave_timer = WaveTransitionTimer(delay_ms=3000)\nmmmenu.run(display_surface, clock, renderer)\nchosen_character = char_select.run(display_surface, clock, renderer)\ncurrent_map, background_image, player, enemies, projectile_manager, wave_director = reset_game(available_maps, chosen_character)\nspatial_grid = SpatialHash(cell_size=100)\nmmmenu.has_active_game = True  # first launch always starts fresh\nin_menu = False  # menu already ran above, don't re-enter on first frame\nrunning = True\nwhile running:",
         "detail": "main",
         "documentation": {}
     },
@@ -1646,7 +1996,34 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "wave_timer = WaveTransitionTimer(delay_ms=3000)\nmmmenu.run(display_surface, clock, renderer)\nin_menu = True\nrunning = True\nwhile running:\n    for event in pygame.event.get():\n        if event.type == pygame.QUIT:\n            running = False\n        if not in_menu and not pause.paused:\n            pause.pause_toggle(event)",
+        "peekOfCode": "wave_timer = WaveTransitionTimer(delay_ms=3000)\nmmmenu.run(display_surface, clock, renderer)\nchosen_character = char_select.run(display_surface, clock, renderer)\ncurrent_map, background_image, player, enemies, projectile_manager, wave_director = reset_game(available_maps, chosen_character)\nspatial_grid = SpatialHash(cell_size=100)\nmmmenu.has_active_game = True  # first launch always starts fresh\nin_menu = False  # menu already ran above, don't re-enter on first frame\nrunning = True\nwhile running:\n    for event in pygame.event.get():",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "chosen_character",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "chosen_character = char_select.run(display_surface, clock, renderer)\ncurrent_map, background_image, player, enemies, projectile_manager, wave_director = reset_game(available_maps, chosen_character)\nspatial_grid = SpatialHash(cell_size=100)\nmmmenu.has_active_game = True  # first launch always starts fresh\nin_menu = False  # menu already ran above, don't re-enter on first frame\nrunning = True\nwhile running:\n    for event in pygame.event.get():\n        if event.type == pygame.QUIT:\n            running = False",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "spatial_grid",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "spatial_grid = SpatialHash(cell_size=100)\nmmmenu.has_active_game = True  # first launch always starts fresh\nin_menu = False  # menu already ran above, don't re-enter on first frame\nrunning = True\nwhile running:\n    for event in pygame.event.get():\n        if event.type == pygame.QUIT:\n            running = False\n        if not in_menu and not pause.paused:\n            pause.pause_toggle(event)",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "mmmenu.has_active_game",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "mmmenu.has_active_game = True  # first launch always starts fresh\nin_menu = False  # menu already ran above, don't re-enter on first frame\nrunning = True\nwhile running:\n    for event in pygame.event.get():\n        if event.type == pygame.QUIT:\n            running = False\n        if not in_menu and not pause.paused:\n            pause.pause_toggle(event)\n            player.level_system.check_reopen(event)",
         "detail": "main",
         "documentation": {}
     },
@@ -1655,7 +2032,7 @@
         "kind": 5,
         "importPath": "main",
         "description": "main",
-        "peekOfCode": "in_menu = True\nrunning = True\nwhile running:\n    for event in pygame.event.get():\n        if event.type == pygame.QUIT:\n            running = False\n        if not in_menu and not pause.paused:\n            pause.pause_toggle(event)\n            player.level_system.check_reopen(event)\n    if in_menu:",
+        "peekOfCode": "in_menu = False  # menu already ran above, don't re-enter on first frame\nrunning = True\nwhile running:\n    for event in pygame.event.get():\n        if event.type == pygame.QUIT:\n            running = False\n        if not in_menu and not pause.paused:\n            pause.pause_toggle(event)\n            player.level_system.check_reopen(event)\n    if in_menu:",
         "detail": "main",
         "documentation": {}
     },
